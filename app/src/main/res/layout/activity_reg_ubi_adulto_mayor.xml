@@ -10,14 +10,16 @@
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/imageButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            app:srcCompat="@drawable/ic_launcher_foreground"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/textView18"
@@ -31,7 +33,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/lbl_UbicacionDomicilio"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName14"
@@ -39,7 +42,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/lbl_Latitud"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName15"
@@ -47,7 +51,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/lbl_Longitud"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <TextView
             android:id="@+id/textView21"
@@ -61,7 +66,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/lbl_CantidadDeMetrosPermitidos"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/button8"

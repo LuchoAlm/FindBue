@@ -10,14 +10,20 @@
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_Login" />
+            android:layout_height="48dp"
+            android:elegantTextHeight="true"
+            android:inputType="text"
+            android:text="@string/lbl_Login"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTextTextPersonName"
@@ -25,7 +31,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/plh_correo"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/editTextTextPassword"
@@ -33,7 +40,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/plh_password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/button"

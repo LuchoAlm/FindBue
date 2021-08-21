@@ -10,8 +10,10 @@
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -44,7 +46,9 @@
                 android:id="@+id/switch2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="8dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
                 android:scaleX=".7"
                 android:scaleY=".7"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -73,13 +77,15 @@
 
             <ImageButton
                 android:id="@+id/imageButton"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:backgroundTint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/outline_edit_24" />
+                app:srcCompat="@drawable/outline_edit_24"
+                tools:ignore="SpeakableTextPresentCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -164,7 +170,8 @@
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@drawable/ic_malcolm_x" />
+                app:srcCompat="@drawable/ic_malcolm_x"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/imageButton10"
@@ -174,7 +181,8 @@
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@drawable/ic_malcolm_x" />
+                app:srcCompat="@drawable/ic_malcolm_x"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/imageButton11"
@@ -191,7 +199,7 @@
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="293dp" />
+            android:layout_height="286dp" />
 
         <Button
             android:id="@+id/button4"
@@ -204,6 +212,7 @@
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:text="@string/btn_ConsultarRuta"
             android:textAllCaps="false" />
 
