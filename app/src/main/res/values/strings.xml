@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">FindBue</string>
+    
+    <string name="lbl_Login">Inicio de Sesión</string>
+    <string name="plh_correo">Ingresa tu correo electrónico</string>
+    <string name="plh_password">Ingresa tu contraseña</string>
+    <string name="lbl_logGoogle">Inicia sesión con Google</string>
+
+    <string name="btn_registrar">Registrarse</string>
+    <string name="btn_Ingresar">Ingresar</string>
 </resources>
