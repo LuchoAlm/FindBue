@@ -1,11 +1,23 @@
 <resources>
     <string name="app_name">FindBue</string>
-    
+
+    <!-- Textos para la vista de Login -->
+
     <string name="lbl_Login">Inicio de Sesión</string>
     <string name="plh_correo">Ingresa tu correo electrónico</string>
     <string name="plh_password">Ingresa tu contraseña</string>
     <string name="lbl_logGoogle">Inicia sesión con Google</string>
-
     <string name="btn_registrar">Registrarse</string>
     <string name="btn_Ingresar">Ingresar</string>
+
+    <!--Textos para la vista de Panel Principal-->
+    <string name="lbl_SaludoUsuario">¡Hola!, Usuario_Sistema</string>
+    <string name="lbl_Familiar">Familiar</string>
+    <string name="lbl_Encargado">Encargado</string>
+    <string name="lbl_AdultoMayor">Adulto Mayor</string>
+    <string name="lbl_AdultosMayores">Adultos Mayores</string>
+    <string name="lbl_Encargados">Encargados</string>
+    <string name="btn_ConsultarUbicacion">Consultar ubicación</string>
+    <string name="btn_ConsultarRuta">Consultar ruta</string>
+
 </resources>
