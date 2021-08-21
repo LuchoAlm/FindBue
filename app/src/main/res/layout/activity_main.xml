@@ -44,7 +44,7 @@
             android:minHeight="48dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonRegistrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_registrar"

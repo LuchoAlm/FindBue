@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 public class RegistrarAdultoMayor extends AppCompatActivity {
-    Button continuar;
+    public Button continuar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
