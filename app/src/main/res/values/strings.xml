@@ -20,4 +20,24 @@
     <string name="btn_ConsultarUbicacion">Consultar ubicación</string>
     <string name="btn_ConsultarRuta">Consultar ruta</string>
 
+    <!-- Textos para la vista de Registrar Adulto Mayor-->
+    <string name="lbl_NombresCompletos">Nombres completos</string>
+    <string name="lbl_CorreoElectronico">Correo electrónico</string>
+    <string name="lbl_DireccionDomicilio">Dirección de domicilio</string>
+    <string name="lbl_NumTlfContacto">Número de teléfono de contácto</string>
+    <string name="lbl_FechaDeNacimiento">Fecha de Nacimiento</string>
+    <string name="lbl_FechaDeNacimientoFormato">Fecha de Nacimiento dd/mm/yyyy</string>
+    <string name="lbl_Sexo">Sexo</string>
+    <string name="lbl_Enfermedades">Enfermedades</string>
+    <string name="lbl_Medicamentos">Medicamentos</string>
+    <string name="lbl_PersonaEncargada">Persona Encargada</string>
+    <string name="lbl_DescripcionFisica">Descripción física</string>
+    <string name="btn_Continuar">Continuar</string>
+    <string name="btn_Cancelar">Cancelar</string>
+    <string name="lbl_UbicacionDomicilio">Ubicación del domicilio</string>
+    <string name="lbl_Latitud">Latitud</string>
+    <string name="lbl_Longitud">Longitud</string>
+    <string name="lbl_CantidadDeMetrosPermitidos">Cantidad de metros permitidos</string>
+    <string name="btn_Registrar">Registrar</string>
+
 </resources>
