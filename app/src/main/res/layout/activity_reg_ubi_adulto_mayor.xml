@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".RegUbiAdultoMayor">
 
     <LinearLayout
         android:layout_width="409dp"
@@ -13,53 +13,68 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView18"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lbl_Login" />
+            android:text="@string/lbl_UbicacionDomicilio" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editTextTextPersonName12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/plh_correo"
+            android:hint="@string/lbl_UbicacionDomicilio"
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/editTextTextPersonName14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/plh_password"
-            android:inputType="textPassword" />
+            android:hint="@string/lbl_Latitud"
+            android:inputType="textPersonName" />
 
-        <Button
-            android:id="@+id/button"
+        <EditText
+            android:id="@+id/editTextTextPersonName15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_registrar"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_Ingresar"
-            android:textAllCaps="false" />
+            android:ems="10"
+            android:hint="@string/lbl_Longitud"
+            android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView21"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lbl_logGoogle" />
+            android:text="@string/lbl_CantidadDeMetrosPermitidos" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/lbl_CantidadDeMetrosPermitidos"
+            android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Google"
+            android:text="@string/btn_Registrar"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_Cancelar"
             android:textAllCaps="false" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
