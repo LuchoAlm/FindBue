@@ -84,10 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
         };
     }
-    protected void onResume(){
+
+    /*protected void onResume(){
         super.onResume();
         miFirebaseAuth.addAuthStateListener(miAuthListener);
-    }
+    }*/
 
     @Override
     protected void onPause() {
