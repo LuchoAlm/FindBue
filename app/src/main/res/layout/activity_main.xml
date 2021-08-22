@@ -17,13 +17,15 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_width="190dp"
+            android:layout_height="140dp"
             android:elegantTextHeight="true"
             android:inputType="text"
             android:text="@string/lbl_Login"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:translationX="120dp"
+            android:translationY="60dp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName"
@@ -48,26 +50,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_registrar"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_Ingresar"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_logGoogle" />
+            android:layout_height="40dp"
+            android:text="@string/lbl_logGoogle"
+            android:textSize="18sp"
+            android:translationY="20dp" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Google"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="16sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
