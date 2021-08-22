@@ -107,7 +107,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton8"
+                android:id="@+id/imageEnc1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
@@ -117,7 +117,7 @@
                 app:srcCompat="@drawable/ic_malcolm_x" />
 
             <ImageButton
-                android:id="@+id/imageButton9"
+                android:id="@+id/imageEnc2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
@@ -127,7 +127,7 @@
                 app:srcCompat="@drawable/ic_malcolm_x" />
 
             <ImageButton
-                android:id="@+id/imageButton10"
+                android:id="@+id/imageEnc3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
@@ -137,7 +137,7 @@
                 app:srcCompat="@drawable/ic_malcolm_x" />
 
             <ImageButton
-                android:id="@+id/imageButton11"
+                android:id="@+id/imageEnc4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
@@ -161,7 +161,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton8"
+                android:id="@+id/imageEnc1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
@@ -171,7 +171,7 @@
                 app:srcCompat="@drawable/ic_malcolm_x" />
 
             <ImageButton
-                android:id="@+id/imageButton9"
+                android:id="@+id/imageEnc2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
@@ -182,7 +182,7 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
-                android:id="@+id/imageButton10"
+                android:id="@+id/imageEnc3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
@@ -193,7 +193,7 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
-                android:id="@+id/imageButton11"
+                android:id="@+id/imageEnc4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
@@ -207,7 +207,8 @@
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="210dp" />
+            android:layout_height="210dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/button4"

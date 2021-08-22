@@ -7,9 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class RegUbiAdultoMayor extends AppCompatActivity {
-    public Button cancelar;
+    public Button registrar, cancelar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,18 @@ public class RegUbiAdultoMayor extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
         setContentView(R.layout.activity_reg_ubi_adulto_mayor);
 
-        cancelar = (Button) findViewById(R.id.button9);
+        cancelar = (Button) findViewById(R.id.buttonCancelarAM);
+        registrar = (Button) findViewById(R.id.buttonRegistrarAM);
+
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegUbiAdultoMayor.this, PanelPrincipalUsuario.class);
+                Toast.makeText(RegUbiAdultoMayor.this, "Registrando adulto mayor!", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            }
+        });
+
         cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

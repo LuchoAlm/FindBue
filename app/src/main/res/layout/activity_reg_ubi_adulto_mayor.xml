@@ -70,14 +70,14 @@
             android:minHeight="48dp" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/buttonRegistrarAM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_Registrar"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/buttonCancelarAM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_Cancelar"

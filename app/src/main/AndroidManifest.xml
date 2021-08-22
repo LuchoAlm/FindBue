@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindBue">
         <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Aqui las 5 lineas del intent-filter para ejecutar a main -->
+
+        </activity>
+        <activity
             android:name=".RegistrarFamiliar"
             android:exported="true">
             <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar familiar -->
@@ -28,11 +40,7 @@
             android:exported="true">
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar Adulto Mayor 2/2 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".RegistrarAdultoMayor"
@@ -52,13 +60,7 @@
             <!-- Aqui las 5 lineas del intent-filter para ejecutar a Panel Principal -->
 
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
 
-            <!-- Aqui las 5 lineas del intent-filter para ejecutar a main -->
-
-        </activity>
     </application>
 
 </manifest>

@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textInicioSesion"
             android:layout_width="190dp"
             android:layout_height="140dp"
             android:elegantTextHeight="true"
@@ -28,7 +28,7 @@
             android:translationY="60dp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/ingresarCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -37,7 +37,7 @@
             android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/ingresarPwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -54,7 +54,7 @@
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonIngresar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_Ingresar"
@@ -62,7 +62,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textInicioGoogle"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="@string/lbl_logGoogle"
@@ -70,7 +70,7 @@
             android:translationY="20dp" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buttonGoogle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Google"
