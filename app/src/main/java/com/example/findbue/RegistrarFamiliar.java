@@ -26,7 +26,7 @@ public class RegistrarFamiliar extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
         setContentView(R.layout.activity_registrar_familiar);
 
-        registrarse = (Button) findViewById(R.id.buttonRegistrarFam);
+        registrarse = (Button) findViewById(R.id.buttonRegistrarme);
         cancelar = (Button) findViewById(R.id.buttonCancelarRegistro);
         correo = (EditText) findViewById(R.id.editTextTextEmailAddress);
         password = (EditText) findViewById(R.id.editTextTextPassword);
@@ -38,14 +38,14 @@ public class RegistrarFamiliar extends AppCompatActivity {
         registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* FirebaseDatabase database = FirebaseDatabase.getInstance();
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myref = database.getReference("usuarios");
                 Usuario user = new Usuario(correo.getText().toString(),
                         password.getText().toString(),
                         nombreCompleto.getText().toString(),
                         direccionDom.getText().toString(),
                         telefonoMov.getText().toString());
-                myref.push().setValue(user);*/
+                myref.push().setValue(user);
                 Intent intent =  new Intent( RegistrarFamiliar.this, RegistrarAdultoMayor.class);
                 Toast.makeText(RegistrarFamiliar.this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
