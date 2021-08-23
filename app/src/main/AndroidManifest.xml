@@ -14,10 +14,6 @@
             android:exported="true">
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar AgregarEncargado -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
 
