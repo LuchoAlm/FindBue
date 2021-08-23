@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         registrarme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RegistrarFamiliar.class);
+                Intent intent = new Intent(MainActivity.this, RegistrarUsuario.class);
                 startActivity(intent);
                 Toast.makeText(MainActivity.this, "Vamos a registrarnos!", Toast.LENGTH_SHORT).show();
             }
