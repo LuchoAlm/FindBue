@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegistrarFamiliar extends AppCompatActivity {
+public class RegistrarUsuario extends AppCompatActivity {
     public Button registrarse, cancelar;
     public EditText correo, password, nombreCompleto, direccionDom, telefonoMov;
 
@@ -24,7 +24,7 @@ public class RegistrarFamiliar extends AppCompatActivity {
         getSupportActionBar().hide();
         //Ocultamos la barra de estado del sistema
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
-        setContentView(R.layout.activity_registrar_familiar);
+        setContentView(R.layout.activity_registrar_usuarios);
 
         registrarse = (Button) findViewById(R.id.buttonRegistrarme);
         cancelar = (Button) findViewById(R.id.buttonCancelarRegistro);
@@ -46,8 +46,8 @@ public class RegistrarFamiliar extends AppCompatActivity {
                         direccionDom.getText().toString(),
                         telefonoMov.getText().toString());
                 myref.push().setValue(user);
-                Intent intent =  new Intent( RegistrarFamiliar.this, RegistrarAdultoMayor.class);
-                Toast.makeText(RegistrarFamiliar.this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
+                Intent intent =  new Intent( RegistrarUsuario.this, PanelPrincipalUsuario.class);
+                Toast.makeText(RegistrarUsuario.this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
@@ -55,7 +55,7 @@ public class RegistrarFamiliar extends AppCompatActivity {
         cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegistrarFamiliar.this, MainActivity.class);
+                Intent intent = new Intent(RegistrarUsuario.this, MainActivity.class);
                 startActivity(intent);
             }
         });

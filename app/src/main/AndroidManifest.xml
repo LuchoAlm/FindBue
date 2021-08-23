@@ -37,7 +37,7 @@
 
 
         <activity
-            android:name=".RegistrarFamiliar"
+            android:name=".RegistrarUsuario"
             android:exported="true">
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar familiar -->

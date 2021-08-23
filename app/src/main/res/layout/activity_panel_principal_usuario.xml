@@ -149,13 +149,14 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/textViewEncargados"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/lbl_Encargados"
             android:textSize="16sp" />
 
         <LinearLayout
+            android:id="@+id/linearEncargados"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
