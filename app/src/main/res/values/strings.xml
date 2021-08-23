@@ -43,4 +43,10 @@
     <!-- Registrar información de familiar-->
     <string name="lbl_TlfMovil">Teléfono movil</string>
 
+
+    <!-- Agregar un encargado-->
+    <string name="lbl_CorreoEncargado">Correo electrónico del encargado</string>
+    <string name="lbl_CorreoAdultoMayor">Correo electrónico del Adulto Mayor</string>
+    <string name="btn_Agregar">Agregar</string>
+
 </resources>
