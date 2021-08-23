@@ -9,16 +9,18 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class PanelPrincipalUsuario extends AppCompatActivity {
-    public Button consultarUbicacion, consultarRuta;
-    public Switch seleccionRol;
-    public TextView textEncargado;
-    public LinearLayout encargados;
+    Button consultarUbicacion, consultarRuta;
+    ImageButton agregarAM, agregarEncargado;
+    Switch seleccionRol;
+    TextView textEncargado;
+    LinearLayout encargados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,8 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         seleccionRol = (Switch) findViewById(R.id.switch2);
         textEncargado = (TextView) findViewById(R.id.textViewEncargados);
         encargados = (LinearLayout) findViewById(R.id.linearEncargados);
+        agregarAM = (ImageButton) findViewById(R.id.btnAddAdulto);
+        agregarEncargado = (ImageButton) findViewById(R.id.btnAddEncargado);
 
         seleccionRol.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +50,22 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         encargados.setVisibility(View.VISIBLE);
                     }
                 }
+            }
+        });
+
+        agregarAM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PanelPrincipalUsuario.this, RegistrarAdultoMayor.class);
+                startActivity(intent);
+            }
+        });
+
+        agregarEncargado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PanelPrincipalUsuario.this, AgregarEncargado.class);
+                startActivity(intent);
             }
         });
 
