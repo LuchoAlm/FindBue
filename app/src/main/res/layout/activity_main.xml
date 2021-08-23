@@ -10,56 +10,71 @@
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_Login" />
+            android:id="@+id/textInicioSesion"
+            android:layout_width="190dp"
+            android:layout_height="140dp"
+            android:elegantTextHeight="true"
+            android:inputType="text"
+            android:text="@string/lbl_Login"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:translationX="120dp"
+            android:translationY="60dp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/ingresarCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/plh_correo"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/ingresarPwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/plh_password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:minHeight="48dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonRegistrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_registrar"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="16sp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonIngresar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_Ingresar"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textInicioGoogle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_logGoogle" />
+            android:layout_height="40dp"
+            android:text="@string/lbl_logGoogle"
+            android:textSize="18sp"
+            android:translationY="20dp" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buttonGoogle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Google"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textSize="16sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

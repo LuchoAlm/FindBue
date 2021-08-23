@@ -40,4 +40,7 @@
     <string name="lbl_CantidadDeMetrosPermitidos">Cantidad de metros permitidos</string>
     <string name="btn_Registrar">Registrar</string>
 
+    <!-- Registrar información de familiar-->
+    <string name="lbl_TlfMovil">Teléfono movil</string>
+
 </resources>
