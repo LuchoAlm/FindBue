@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrarAdultoMayor extends AppCompatActivity {
+    AdultoMayor adulto = new AdultoMayor();
     public Button continuar, cancelar;
     EditText nombresCompletosAM, correoAM, direccionDomAM, telefonoMovAM,fechaNacAM, sexoAM
             ,enfermedadesAM, medicamentosAM, personaEncargadaAM, descripcionFisicaAM;

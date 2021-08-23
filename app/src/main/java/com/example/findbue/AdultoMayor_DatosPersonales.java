@@ -1,7 +1,7 @@
 package com.example.findbue;
 
 public class AdultoMayor_DatosPersonales {
-    String nombresCompletosAM, correoAM, direccionDomAM, telefonoMovAM, fechaNacAM, sexoAM, enfermedadesAM, medicamentosAM, personaEncargadaAM, descripcionFisicaAM;
+    private String nombresCompletosAM, correoAM, direccionDomAM, telefonoMovAM, fechaNacAM, sexoAM, enfermedadesAM, medicamentosAM, personaEncargadaAM, descripcionFisicaAM;
 
     public AdultoMayor_DatosPersonales() {
     }
