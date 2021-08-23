@@ -107,19 +107,9 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageEnc1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@drawable/ic_malcolm_x" />
-
-            <ImageButton
                 android:id="@+id/imageEnc2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
@@ -145,6 +135,16 @@
                 android:layout_weight="1"
                 android:backgroundTint="#00FFFFFF"
                 app:srcCompat="@drawable/ic_malcolm_x" />
+
+            <ImageButton
+                android:id="@+id/btnAddAdulto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                android:textAlignment="center"
+                app:srcCompat="@drawable/ic_add_circle_outline_black_24dp" />
 
         </LinearLayout>
 
@@ -157,29 +157,19 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="124dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageEnc1"
+                android:id="@+id/imageEnc2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:backgroundTint="#00FFFFFF"
                 app:srcCompat="@drawable/ic_malcolm_x" />
-
-            <ImageButton
-                android:id="@+id/imageEnc2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@drawable/ic_malcolm_x"
-                tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/imageEnc3"
@@ -189,8 +179,7 @@
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@drawable/ic_malcolm_x"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:srcCompat="@drawable/ic_malcolm_x" />
 
             <ImageButton
                 android:id="@+id/imageEnc4"
@@ -201,6 +190,16 @@
                 android:layout_weight="1"
                 android:backgroundTint="#00FFFFFF"
                 app:srcCompat="@drawable/ic_malcolm_x" />
+
+            <ImageButton
+                android:id="@+id/btnAddEncargado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                android:textAlignment="center"
+                app:srcCompat="@drawable/ic_add_circle_outline_black_24dp" />
 
         </LinearLayout>
 
