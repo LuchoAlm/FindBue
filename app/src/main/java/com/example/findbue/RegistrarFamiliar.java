@@ -46,7 +46,7 @@ public class RegistrarFamiliar extends AppCompatActivity {
                         direccionDom.getText().toString(),
                         telefonoMov.getText().toString());
                 myref.push().setValue(user);
-                Intent intent =  new Intent( RegistrarFamiliar.this, RegistrarAdultoMayor.class);
+                Intent intent =  new Intent( RegistrarFamiliar.this, PanelPrincipalUsuario.class);
                 Toast.makeText(RegistrarFamiliar.this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
