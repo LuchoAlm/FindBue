@@ -86,7 +86,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="#00FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/outline_edit_24"
@@ -144,7 +144,17 @@
                 android:layout_weight="1"
                 android:backgroundTint="#00FFFFFF"
                 android:textAlignment="center"
-                app:srcCompat="@drawable/ic_add_circle_outline_black_24dp" />
+                app:srcCompat="@drawable/person_add" />
+
+            <ImageButton
+                android:id="@+id/btnRemoveAdulto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                android:textAlignment="center"
+                app:srcCompat="@drawable/person_remove" />
 
         </LinearLayout>
 
@@ -195,12 +205,22 @@
             <ImageButton
                 android:id="@+id/btnAddEncargado"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="69dp"
                 android:layout_gravity="center|center_horizontal"
                 android:layout_weight="1"
                 android:backgroundTint="#00FFFFFF"
                 android:textAlignment="center"
-                app:srcCompat="@drawable/ic_add_circle_outline_black_24dp" />
+                app:srcCompat="@drawable/person_add" />
+
+            <ImageButton
+                android:id="@+id/btnRemoveEncargado"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="center|center_horizontal"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                android:textAlignment="center"
+                app:srcCompat="@drawable/person_remove" />
 
         </LinearLayout>
 

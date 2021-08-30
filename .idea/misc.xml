@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/drawable/person_add.xml" value="0.1" />
+        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/drawable/person_remove.xml" value="0.1" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_agregar_encargado.xml" value="0.264" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_editar_perfil_persona.xml" value="0.25416666666666665" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_main.xml" value="0.264" />
