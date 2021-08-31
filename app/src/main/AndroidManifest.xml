@@ -10,14 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindBue">
         <activity
+            android:name=".PerfilUsuario"
+            android:exported="true" />
+        <activity
+            android:name=".EliminarEncargado"
+            android:exported="true" />
+        <activity
             android:name=".AgregarEncargado"
             android:exported="true">
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar AgregarEncargado -->
 
         </activity>
-
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -30,12 +34,10 @@
             <!-- Aqui las 5 lineas del intent-filter para ejecutar a main -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-
         <activity
             android:name=".RegistrarUsuario"
             android:exported="true">
@@ -43,8 +45,6 @@
             <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar familiar -->
 
         </activity>
-
-
         <activity
             android:name=".EditarPerfilPersona"
             android:exported="true">
@@ -52,8 +52,6 @@
             <!-- Aqui las 5 lineas del intent-filter para ejecutar EditarPerfilPersona -->
 
         </activity>
-
-
         <activity
             android:name=".RegUbiAdultoMayor"
             android:exported="true">
@@ -61,8 +59,6 @@
             <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar Adulto Mayor 2/2 -->
 
         </activity>
-
-
         <activity
             android:name=".RegistrarAdultoMayor"
             android:exported="true">
@@ -70,8 +66,6 @@
             <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar Adulto Mayor 1/2 -->
 
         </activity>
-
-
         <activity
             android:name=".PanelPrincipalUsuario"
             android:exported="true">

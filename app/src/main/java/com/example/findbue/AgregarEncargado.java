@@ -28,8 +28,8 @@ public class AgregarEncargado extends AppCompatActivity {
 
         agregarEncargado = (Button) findViewById(R.id.buttonAgregarEncargado);
         cancelar = (Button) findViewById(R.id.buttonCancelarEncargado);
-        correoEncargado = (EditText) findViewById(R.id.editTextTextPersonName4);
-        correoAdultoM = (EditText) findViewById(R.id.editTextTextPersonName16);
+        correoEncargado = (EditText) findViewById(R.id.correoEncarRegistro);
+        correoAdultoM = (EditText) findViewById(R.id.correoAdultoRegistro);
 
         agregarEncargado.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +37,8 @@ public class AgregarEncargado extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myref = database.getReference("encargados");
                 Encargado encargado = new Encargado(correoEncargado.getText().toString(), correoAdultoM.getText().toString());
-                myref.push().setValue(encargado);
+                String correoChild = correoEncargado.getText().toString();
+                myref.child(correoChild).setValue(encargado);
                 Intent intent =  new Intent( AgregarEncargado.this, PanelPrincipalUsuario.class);
                 Toast.makeText(AgregarEncargado.this, "Encargado asociado exitosamente!", Toast.LENGTH_SHORT).show();
                 startActivity(intent);

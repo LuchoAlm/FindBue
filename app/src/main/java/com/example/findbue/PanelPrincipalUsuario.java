@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class PanelPrincipalUsuario extends AppCompatActivity {
     Button consultarUbicacion, consultarRuta;
-    ImageButton agregarAM, agregarEncargado;
+    ImageButton agregarAM, agregarEncargado, eliminarAM, eliminarEncargado, verPerfilUsuario;
     Switch seleccionRol;
     TextView textEncargado;
     LinearLayout encargados;
@@ -36,6 +36,9 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         encargados = (LinearLayout) findViewById(R.id.linearEncargados);
         agregarAM = (ImageButton) findViewById(R.id.btnAddAdulto);
         agregarEncargado = (ImageButton) findViewById(R.id.btnAddEncargado);
+        eliminarAM = (ImageButton) findViewById(R.id.btnRemoveAdulto);
+        eliminarEncargado = (ImageButton) findViewById(R.id.btnRemoveEncargado);
+        verPerfilUsuario = (ImageButton) findViewById(R.id.imageButtonVerUsuario);
 
         seleccionRol.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +68,22 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PanelPrincipalUsuario.this, AgregarEncargado.class);
+                startActivity(intent);
+            }
+        });
+
+        eliminarEncargado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PanelPrincipalUsuario.this, EliminarEncargado.class);
+                startActivity(intent);
+            }
+        });
+
+        verPerfilUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PanelPrincipalUsuario.this, PerfilUsuario.class);
                 startActivity(intent);
             }
         });
