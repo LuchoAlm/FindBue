@@ -10,9 +10,6 @@ import android.widget.Toast;
 
 public class LoginRefactor extends AppCompatActivity {
 
-    private TextView lblEmail, lblPassword;
-    private EditText txtEmail, txtPassword;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
