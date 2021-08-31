@@ -2,9 +2,16 @@ package com.example.findbue;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginRefactor extends AppCompatActivity {
+
+    private TextView lblEmail, lblPassword;
+    private EditText txtEmail, txtPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,5 +22,7 @@ public class LoginRefactor extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_login_refactor);
+
+
     }
 }
