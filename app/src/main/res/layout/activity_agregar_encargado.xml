@@ -54,14 +54,14 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonAgregarEncargado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_Agregar"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buttonCancelarEncargado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_Cancelar"

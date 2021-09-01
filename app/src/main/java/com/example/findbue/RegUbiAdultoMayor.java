@@ -59,7 +59,7 @@ public class RegUbiAdultoMayor extends AppCompatActivity {
         cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegUbiAdultoMayor.this, MainActivity.class);
+                Intent intent = new Intent(RegUbiAdultoMayor.this, PanelPrincipalUsuario.class);
                 startActivity(intent);
             }
         });
