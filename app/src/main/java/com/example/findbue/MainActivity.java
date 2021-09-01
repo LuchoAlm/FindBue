@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -22,12 +23,23 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
+    EditText correo, password;
+    Button registrarme, ingresar, ingresarGoogle;
+
     private static final int RC_SIGN_IN = 123;
-    public Button registrarme, ingresar, ingresarGoogle;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
+    FirebaseDatabase database;
+    DatabaseReference myref;
+    RegistrarUsuario registrarUsuario = new RegistrarUsuario();
 
     @Override
     protected void onStart() {
@@ -53,24 +65,40 @@ public class MainActivity extends AppCompatActivity {
         ingresar = (Button) findViewById(R.id.buttonIngresar);
         registrarme = (Button) findViewById(R.id.buttonRegistrar);
         ingresarGoogle = (Button) findViewById(R.id.buttonGoogle);
+        correo = (EditText) findViewById(R.id.ingresarCorreo);
+        password = (EditText) findViewById(R.id.ingresarPwd);
 
         registrarme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RegistrarUsuario.class);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, "Vamos a registrarnos!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Estamos ingresando!", Toast.LENGTH_SHORT).show();
             }
         });
 
         ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, PanelPrincipalUsuario.class);
-                startActivity(intent);
-                Toast.makeText(MainActivity.this, "Estamos ingresando!", Toast.LENGTH_SHORT).show();
+
+                //Validaciones
+                if (correo.getText().toString().isEmpty()) {
+                    correo.setError("El campo no puede estar vacío");
+                } else if (!correo.getText().toString().matches(registrarUsuario.validacionCorreo)) {
+                    correo.setError("Dirección de correo inválida");
+                } else {
+                    correo.setError(null);
+                }
+                if (password.getText().toString().isEmpty()) {
+                    password.setError("El campo no puede estar vacío");
+                } else{
+                    password.setError(null);
+                    Toast.makeText(MainActivity.this, "Estamos dentro del último else!", Toast.LENGTH_SHORT).show();
+                    usuarioRegistrado();
+                }
             }
         });
+
 
         ingresarGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +112,62 @@ public class MainActivity extends AppCompatActivity {
         createRequest();
 }
 
+    private void usuarioRegistrado() {
+        String usuarioIngresado = correo.getText().toString().trim();
+        String passwordIngresado = password.getText().toString().trim();
+
+        System.out.println("USUARIO REGISTRADO: " + usuarioIngresado);
+        System.out.println("PASSWORD REGISTRADO: " + passwordIngresado);
+
+        DatabaseReference myref = FirebaseDatabase.getInstance().getReference("usuarios");
+        Query checkUser = myref.orderByChild("password").equalTo(passwordIngresado);
+
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    correo.setError(null); //Ver que hacr
+                    System.out.println("EL snapshot sí existe");
+                    String passwordFromDB = snapshot.child(passwordIngresado).child("password").getValue(String.class);
+                    System.out.println("EL passwd sí existe: "+ passwordFromDB);
+                    if (passwordFromDB.equals(passwordIngresado)){
+                        correo.setError(null);
+                        String nombreFromDB = snapshot.child(passwordIngresado).child("nombreCompleto").getValue(String.class);
+                        String correoFromDB = snapshot.child(passwordIngresado).child("correo").getValue(String.class);
+                        String direccionFromDB = snapshot.child(passwordIngresado).child("direccionDom").getValue(String.class);
+                        String telefonoFromDB = snapshot.child(passwordIngresado).child("telefonoMov").getValue(String.class);
+
+                        System.out.println("nombreFromDB: " + nombreFromDB);
+                        System.out.println("correoFromDB: " + correoFromDB);
+                        System.out.println("direccionFromDB: " + direccionFromDB);
+                        System.out.println("telefonoFromDB: " + telefonoFromDB);
+                        System.out.println("passwordFromDB: " + passwordFromDB);
+
+                        Intent intent = new Intent(getApplicationContext(), PerfilUsuario.class);
+                        intent.putExtra("nombreCompleto", nombreFromDB);
+                        intent.putExtra("correo", correoFromDB);
+                        intent.putExtra("direccionDom", direccionFromDB);
+                        intent.putExtra("telefonoMov", telefonoFromDB);
+                        intent.putExtra("password", passwordFromDB);
+
+                        startActivity(intent);
+                    }else {
+                        password.setError("Contraseña incorrecta");
+                        password.requestFocus();
+                    }
+                }else {
+                    System.out.println("NO existe el usuario");
+                    correo.setError("No existe el usuario");
+                    correo.requestFocus();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
     private void createRequest(){
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

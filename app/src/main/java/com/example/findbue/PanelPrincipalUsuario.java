@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class PanelPrincipalUsuario extends AppCompatActivity {
     Button consultarUbicacion, consultarRuta;
-    ImageButton agregarAM, agregarEncargado, eliminarAM, eliminarEncargado, verPerfilUsuario;
+    ImageButton agregarAM, agregarEncargado, eliminarAM, eliminarEncargado, editar;
     Switch seleccionRol;
     TextView textEncargado;
     LinearLayout encargados;
@@ -38,7 +38,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         agregarEncargado = (ImageButton) findViewById(R.id.btnAddEncargado);
         eliminarAM = (ImageButton) findViewById(R.id.btnRemoveAdulto);
         eliminarEncargado = (ImageButton) findViewById(R.id.btnRemoveEncargado);
-        verPerfilUsuario = (ImageButton) findViewById(R.id.imageButtonVerUsuario);
+        editar = (ImageButton) findViewById(R.id.imageButton);
 
         seleccionRol.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +80,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
             }
         });
 
-        verPerfilUsuario.setOnClickListener(new View.OnClickListener() {
+        editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PanelPrincipalUsuario.this, PerfilUsuario.class);

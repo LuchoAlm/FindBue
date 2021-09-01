@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindBue">
         <activity
+            android:name=".Interfazdeprueba"
+            android:exported="true" />
+        <activity
             android:name=".PerfilUsuario"
             android:exported="true" />
         <activity

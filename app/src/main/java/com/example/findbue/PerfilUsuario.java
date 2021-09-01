@@ -2,6 +2,7 @@ package com.example.findbue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -9,8 +10,7 @@ import android.widget.TextView;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class PerfilUsuario extends AppCompatActivity {
-    TextInputLayout correoUsuario, direccionUsuario, telefonoMovUsuario;
-    TextView nombreUsuario;
+    TextView nombreUsuario, correoUsuario, direccionUsuario, telefonoMovUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +21,27 @@ public class PerfilUsuario extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_perfil_usuario);
 
-        correoUsuario = (TextInputLayout) findViewById(R.id.textInputCorreoUsuario);
-        direccionUsuario = (TextInputLayout) findViewById(R.id.textInputDirecUsuario);
-        telefonoMovUsuario = (TextInputLayout) findViewById(R.id.textInputTelMovUsuario);
-        nombreUsuario = (TextView) findViewById(R.id.textViewNombreUsuario);
+        correoUsuario = findViewById(R.id.textInputCorreoUsuario);
+        direccionUsuario = findViewById(R.id.textInputDirecUsuario);
+        telefonoMovUsuario = findViewById(R.id.textInputTelMovUsuario);
+        nombreUsuario = findViewById(R.id.textViewNombreUsuario);
+        
+        mostrarDatosUsuario();
+    }
+
+    private void mostrarDatosUsuario() {
+        Intent intent = getIntent();
+        String nombre_user = intent.getStringExtra("nombreCompleto");
+        String correo_user = intent.getStringExtra("correo");
+        String direccionDom_user = intent.getStringExtra("direccionDom");
+        String telefonoMov_user = intent.getStringExtra("telefonoMov");
+        String password_user = intent.getStringExtra("password");
+
+        nombreUsuario.setText(nombre_user);
+        correoUsuario.setText(correo_user);
+        direccionUsuario.setText(direccionDom_user);
+        telefonoMovUsuario.setText(telefonoMov_user);
+
+
     }
 }

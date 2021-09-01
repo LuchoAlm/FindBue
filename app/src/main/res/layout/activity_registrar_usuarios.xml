@@ -7,6 +7,7 @@
     tools:context=".RegistrarUsuario">
 
     <ScrollView
+        android:id="@+id/view"
         android:layout_width="409dp"
         android:layout_height="729dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -118,13 +119,6 @@
                 android:layout_height="wrap_content"
                 android:text="Registrarme"
                 android:translationY="16dp" />
-
-            <Button
-                android:id="@+id/buttonCancelarRegistro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_Cancelar"
-                android:translationY="8dp" />
 
         </LinearLayout>
     </ScrollView>
