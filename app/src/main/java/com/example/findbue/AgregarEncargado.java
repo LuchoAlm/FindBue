@@ -34,13 +34,20 @@ public class AgregarEncargado extends AppCompatActivity {
         agregarEncargado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myref = database.getReference("encargados");
-                Encargado encargado = new Encargado(correoEncargado.getText().toString(), correoAdultoM.getText().toString());
-                myref.push().setValue(encargado);
-                Intent intent =  new Intent( AgregarEncargado.this, PanelPrincipalUsuario.class);
-                Toast.makeText(AgregarEncargado.this, "Encargado asociado exitosamente!", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+                if(!validateCorreoEncargado() || !validateCorreoAdultoM()) {
+                    validate();
+                    return;
+                } else {
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myref = database.getReference("encargados");
+                    Encargado encargado = new Encargado(
+                            correoEncargado.getText().toString(),
+                            correoAdultoM.getText().toString());
+                    myref.push().setValue(encargado);
+                    Intent intent = new Intent(AgregarEncargado.this, PanelPrincipalUsuario.class);
+                    Toast.makeText(AgregarEncargado.this, "Encargado asociado exitosamente!", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
             }
         });
 
@@ -52,5 +59,44 @@ public class AgregarEncargado extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void validate() {
+        validateCorreoEncargado();
+        validateCorreoAdultoM();
+    }
+
+    public Boolean validateCorreoEncargado() {
+
+        String val = correoEncargado.getText().toString();
+        String patronCorreo = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if(val.isEmpty()) {
+            correoEncargado.setError("Campo obligatorio");
+            return false;
+        } else if(!val.matches(patronCorreo)) {
+            correoEncargado.setError("Correo no válido");
+            return false;
+        } else {
+            correoEncargado.setError(null);
+            return true;
+        }
+    }
+
+    public Boolean validateCorreoAdultoM() {
+
+        String val = correoAdultoM.getText().toString();
+        String patronCorreo = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if(val.isEmpty()) {
+            correoAdultoM.setError("Campo obligatorio");
+            return false;
+        } else if(!val.matches(patronCorreo)) {
+            correoAdultoM.setError("Correo no válido");
+            return false;
+        } else {
+            correoAdultoM.setError(null);
+            return true;
+        }
     }
 }

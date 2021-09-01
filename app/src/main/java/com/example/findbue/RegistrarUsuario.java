@@ -38,17 +38,23 @@ public class RegistrarUsuario extends AppCompatActivity {
         registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myref = database.getReference("usuarios");
-                Usuario user = new Usuario(correo.getText().toString(),
-                        password.getText().toString(),
-                        nombreCompleto.getText().toString(),
-                        direccionDom.getText().toString(),
-                        telefonoMov.getText().toString());
-                myref.push().setValue(user);
-                Intent intent =  new Intent( RegistrarUsuario.this, PanelPrincipalUsuario.class);
-                Toast.makeText(RegistrarUsuario.this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+                if(!validateCorreo() || !validatePassword() || !validateName() || !validateDireccionDom() || !validateTelefonoMov()) {
+                    validate();
+                    return;
+                } else {
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myref = database.getReference("usuarios");
+                    Usuario user = new Usuario(
+                            correo.getText().toString(),
+                            password.getText().toString(),
+                            nombreCompleto.getText().toString(),
+                            direccionDom.getText().toString(),
+                            telefonoMov.getText().toString());
+                    myref.push().setValue(user);
+                    Intent intent = new Intent(RegistrarUsuario.this, PanelPrincipalUsuario.class);
+                    Toast.makeText(RegistrarUsuario.this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
             }
         });
 
@@ -62,4 +68,102 @@ public class RegistrarUsuario extends AppCompatActivity {
 
 
     }
+
+    public void validate() {
+        validateCorreo();
+        validatePassword();
+        validateName();
+        validateDireccionDom();
+        validateTelefonoMov();
+    }
+
+    public Boolean validateCorreo() {
+
+        String val = correo.getText().toString();
+        String patronCorreo = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if(val.isEmpty()) {
+            correo.setError("Campo obligatorio");
+            return false;
+        } else if(!val.matches(patronCorreo)) {
+            correo.setError("Correo no válido");
+            return false;
+        } else {
+            correo.setError(null);
+            return true;
+        }
+    }
+
+    public Boolean validatePassword() {
+
+        String val = password.getText().toString();
+        String patronPassword = "^" +
+                "(?=.*[0-9])" +
+                "(?=.*[a-z])" +
+                "(?=.*[A-Z])" +
+                "(?=.*[a-zA-Z])" +
+                "(?=.*[@$%^&+=])" +
+                "(?=.\\s+$)" +
+                ".{4,}" +
+                "$";
+
+        if(val.isEmpty()) {
+            password.setError("Campo obligatorio");
+            return false;
+        } else if(!val.matches(patronPassword)) {
+            password.setError("Contraseña no válida");
+            return false;
+        } else {
+            password.setError(null);
+            return true;
+        }
+
+    }
+
+    public Boolean validateName() {
+
+        String val = nombreCompleto.getText().toString();
+
+        if(val.isEmpty()) {
+            nombreCompleto.setError("Campo obligatorio");
+            return false;
+        } else {
+            nombreCompleto.setError(null);
+            return true;
+        }
+
+    }
+
+    public Boolean validateDireccionDom() {
+
+        String val = direccionDom.getText().toString();
+
+        if(val.isEmpty()) {
+            direccionDom.setError("Campo obligatorio");
+            return false;
+        } else {
+            direccionDom.setError(null);
+            return true;
+        }
+
+    }
+
+    public Boolean validateTelefonoMov() {
+
+        String val = telefonoMov.getText().toString();
+        String patronTelefono = "09[0-9]{8}";
+
+        if(val.isEmpty()) {
+            telefonoMov.setError("Campo obligatorio");
+            return false;
+        } else if(!val.matches(patronTelefono)) {
+            telefonoMov.setError("Teléfono no válido");
+            return false;
+        } else {
+            telefonoMov.setError(null);
+            return true;
+        }
+
+    }
+
 }
