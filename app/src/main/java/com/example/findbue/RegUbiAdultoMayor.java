@@ -34,8 +34,15 @@ public class RegUbiAdultoMayor extends AppCompatActivity {
         metrosPermitidosAM = (EditText) findViewById(R.id.editTextTextPersonName13);
 
         registrar.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+                if(!validarLatitud() || !validarLongitud() || !validarMetrosPerm() || !validarUbicacionDomAM()){
+                    return;
+                }else{
+                    System.out.println(validarLatitud());
+                }
+
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myref = database.getReference("datosDeUbicacionDelAdultoMayor");
                 AdultoMayor_DatosUbicacion adultoMayorDatosUbicacion = new AdultoMayor_DatosUbicacion(ubicacionDomAM.getText().toString(),
@@ -56,5 +63,64 @@ public class RegUbiAdultoMayor extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public Boolean validarLatitud(){
+        String val = latitudAM.getText().toString();
+
+        if(val.isEmpty()){
+            latitudAM.setError("Campo obligatorio");
+            return false;
+        }else{
+            latitudAM.setError(null);
+            return true;
+        }
+    }
+
+    public Boolean validarLongitud(){
+        String val = longitudAM.getText().toString();
+
+        if(val.isEmpty()){
+            longitudAM.setError("Campo obligatorio");
+            return false;
+        }else{
+            longitudAM.setError(null);
+            return true;
+        }
+    }
+
+    public Boolean validarUbicacionDomAM(){
+        String val = ubicacionDomAM.getText().toString();
+
+        if(val.isEmpty()){
+            ubicacionDomAM.setError("Campo obligatorio");
+            return false;
+        }else{
+            ubicacionDomAM.setError(null);
+            return true;
+        }
+    }
+
+    public Boolean validarMetrosPerm(){
+        String val = metrosPermitidosAM.getText().toString();
+
+        if(val.isEmpty()){
+            metrosPermitidosAM.setError("Campo obligatorio");
+            return false;
+        }else{
+            try{
+                int metrosPermitidos = Integer.parseInt(val);
+                if(metrosPermitidos>0 && metrosPermitidos<200){
+                    metrosPermitidosAM.setError(null);
+                    return true;
+                }else{
+                    metrosPermitidosAM.setError("Rango no válido");
+                    return false;
+                }
+            }catch(Exception e){
+                metrosPermitidosAM.setError("Datos no válidos");
+                return false;
+            }
+        }
     }
 }
