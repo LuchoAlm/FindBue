@@ -12,7 +12,9 @@
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_registrar_usuarios.xml" value="0.4" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21944444444444444" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/bg_background.xml" value="0.21944444444444444" />
+        <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/bg_background_login.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/custom_button.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/custom_button_outline.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/custom_icon_email_focused.xml" value="0.21944444444444444" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/custom_lock_icon_focused.xml" value="0.21944444444444444" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/custum_imput.xml" value="0.21944444444444444" />
@@ -20,12 +22,13 @@
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/ic_cristiano_ronaldo.xml" value="0.21944444444444444" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21944444444444444" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/ic_malcolm_x.xml" value="0.21944444444444444" />
+        <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/ic_usuarios_background.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/outline_edit_24.xml" value="0.21944444444444444" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/outline_email_24.xml" value="0.21944444444444444" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/outline_email_24_focused.xml" value="0.21944444444444444" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/outline_lock_24.xml" value="0.21944444444444444" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/drawable/outline_lock_24_focused.xml" value="0.21944444444444444" />
-        <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/layout/activity_login_refactor.xml" value="0.33" />
+        <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/layout/activity_login_refactor.xml" value="0.48086124401913877" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/layout/activity_panel_principal_usuario.xml" value="0.25" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/layout/activity_reg_ubi_adulto_mayor.xml" value="0.33" />
