@@ -26,39 +26,30 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class MainActivity extends AppCompatActivity {
-    private final static int RC_SIGN_IN = 123;
     public Button registrarme, ingresar;
     public ImageButton ingresarGoogle;
     private EditText email, password;
-    private FirebaseAuth firebaseAuth;
-    private FirebaseUser user;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onStart() {
         super.onStart();
-        user = firebaseAuth.getCurrentUser();
-        //Si el usuario ya se ha logeado previamente, lo enviamos al menú principal
-        if(user != null){
-            goToPrincipalPanel(user.getUid().toString());
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user!= null){
+            goToPrincipalPanel(user.getUid());
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("Arranca la App");
         //Ocultamos la barra de acción
         getSupportActionBar().hide();
         //Ocultamos la barra de estado del sistema
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_login_refactor);
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
-
-
-
-
+        setContentView(R.layout.activity_main);
+        mAuth = FirebaseAuth.getInstance();
 
         //Instanciamos los elementos de la UI
         email = (EditText) findViewById(R.id.editTextTextEmailAddress);
@@ -66,10 +57,6 @@ public class MainActivity extends AppCompatActivity {
         ingresar = (Button) findViewById(R.id.buttonRegistrarme);
         registrarme = (Button) findViewById(R.id.buttonRegistrar);
         ingresarGoogle = (ImageButton) findViewById(R.id.buttonGoogle);
-
-
-
-
 
         //Evento del boton registrarme
         registrarme.setOnClickListener(new View.OnClickListener() {
@@ -89,12 +76,12 @@ public class MainActivity extends AppCompatActivity {
                 String mail = email.getText().toString();
                 String pass = password.getText().toString();
                 //Comprueba si el usuario existe con ese correo y la contraseña
-                firebaseAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             //Si el usuario existe
-                            goToPrincipalPanel(firebaseAuth.getUid());
+                            goToPrincipalPanel(mAuth.getUid());
                             Toast.makeText(MainActivity.this, "Estamos ingresando!", Toast.LENGTH_SHORT).show();
                         }else{
                             //Si el usuario no existe, o está mal la contraseña
@@ -104,9 +91,9 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
+
 }
-
-
 
     //Metodo para enviar la UID de la sesión actual
         //Cuando el usuario ya ha iniciado sesión
@@ -116,6 +103,5 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("uid", uid);
         startActivity(i);
     }
-
 
 }
