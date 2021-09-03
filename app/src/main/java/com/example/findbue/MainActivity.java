@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -25,7 +26,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class MainActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
-    public Button registrarme, ingresar, ingresarGoogle;
+    public Button registrarme, ingresar;
+    public ImageButton ingresarGoogle;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
 
@@ -43,16 +45,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("Arranca la App");
         //Ocultamos la barra de acción
         getSupportActionBar().hide();
         //Ocultamos la barra de estado del sistema
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login_refactor);
 
         //definir hacia cual interface se ba luego de presionar cada uno de los botones
         ingresar = (Button) findViewById(R.id.buttonIngresar);
         registrarme = (Button) findViewById(R.id.buttonRegistrar);
-        ingresarGoogle = (Button) findViewById(R.id.buttonGoogle);
+        ingresarGoogle = (ImageButton) findViewById(R.id.buttonGoogle);
 
         registrarme.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("Clic en el boton de ingresar");
                 Intent intent = new Intent(MainActivity.this, PanelPrincipalUsuario.class);
                 startActivity(intent);
                 Toast.makeText(MainActivity.this, "Estamos ingresando!", Toast.LENGTH_SHORT).show();
