@@ -9,10 +9,12 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrarAdultoMayor extends AppCompatActivity {
+    AdultoMayor adulto = new AdultoMayor();
     public Button continuar, cancelar;
     EditText nombresCompletosAM, correoAM, direccionDomAM, telefonoMovAM,fechaNacAM, sexoAM
             ,enfermedadesAM, medicamentosAM, personaEncargadaAM, descripcionFisicaAM;
@@ -57,6 +59,7 @@ public class RegistrarAdultoMayor extends AppCompatActivity {
                         medicamentosAM.getText().toString(),
                         personaEncargadaAM.getText().toString(),
                         descripcionFisicaAM.getText().toString());
+                myref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(adultoMayorDatosPersonales);
                 myref.push().setValue(adultoMayorDatosPersonales);
                 Intent intent =  new Intent( RegistrarAdultoMayor.this, RegUbiAdultoMayor.class);
                 startActivity(intent);
