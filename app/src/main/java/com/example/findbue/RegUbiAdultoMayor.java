@@ -38,6 +38,7 @@ public class RegUbiAdultoMayor extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!validarLatitud() || !validarLongitud() || !validarMetrosPerm() || !validarUbicacionDomAM()){
+                    validate();
                     return;
                 }else{
                     System.out.println(validarLatitud());
@@ -63,6 +64,13 @@ public class RegUbiAdultoMayor extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void validate(){
+        validarLatitud();
+        validarLongitud();
+        validarMetrosPerm();
+        validarUbicacionDomAM();
     }
 
     public Boolean validarLatitud(){

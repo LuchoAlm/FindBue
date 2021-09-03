@@ -9,6 +9,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.text.SimpleDateFormat;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -44,6 +46,16 @@ public class RegistrarAdultoMayor extends AppCompatActivity {
         continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(!validarNombresAM() || !validateCorreo() || !validarDireccionDomAM() ||
+                !validateTelefonoMov() || !validarEnfermedades() || !validarSexo() || !validarDescrFisicaAM() ||
+                !validarDescrFisicaAM() || !validarMedicamentos() || !validarPersonaEncargada()){
+                    validar();
+                    return;
+                }else{
+                    System.out.println("Datos ingresados correctamente");
+                }
+
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myref = database.getReference("datosPersonalesDelAdultoMayor");
                 AdultoMayor_DatosPersonales adultoMayorDatosPersonales;
@@ -73,5 +85,165 @@ public class RegistrarAdultoMayor extends AppCompatActivity {
 
     }
 
+    public Boolean validarNombresAM() {
 
+        String val = nombresCompletosAM.getText().toString();
+
+        if(val.isEmpty()) {
+            nombresCompletosAM.setError("Campo obligatorio");
+            return false;
+        } else {
+            nombresCompletosAM.setError(null);
+            return true;
+        }
+
+    }
+
+    public Boolean validarDireccionDomAM() {
+
+        String val = direccionDomAM.getText().toString();
+
+        if(val.isEmpty()) {
+            direccionDomAM.setError("Campo obligatorio");
+            return false;
+        } else {
+            direccionDomAM.setError(null);
+            return true;
+        }
+
+    }
+
+    public Boolean validateTelefonoMov() {
+
+        String val = telefonoMovAM.getText().toString();
+        String patronTelefono = "09[0-9]{8}";
+
+        if(val.isEmpty()) {
+            telefonoMovAM.setError("Campo obligatorio");
+            return false;
+        } else if(!val.matches(patronTelefono)) {
+            telefonoMovAM.setError("Teléfono no válido");
+            return false;
+        } else {
+            telefonoMovAM.setError(null);
+            return true;
+        }
+
+    }
+
+    public Boolean validateCorreo() {
+
+        String val = correoAM.getText().toString();
+        String patronCorreo = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if(val.isEmpty()) {
+            correoAM.setError("Campo obligatorio");
+            return false;
+        } else if(!val.matches(patronCorreo)) {
+            correoAM.setError("Correo no válido");
+            return false;
+        } else {
+            correoAM.setError(null);
+            return true;
+        }
+    }
+
+    public Boolean validarEnfermedades() {
+
+        String val = enfermedadesAM.getText().toString();
+
+        if(val.isEmpty()) {
+            enfermedadesAM.setError("Campo requerido");
+            return false;
+        } else {
+            enfermedadesAM.setError(null);
+            return true;
+        }
+
+    }
+
+    public Boolean validarFechaNacAM(){
+        String val = fechaNacAM.getText().toString();
+
+        if(val.isEmpty()){
+            fechaNacAM.setError("Campo requerido");
+            return false;
+        }else{
+            try{
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/mm/yyyy");
+                formatoFecha.setLenient(false);
+                formatoFecha.parse(val);
+            }catch(Exception e){
+                fechaNacAM.setError("Fecha incorrecta");
+                return false;
+            }
+            fechaNacAM.setError(null);
+            return true;
+        }
+    }
+
+    public Boolean validarSexo(){
+        String val = sexoAM.getText().toString();
+
+        if(val.isEmpty()){
+            sexoAM.setError("Campo requerido");
+            return false;
+        }else{
+            sexoAM.setError(null);
+            return true;
+        }
+    }
+
+    public Boolean validarMedicamentos() {
+
+        String val = medicamentosAM.getText().toString();
+
+        if(val.isEmpty()) {
+            medicamentosAM.setError("Campo requerido");
+            return false;
+        } else {
+            medicamentosAM.setError(null);
+            return true;
+        }
+
+    }
+
+    public Boolean validarPersonaEncargada() {
+
+        String val = medicamentosAM.getText().toString();
+
+        if(val.isEmpty()) {
+            medicamentosAM.setError("Campo requerido");
+            return false;
+        } else {
+            medicamentosAM.setError(null);
+            return true;
+        }
+
+    }
+
+    public Boolean validarDescrFisicaAM(){
+        String val = descripcionFisicaAM.getText().toString();
+
+        if(val.isEmpty()){
+            descripcionFisicaAM.setError("Campo requerido");
+            return false;
+        }else{
+            descripcionFisicaAM.setError(null);
+            return true;
+        }
+    }
+
+    public void validar(){
+        validarNombresAM();
+        validateCorreo();
+        validateTelefonoMov();
+        validarMedicamentos();
+        validarDireccionDomAM();
+        validarSexo();
+        validarEnfermedades();
+        validarFechaNacAM();
+        validarPersonaEncargada();
+        validarDescrFisicaAM();
+    }
 }
