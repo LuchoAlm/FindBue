@@ -23,14 +23,14 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lbl_CorreoEncargado" />
+            android:text="Teléfono Móvil del encargado" />
 
         <EditText
             android:id="@+id/correoEncarRegistro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/lbl_CorreoEncargado"
+            android:hint="Ingrese el teléfono móvil del encargado"
             android:inputType="textPersonName" />
 
         <ImageView
@@ -43,14 +43,14 @@
             android:id="@+id/textView19"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lbl_CorreoAdultoMayor" />
+            android:text="Teléfono móvil del adulto mayor" />
 
         <EditText
             android:id="@+id/correoAdultoRegistro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/lbl_CorreoAdultoMayor"
+            android:hint="Ingrese el teléfono móvil del adulto mayor"
             android:inputType="textPersonName" />
 
         <Button

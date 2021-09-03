@@ -36,14 +36,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lbl_SaludoUsuario"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.389"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.289" />
+                app:layout_constraintVertical_bias="0.325" />
 
             <Switch
                 android:id="@+id/switch2"
@@ -80,17 +80,18 @@
                 app:layout_constraintStart_toEndOf="@+id/switch2"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="#00FFFFFF"
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Administrar usuario"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.304"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/outline_edit_24"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:layout_constraintVertical_bias="0.203" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -147,16 +148,6 @@
                 android:textAlignment="center"
                 app:srcCompat="@drawable/person_add" />
 
-            <ImageButton
-                android:id="@+id/btnRemoveAdulto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
-                android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
-                android:textAlignment="center"
-                app:srcCompat="@drawable/person_remove" />
-
         </LinearLayout>
 
         <TextView
@@ -212,16 +203,6 @@
                 android:backgroundTint="#00FFFFFF"
                 android:textAlignment="center"
                 app:srcCompat="@drawable/person_add" />
-
-            <ImageButton
-                android:id="@+id/btnRemoveEncargado"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_gravity="center|center_horizontal"
-                android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
-                android:textAlignment="center"
-                app:srcCompat="@drawable/person_remove" />
 
         </LinearLayout>
 

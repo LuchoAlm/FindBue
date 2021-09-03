@@ -36,9 +36,9 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         encargados = (LinearLayout) findViewById(R.id.linearEncargados);
         agregarAM = (ImageButton) findViewById(R.id.btnAddAdulto);
         agregarEncargado = (ImageButton) findViewById(R.id.btnAddEncargado);
-        eliminarAM = (ImageButton) findViewById(R.id.btnRemoveAdulto);
+        /*eliminarAM = (ImageButton) findViewById(R.id.btnRemoveAdulto);
         eliminarEncargado = (ImageButton) findViewById(R.id.btnRemoveEncargado);
-        editar = (ImageButton) findViewById(R.id.imageButton);
+        editar = (ImageButton) findViewById(R.id.imageButton);*/
 
         seleccionRol.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +72,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
             }
         });
 
-        eliminarEncargado.setOnClickListener(new View.OnClickListener() {
+  /*      eliminarEncargado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PanelPrincipalUsuario.this, EliminarEncargado.class);
@@ -86,7 +86,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                 Intent intent = new Intent(PanelPrincipalUsuario.this, PerfilUsuario.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
 }

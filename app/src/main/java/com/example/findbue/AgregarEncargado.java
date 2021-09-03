@@ -37,8 +37,7 @@ public class AgregarEncargado extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myref = database.getReference("encargados");
                 Encargado encargado = new Encargado(correoEncargado.getText().toString(), correoAdultoM.getText().toString());
-                String correoChild = correoEncargado.getText().toString();
-                myref.child(correoChild).setValue(encargado);
+                myref.push().setValue(encargado);
                 Intent intent =  new Intent( AgregarEncargado.this, PanelPrincipalUsuario.class);
                 Toast.makeText(AgregarEncargado.this, "Encargado asociado exitosamente!", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
