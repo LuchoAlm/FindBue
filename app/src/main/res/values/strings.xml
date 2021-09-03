@@ -11,6 +11,7 @@
     <string name="btn_Ingresar">Ingresar</string>
     <string name="lbl_password">Contraseña</string>
     <string name="lbl_OrLogin">O inicia sesión con</string>
+    <string name="lbl_Celular">Teléfono celular</string>
 
     <!--Textos para la vista de Panel Principal-->
     <string name="lbl_SaludoUsuario">¡Hola!, Usuario_Sistema</string>

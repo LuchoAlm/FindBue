@@ -43,7 +43,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtEmailBox"
+            android:id="@+id/txtRegisterEmailBox"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
             app:startIconDrawable="@drawable/custom_icon_email_focused">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ingresarCorreo"
+                android:id="@+id/editTextTextEmailAddress"
                 android:layout_width="331dp"
                 android:layout_height="55dp"
                 android:textColor="@color/gray_text"
@@ -81,7 +81,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.526"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEmailBox"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegisterEmailBox"
             app:startIconDrawable="@drawable/custom_lock_icon_focused">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -125,7 +125,7 @@
             app:srcCompat="@drawable/ic_icon_google" />
 
         <android.widget.Button
-            android:id="@+id/buttonIngresar"
+            android:id="@+id/buttonRegistrarme"
             android:layout_width="160dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"

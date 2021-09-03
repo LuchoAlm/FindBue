@@ -38,6 +38,7 @@
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar familiar -->
 
+
         </activity>
         <activity
             android:name=".EditarPerfilPersona"
