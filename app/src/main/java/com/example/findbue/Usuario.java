@@ -7,30 +7,16 @@ import java.util.Map;
 
 public class Usuario {
     String correo, password, nombreCompleto, direccionDom, telefonoMov;
-    public int starCount = 0;
-    public Map<String, Boolean> stars = new HashMap<>();
 
     public Usuario() {
     }
 
     public Usuario(String correo, String password, String nombreCompleto, String direccionDom, String telefonoMov) {
-        this.correo = correo;
-        this.password = password;
         this.nombreCompleto = nombreCompleto;
         this.direccionDom = direccionDom;
         this.telefonoMov = telefonoMov;
-    }
-
-    // [START post_to_map]
-    @Exclude
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("correo", correo);
-        result.put("password", password);
-        result.put("nombreCompleto", nombreCompleto);
-        result.put("direccionDom", direccionDom);
-        result.put("telefonoMov", telefonoMov);
-        return result;
+        this.correo = correo;
+        this.password = password;
     }
 
     public String getCorreo() {

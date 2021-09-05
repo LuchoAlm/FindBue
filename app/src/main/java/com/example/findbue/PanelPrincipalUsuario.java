@@ -64,7 +64,6 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                                 obtenerDatosBD(mDatabase);
                             }
                         });
-                        //usuarioSistema.encargadoEstaSeleccionado();
                     } if(!seleccionRol.isChecked()) { //ROL FAMILIAR
                         textEncargado.setVisibility(View.VISIBLE);
                         encargados.setVisibility(View.VISIBLE);
@@ -100,12 +99,10 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
 
     private void obtenerDatosBD(DatabaseReference mPostReference) {
         String uid = getIntent().getExtras().getString("uid");
-        System.out.println("UID: "+uid);
 
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    System.out.println("ESTOY AQUI");
                     String nombreFromDB = snapshot.child(uid).child("nombreCompleto").getValue(String.class);
                     String correoFromDB = snapshot.child(uid).child("correo").getValue(String.class);
                     String direccionFromDB = snapshot.child(uid).child("direccionDom").getValue(String.class);
@@ -128,6 +125,4 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         };
         mPostReference.addValueEventListener(valueEventListener);
     }
-
-
 }

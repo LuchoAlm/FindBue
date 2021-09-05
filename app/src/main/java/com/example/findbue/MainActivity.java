@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Metodo para enviar la UID de la sesión actual
     //Cuando el usuario ya ha iniciado sesión
-    private void goToPrincipalPanel(String uid) {
+    public void goToPrincipalPanel(String uid) {
         System.out.println("UId del MA: "+ uid);
         Intent i = new Intent(this, PanelPrincipalUsuario.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
