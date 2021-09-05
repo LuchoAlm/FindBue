@@ -38,7 +38,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
 
-        btnRegistrar = (Button) findViewById(R.id.buttonRegistrarme);
+        btnRegistrar = (Button) findViewById(R.id.buttonIngresar);
         btnCancelar = (Button) findViewById(R.id.buttonCancelarRegistro);
         mail = (EditText) findViewById(R.id.editTextTextEmailAddress);
         password = (EditText) findViewById(R.id.editTextTextPassword);
@@ -52,49 +52,29 @@ public class RegistrarUsuario extends AppCompatActivity {
                 String email = mail.getText().toString();
                 String pass = password.getText().toString();
                 if( email.isEmpty() == false && pass.isEmpty() == false){
-                    firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    Toast.makeText(RegistrarUsuario.this, "Estoy en el if", Toast.LENGTH_LONG).show();
+
+                    firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(RegistrarUsuario.this, "Usuario creado exitosamente", Toast.LENGTH_LONG).show();
-                                //Inicializamos Firebase
-                                insertarDatos(mail.getText().toString(), password.getText().toString(), name.getText().toString(), location.getText().toString(), movil.getText().toString());
+                                Toast.makeText(RegistrarUsuario.this, "Entré en el AUTH LPMMMMMMMMMMM", Toast.LENGTH_LONG).show();
+                                insertarDatos(mail.getText().toString(),password.getText().toString(), name.getText().toString(), location.getText().toString(), movil.getText().toString());
                                 goToPrincipalPanel();
-
-                                //myref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(adultoMayorDatosPersonales);
                             }
                         }
                     });
                 }
-
             }
         });
 
-
-/*        registrarse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myref = database.getReference("usuarios");
-                Usuario user = new Usuario(correo.getText().toString(),
-                        password.getText().toString(),
-                        nombreCompleto.getText().toString(),
-                        direccionDom.getText().toString(),
-                        telefonoMov.getText().toString());
-                myref.push().setValue(user);
-                Intent intent =  new Intent( RegistrarUsuario.this, PanelPrincipalUsuario.class);
-                Toast.makeText(RegistrarUsuario.this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-            }
-        });
-
-        cancelar.setOnClickListener(new View.OnClickListener() {
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RegistrarUsuario.this, MainActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
 
     }

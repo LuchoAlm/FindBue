@@ -29,7 +29,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_background_register_photo" />
+            app:srcCompat="@drawable/custom_button_cta" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtRegisterEmailBox"
@@ -154,7 +154,7 @@
 
 
         <android.widget.Button
-            android:id="@+id/buttonRegistrarme"
+            android:id="@+id/buttonIngresar"
             android:layout_width="160dp"
             android:layout_height="50dp"
             android:layout_marginTop="25dp"
@@ -169,14 +169,14 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <android.widget.Button
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:id="@+id/buttonCancelarRegistro"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="160dp"
             android:layout_height="50dp"
-            android:layout_marginTop="25dp"
             android:layout_marginStart="32dp"
-            android:text="@string/btn_registrar"
+            android:layout_marginTop="25dp"
             android:background="@drawable/custom_button_outline"
+            android:text="@string/btn_Cancelar"
             android:textColor="@color/gray_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtPhoneRegisterBox" />

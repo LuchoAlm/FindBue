@@ -1,14 +1,11 @@
 package com.example.findbue;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class LoginRefactor extends AppCompatActivity {
+import android.os.Bundle;
+import android.view.WindowManager;
+
+public class RegistrarDatosAdultoMayor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +14,6 @@ public class LoginRefactor extends AppCompatActivity {
         getSupportActionBar().hide();
         //Ocultamos la barra de estado del sistema
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        setContentView(R.layout.activity_login_refactor);
-
-
+        setContentView(R.layout.activity_registrar_datos_adulto_mayor);
     }
 }

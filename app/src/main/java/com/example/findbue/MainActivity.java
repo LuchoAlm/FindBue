@@ -107,11 +107,12 @@ public class MainActivity extends AppCompatActivity {
         createRequest();
 
 
-}
+    }
 
     //Metodo para enviar la UID de la sesión actual
-        //Cuando el usuario ya ha iniciado sesión
-    private void goToPrincipalPanel(String uid) {
+    //Cuando el usuario ya ha iniciado sesión
+    public void goToPrincipalPanel(String uid) {
+        System.out.println("UId del MA: "+ uid);
         Intent i = new Intent(this, PanelPrincipalUsuario.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         i.putExtra("uid", uid);
@@ -164,8 +165,6 @@ public class MainActivity extends AppCompatActivity {
                             goToPrincipalPanel(user.getDisplayName());
 
                         } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(MainActivity.this, "Sesion no iniciada!!!! Estoy en el else", Toast.LENGTH_SHORT).show();
 
                         }
                     }

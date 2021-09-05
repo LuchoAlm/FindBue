@@ -52,4 +52,9 @@
     <string name="lbl_CorreoAdultoMayor">Correo electrónico del Adulto Mayor</string>
     <string name="btn_Agregar">Agregar</string>
 
+    <string-array name="sexo">
+        <item>M</item>
+        <item>F</item>
+    </string-array>
+
 </resources>

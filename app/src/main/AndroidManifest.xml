@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.findbue" >
+    package="com.example.findbue">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindBue"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".RegistrarDatosAdultoMayor"
+            android:exported="true" />
+        <activity
+            android:name=".EditarAdultoMayor"
+            android:exported="true" />
+        <activity
+            android:name=".AdministrarComoEncargado"
+            android:exported="true" />
+        <activity
+            android:name=".AdministrarComoFamiliar"
+            android:exported="true" />
+        <activity
             android:name=".AgregarEncargado"
-            android:exported="true" >
+            android:exported="true">
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar AgregarEncargado -->
 
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,42 +42,27 @@
             <!-- Aqui las 5 lineas del intent-filter para ejecutar a main -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".RegistrarUsuario"
-            android:exported="true" >
+            android:exported="true">
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar familiar -->
-
 
         </activity>
         <activity
             android:name=".EditarPerfilPersona"
-            android:exported="true" >
+            android:exported="true">
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar EditarPerfilPersona -->
 
         </activity>
         <activity
-            android:name=".RegUbiAdultoMayor"
-            android:exported="true" >
-
-            <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar Adulto Mayor 2/2 -->
-
-        </activity>
-        <activity
-            android:name=".RegistrarAdultoMayor"
-            android:exported="true" >
-
-            <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar Adulto Mayor 1/2 -->
-
-        </activity>
-        <activity
             android:name=".PanelPrincipalUsuario"
-            android:exported="true" >
+            android:exported="true">
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar a Panel Principal -->
 

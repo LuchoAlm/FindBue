@@ -1,5 +1,10 @@
 package com.example.findbue;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Usuario {
     String correo, password, nombreCompleto, direccionDom, telefonoMov;
 
@@ -7,11 +12,11 @@ public class Usuario {
     }
 
     public Usuario(String correo, String password, String nombreCompleto, String direccionDom, String telefonoMov) {
-        this.correo = correo;
-        this.password = password;
         this.nombreCompleto = nombreCompleto;
         this.direccionDom = direccionDom;
         this.telefonoMov = telefonoMov;
+        this.correo = correo;
+        this.password = password;
     }
 
     public String getCorreo() {
