@@ -82,7 +82,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         agregarAM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PanelPrincipalUsuario.this, RegistrarAdultoMayor.class);
+                Intent intent = new Intent(PanelPrincipalUsuario.this, RegistrarDatosAdultoMayor.class);
                 startActivity(intent);
             }
         });

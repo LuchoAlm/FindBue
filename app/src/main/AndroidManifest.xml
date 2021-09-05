@@ -12,6 +12,9 @@
         android:theme="@style/Theme.FindBue"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".RegistrarDatosAdultoMayor"
+            android:exported="true" />
+        <activity
             android:name=".EditarAdultoMayor"
             android:exported="true" />
         <activity
@@ -55,20 +58,6 @@
             android:exported="true">
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar EditarPerfilPersona -->
-
-        </activity>
-        <activity
-            android:name=".RegUbiAdultoMayor"
-            android:exported="true">
-
-            <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar Adulto Mayor 2/2 -->
-
-        </activity>
-        <activity
-            android:name=".RegistrarAdultoMayor"
-            android:exported="true">
-
-            <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar Adulto Mayor 1/2 -->
 
         </activity>
         <activity
