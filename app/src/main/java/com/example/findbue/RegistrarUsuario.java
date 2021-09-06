@@ -58,7 +58,6 @@ public class RegistrarUsuario extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(RegistrarUsuario.this, "Entré en el AUTH LPMMMMMMMMMMM", Toast.LENGTH_LONG).show();
                                 insertarDatos(mail.getText().toString(),password.getText().toString(), name.getText().toString(), location.getText().toString(), movil.getText().toString());
                                 goToPrincipalPanel();
                             }

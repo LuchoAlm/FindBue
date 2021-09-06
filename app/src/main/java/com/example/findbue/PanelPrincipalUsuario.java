@@ -31,7 +31,6 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
     LinearLayout encargados;
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("usuarios");
     private FirebaseAuth mAuth;
-    //AdministrarComoFamiliar usuarioSistema = new AdministrarComoFamiliar();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

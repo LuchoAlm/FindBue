@@ -25,7 +25,7 @@ import java.util.Map;
 public class AdministrarComoEncargado extends AppCompatActivity {
     EditText correoUsuario, direccionUsuario, telefonoMovUsuario;
     TextView nombreUsuario;
-    Button actualizarUsuario;
+    Button actualizarUsuario, btn1, btn2;
     Usuario usuario = new Usuario();
 
 
@@ -44,6 +44,8 @@ public class AdministrarComoEncargado extends AppCompatActivity {
         telefonoMovUsuario = findViewById(R.id.textView30);
         nombreUsuario = findViewById(R.id.textView23);
         actualizarUsuario = (Button) findViewById(R.id.button7);
+        btn1 = (Button) findViewById(R.id.button11);
+        btn1 = (Button) findViewById(R.id.button12);
         mostrarDatosUsuario();
 
         actualizarUsuario.setOnClickListener(new View.OnClickListener() {
@@ -90,5 +92,6 @@ public class AdministrarComoEncargado extends AppCompatActivity {
         direccionUsuario.setText(direccionDom_user);
         telefonoMovUsuario.setText(telefonoMov_user);
         correoUsuario.setText(correo_user);
+
     }
 }

@@ -38,10 +38,9 @@ public class AdministrarComoFamiliar extends AppCompatActivity {
         editarMiInfoPersonal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //encargado.mostrarDatosUsuario();
                 Intent intent = new Intent(AdministrarComoFamiliar.this, AdministrarComoEncargado.class);
                 startActivity(intent);
-                encargado.mostrarDatosUsuario();
+
             }
         });
 
@@ -80,8 +79,7 @@ public class AdministrarComoFamiliar extends AppCompatActivity {
         });
     }
 
-   /* private void mostrarDatosUsuario() {
-        AdministrarComoEncargado encargado = new AdministrarComoEncargado();
+    private void mostrarDatos() {
         Intent intent = getIntent();
         String nombre_user = intent.getStringExtra("nombreCompleto");
         String direccionDom_user = intent.getStringExtra("direccionDom");
@@ -92,6 +90,11 @@ public class AdministrarComoFamiliar extends AppCompatActivity {
         encargado.direccionUsuario.setText(direccionDom_user);
         encargado.telefonoMovUsuario.setText(telefonoMov_user);
         encargado.correoUsuario.setText(correo_user);
+    }
+
+   /* private void mostrarDatosUsuario() {
+        AdministrarComoEncargado encargado = new AdministrarComoEncargado();
+
 
     }*/
 }

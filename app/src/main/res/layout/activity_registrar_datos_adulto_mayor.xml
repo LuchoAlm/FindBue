@@ -77,6 +77,7 @@
                     android:ems="10"
                     android:hint="Ingrese el nombre completo"
                     android:inputType="textPersonName"
+                    android:textColor="@color/gray_text"
                     android:textSize="16sp" />
 
                 <TextView
@@ -93,6 +94,7 @@
                     android:ems="10"
                     android:hint="Ingrese el correo electrónico"
                     android:inputType="textEmailAddress"
+                    android:textColor="@color/gray_text"
                     android:textSize="16sp" />
 
                 <TextView
@@ -136,8 +138,11 @@
 
                 <Button
                     android:id="@+id/button9"
+                    style="?android:spinnerStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="abrirDatePicker"
+                    android:text="ENE 01 2020"
                     android:textColor="@color/gray_text"
                     android:textSize="16sp" />
 
