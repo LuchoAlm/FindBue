@@ -24,13 +24,6 @@
             android:name=".AdministrarComoFamiliar"
             android:exported="true" />
         <activity
-            android:name=".AgregarEncargado"
-            android:exported="true">
-
-            <!-- Aqui las 5 lineas del intent-filter para ejecutar AgregarEncargado -->
-
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -1,6 +1,5 @@
 package com.example.findbue;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,19 +8,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
+import android.widget.TextView;
 
 public class EditarAdultoMayor extends AppCompatActivity {
-    EditText correoNuevo, direccionNueva, telefonoNuevo;
-    Button actualizarAM;
+    EditText correoAM, direccionDomAM, telefonoMovAM, enfermedadesAM, medicamentosAM, ubicacionDomAM, latitudAM, longitudAM, metrosPermitidosAM;
+    Button actualizarAM, eliminarAM;
+    TextView nombreCompletoAM;
+    RegistrarDatosAdultoMayor adultoMayor = new RegistrarDatosAdultoMayor();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,21 +25,32 @@ public class EditarAdultoMayor extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_editar_adulto_mayor);
 
-        correoNuevo = (EditText) findViewById(R.id.editTextTextEmailAddress2);
-        direccionNueva = (EditText) findViewById(R.id.editTextTextPersonName4);
-        telefonoNuevo = (EditText) findViewById(R.id.editTextPhone);
-        actualizarAM = (Button) findViewById(R.id.button8);
+        actualizarAM = (Button) findViewById(R.id.button2);
+        eliminarAM = (Button) findViewById(R.id.button3);
+        nombreCompletoAM = (TextView) findViewById(R.id.textView22) ;
+        correoAM = (EditText) findViewById(R.id.editTextTextEmailAddress2);
+        direccionDomAM = (EditText) findViewById(R.id.editTextTextPersonName2);
+        telefonoMovAM = (EditText) findViewById(R.id.editTextPhone);
+        enfermedadesAM = (EditText) findViewById(R.id.editTextTextMultiLine4);
+        medicamentosAM = (EditText) findViewById(R.id.editTextTextMultiLine5);
+        ubicacionDomAM = (EditText) findViewById(R.id.editTextTextPersonName4);
+        latitudAM = (EditText) findViewById(R.id.editTextTextPersonName5);
+        longitudAM = (EditText) findViewById(R.id.editTextTextPersonName6);
+        metrosPermitidosAM = (EditText) findViewById(R.id.editTextNumber2);
 
-        actualizarAM.setOnClickListener(new View.OnClickListener() {
+
+        mostrarDatosUsuario();
+
+       actualizarAM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 actualizarDatos();
             }
-        });
+       });
     }
 
     private void actualizarDatos() {
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+      /*  String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         Map<String, Object> map = new HashMap<>();
         map.put("direccionDom", direccionNueva.getText().toString());
@@ -66,20 +70,35 @@ public class EditarAdultoMayor extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getApplicationContext(), "No se pudo realizar la actualización", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
 
-    /*public void mostrarDatosUsuario() {
+    public void mostrarDatosUsuario() {
         Intent intent = getIntent();
-        String nombre_user = intent.getStringExtra("nombreCompleto");
-        String direccionDom_user = intent.getStringExtra("direccionDom");
-        String telefonoMov_user = intent.getStringExtra("telefonoMov");
-        String correo_user = intent.getStringExtra("correo");
+        String nombre_AM = intent.getStringExtra("nombreCompletoAM");
+        String correo_AM = intent.getStringExtra("correoAM");
+        String direccion_AM = intent.getStringExtra("direccionDomAM");
+        String telefonoMov_AM = intent.getStringExtra("telefonoMovAM");
 
-        nombreUsuario.setText(nombre_user);
-        direccionUsuario.setText(direccionDom_user);
-        telefonoMovUsuario.setText(telefonoMov_user);
-        correoUsuario.setText(correo_user);
-    }*/
+        String enfermedades_AM = intent.getStringExtra("enfermedadesAM");
+        String medicamentos_AM = intent.getStringExtra("medicamentosAM");
+        String ubicacion_AM = intent.getStringExtra("ubicacionDomAM");
+        String latitud_AM = intent.getStringExtra("latitudAM");
+        String longitud_AM = intent.getStringExtra("longitudAM");
+        String metrosPermitidos_AM = intent.getStringExtra("metrosPermitidosAM");
+
+        nombreCompletoAM.setText(nombre_AM);
+        correoAM.setText(correo_AM);
+        direccionDomAM.setText(direccion_AM);
+        telefonoMovAM.setText(telefonoMov_AM);
+        enfermedadesAM.setText(enfermedades_AM);
+        medicamentosAM.setText(medicamentos_AM);
+        ubicacionDomAM.setText(ubicacion_AM);
+        latitudAM.setText(latitud_AM);
+        longitudAM.setText(longitud_AM);
+        metrosPermitidosAM.setText(metrosPermitidos_AM);
+
+
+    }
 }

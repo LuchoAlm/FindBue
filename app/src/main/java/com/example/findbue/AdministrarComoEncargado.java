@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class AdministrarComoEncargado extends AppCompatActivity {
     EditText correoUsuario, direccionUsuario, telefonoMovUsuario;
     TextView nombreUsuario;
     Button actualizarUsuario, eliminarEncargado;
+    LinearLayout linearLayoutBtn;
 
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
@@ -52,6 +54,7 @@ public class AdministrarComoEncargado extends AppCompatActivity {
         nombreUsuario = findViewById(R.id.textView23);
         actualizarUsuario = (Button) findViewById(R.id.button7);
         eliminarEncargado = (Button) findViewById(R.id.button4);
+        linearLayoutBtn = (LinearLayout) findViewById(R.id.linearLayout4);
         mostrarDatosUsuario();
 
         eliminarEncargado.setOnClickListener(new View.OnClickListener() {
@@ -71,8 +74,9 @@ public class AdministrarComoEncargado extends AppCompatActivity {
 
     public void eliminarEncargadoDB() {
         FirebaseDatabase.getInstance().getReference().child("usuarios")
-                .child("tCcumxQYSIQ1eTpZ8YOASMbyyHy2").removeValue();
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).removeValue();
         Toast.makeText(AdministrarComoEncargado.this, "Usuario borrado exitosamente", Toast.LENGTH_SHORT).show();
+        limpiarCasillas();
 
        /* AlertDialog.Builder builder = new AlertDialog.Builder(AdministrarComoEncargado.this)
                 .setIcon(android.R.drawable.ic_dialog_alert)

@@ -210,7 +210,7 @@
                     android:id="@+id/textView48"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nombre de la Persona Encargada"
+                    android:text="Teléfono móvil de la Persona Encargada"
                     android:textColor="@color/gray_text"
                     android:textSize="18dp" />
 
@@ -219,8 +219,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Ingrese el nombre de la persona encargada"
-                    android:inputType="textPersonName"
+                    android:hint="Ingrese el teléfono móvil de la persona encargada"
+                    android:inputType="phone"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 

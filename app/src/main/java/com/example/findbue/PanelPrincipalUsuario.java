@@ -30,9 +30,9 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
     ImageButton addadultoMayor, addEncargado;
     Switch seleccionRol;
     TextView textEncargado;
-    LinearLayout linearEncargados, linearLayoutbtn;
+    LinearLayout linearEncargados, linearLayoutAddAdulto;
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("usuarios");
-    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase2 = FirebaseDatabase.getInstance().getReference("adultosMayores");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,24 +44,22 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_panel_principal_usuario);
 
         seleccionRol = (Switch) findViewById(R.id.switch2);
+        linearLayoutAddAdulto = (LinearLayout) findViewById(R.id.linearLayout);
         //Encargados
         textEncargado = (TextView) findViewById(R.id.textView11);
         linearEncargados = (LinearLayout) findViewById(R.id.linearLayout2);
-        linearLayoutbtn = (LinearLayout) findViewById(R.id.linearLayout3);
-        addEncargado = (ImageButton) findViewById(R.id.imageButton2);
         editarEncargado = (Button) findViewById(R.id.button14);
         editarMiPerfil = (Button) findViewById(R.id.button16);
-
 
         //Adultos Mayores
         addadultoMayor = (ImageButton) findViewById(R.id.imageButton);
         administrarAM = (Button) findViewById(R.id.button6);
         consultarUbicacion = (Button) findViewById(R.id.button15);
 
-        editarMiPerfil.setOnClickListener(new View.OnClickListener() {
+        administrarAM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                obtenerDatosBD(mDatabase);
+
             }
         });
 
@@ -74,8 +72,10 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                     if (seleccionRol.isChecked()) { //ROL ENCARGADOS
                         textEncargado.setVisibility(View.GONE);
                         linearEncargados.setVisibility(View.GONE);
-                        linearLayoutbtn.setVisibility(View.GONE);
-                        editarEncargado.setOnClickListener(new View.OnClickListener() {
+                        administrarAM.setVisibility(View.GONE);
+                        editarEncargado.setVisibility(View.GONE);
+                        addadultoMayor.setVisibility(View.GONE);
+                        editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 obtenerDatosBD(mDatabase);
@@ -84,7 +84,28 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                     } if(!seleccionRol.isChecked()) { //ROL FAMILIAR
                         textEncargado.setVisibility(View.VISIBLE);
                         linearEncargados.setVisibility(View.VISIBLE);
-                        linearLayoutbtn.setVisibility(View.VISIBLE);
+                        administrarAM.setVisibility(View.VISIBLE);
+                        editarEncargado.setVisibility(View.VISIBLE);
+                        addadultoMayor.setVisibility(View.VISIBLE);
+                        editarMiPerfil.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                obtenerDatosBD(mDatabase);
+                            }
+                        });
+                        editarEncargado.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                obtenerDatosBD(mDatabase);
+                            }
+                        });
+                        administrarAM.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, EditarAdultoMayor.class);
+                                startActivity(intent);
+                            }
+                        });
                     }
                 }
             }
@@ -97,15 +118,6 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        addEncargado.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PanelPrincipalUsuario.this, AgregarEncargado.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     private void obtenerDatosBD(DatabaseReference mPostReference) {
@@ -119,12 +131,11 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                     String direccionFromDB = snapshot.child(uid).child("direccionDom").getValue(String.class);
                     String telefonoFromDB = snapshot.child(uid).child("telefonoMov").getValue(String.class);
 
-                    Intent intent = new Intent(getApplicationContext(), AdministrarComoEncargado.class); //PerfilUsuario
+                    Intent intent = new Intent(getApplicationContext(), AdministrarComoEncargado.class);
                     intent.putExtra("nombreCompleto", nombreFromDB);
                     intent.putExtra("direccionDom", direccionFromDB);
                     intent.putExtra("telefonoMov", telefonoFromDB);
                     intent.putExtra("correo", correoFromDB);
-
                     startActivity(intent);
 
             }

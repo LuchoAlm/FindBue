@@ -1,9 +1,11 @@
 package com.example.findbue;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -16,8 +18,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
@@ -27,8 +32,8 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
              enfermedadesAM, medicamentosAM, personaEncargadaAM,
              descripcionFisicaAM,ubicacionDomAM, latitudAM, longitudAM, metrosPermitidosAM;
     Spinner seleccionarSexo;
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("adultosMayores");
 
-    FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference myref;
     private DatePickerDialog datePickerDialog;
@@ -58,6 +63,7 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
         latitudAM = (EditText) findViewById(R.id.editTextTextPersonName20);
         longitudAM = (EditText) findViewById(R.id.editTextTextPersonName21);
         metrosPermitidosAM = (EditText) findViewById(R.id.editTextNumber);
+
         
        registarAM.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -108,15 +114,49 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
                                String telefonoMovBD, String fechaNacBD, String sexoBD, String enfermedadesBD,
                                String medicamentosBD, String personaEncargadaBD, String descripcionFisicaBD,
                                String ubicacionDomBD, String latitudBD, String longitudBD, String metrosPermitidosBD) {
+        String uid = telefonoMovAM.getText().toString();
         firebaseDatabase= FirebaseDatabase.getInstance();
         myref = firebaseDatabase.getReference("adultosMayores");
         AdultoMayor adultoMayor = new AdultoMayor(nombreCompletoBD, correoBD, direccionDomBD,
-                                           telefonoMovBD, fechaNacBD, sexoBD, enfermedadesBD, medicamentosBD, personaEncargadaBD,
-                                            descripcionFisicaBD, ubicacionDomBD, latitudBD, longitudBD, metrosPermitidosBD);
-        myref.child(telefonoMovAM.getText().toString()).setValue(adultoMayor);
+                telefonoMovBD, fechaNacBD, sexoBD, enfermedadesBD, medicamentosBD, personaEncargadaBD,
+                descripcionFisicaBD, ubicacionDomBD, latitudBD, longitudBD, metrosPermitidosBD);
+        myref.child(uid).setValue(adultoMayor);
         Toast.makeText(this, "Adulto mayor registrado exitosamente!", Toast.LENGTH_SHORT).show();
-
+        //limpiarCasillas();
+        goToPrincipalPanel(uid);
     }
+
+
+    private void goToPrincipalPanel(String id) {
+        System.out.println("UID REGISTRAR DATOS " + id);
+        enfermedadesAM = (EditText) findViewById(R.id.editTextTextMultiLine);
+        medicamentosAM = (EditText) findViewById(R.id.editTextTextMultiLine2);
+        personaEncargadaAM = (EditText) findViewById(R.id.editTextTextPersonName18);
+        descripcionFisicaAM = (EditText) findViewById(R.id.editTextTextMultiLine3);
+        ubicacionDomAM = (EditText) findViewById(R.id.editTextTextPersonName19);
+        latitudAM = (EditText) findViewById(R.id.editTextTextPersonName20);
+        longitudAM = (EditText) findViewById(R.id.editTextTextPersonName21);
+        metrosPermitidosAM = (EditText) findViewById(R.id.editTextNumber);
+
+
+        Intent i = new Intent(this, PanelPrincipalUsuario.class);
+        i.putExtra("id", id);
+        i.putExtra("nombreCompletoAM", nombreCompletoAM.getText().toString());
+        i.putExtra("correoAM", correoAM.getText().toString());
+        i.putExtra("direccionDomAM", direccionDomAM.getText().toString());
+        i.putExtra("telefonoMovAM", telefonoMovAM.getText().toString());
+        i.putExtra("enfermedadesAM", enfermedadesAM.getText().toString());
+        i.putExtra("medicamentosAM", medicamentosAM.getText().toString());
+        i.putExtra("personaEncargadaAM", personaEncargadaAM.getText().toString());
+        i.putExtra("ubicacionDomAM", ubicacionDomAM.getText().toString());
+        i.putExtra("latitudAM", latitudAM.getText().toString());
+        i.putExtra("longitudAM", longitudAM.getText().toString());
+        i.putExtra("metrosPermitidosAM", metrosPermitidosAM.getText().toString());
+
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+    }
+
 
     public void limpiarCasillas(){
         nombreCompletoAM.setText("");
@@ -134,10 +174,6 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
         medicamentosAM.setText("");
 
     };
-
-    private void goToPrincipalPanel() {
-
-    }
 
     private String obtenerFechaActual() {
         Calendar calendar = Calendar.getInstance();
