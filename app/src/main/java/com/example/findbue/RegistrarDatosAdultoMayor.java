@@ -15,6 +15,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Calendar;
 
 public class RegistrarDatosAdultoMayor extends AppCompatActivity {
@@ -23,6 +27,10 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
              enfermedadesAM, medicamentosAM, personaEncargadaAM,
              descripcionFisicaAM,ubicacionDomAM, latitudAM, longitudAM, metrosPermitidosAM;
     Spinner seleccionarSexo;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference myref;
     private DatePickerDialog datePickerDialog;
 
     @Override
@@ -51,7 +59,32 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
         longitudAM = (EditText) findViewById(R.id.editTextTextPersonName21);
         metrosPermitidosAM = (EditText) findViewById(R.id.editTextNumber);
         
-        fechaPicker.setText(obtenerFechaActual());
+       registarAM.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               //Validaciones
+               String nombreCompletoBD = nombreCompletoAM.getText().toString();
+               String correoBD = correoAM.getText().toString();
+               String direccionDomBD = direccionDomAM.getText().toString();
+               String telefonoMovBD = telefonoMovAM.getText().toString();
+               String fechaNacBD = fechaPicker.getText().toString();
+               String sexoBD = seleccionarSexo.getSelectedItem().toString();
+               String enfermedadesBD = enfermedadesAM.getText().toString();
+               String medicamentosBD = medicamentosAM.getText().toString();
+               String personaEncargadaBD = personaEncargadaAM.getText().toString();
+               String descripcionFisicaBD = descripcionFisicaAM.getText().toString();
+               String ubicacionDomBD = ubicacionDomAM.getText().toString();
+               String latitudBD = latitudAM.getText().toString();
+               String longitudBD = longitudAM.getText().toString();
+               String metrosPermitidosBD = metrosPermitidosAM.getText().toString();
+
+               insertarDatos(nombreCompletoBD, correoBD, direccionDomBD, telefonoMovBD,
+                       fechaNacBD, sexoBD, enfermedadesBD, medicamentosBD, personaEncargadaBD,
+                       descripcionFisicaBD, ubicacionDomBD, latitudBD, longitudBD, metrosPermitidosBD);
+               limpiarCasillas();
+               //goToPrincipalPanel();
+           }
+       });
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sexo, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -61,7 +94,6 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String text = adapterView.getItemAtPosition(i).toString();
-                Toast.makeText(adapterView.getContext(), text, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -69,6 +101,41 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private void insertarDatos(String nombreCompletoBD, String correoBD, String direccionDomBD,
+                               String telefonoMovBD, String fechaNacBD, String sexoBD, String enfermedadesBD,
+                               String medicamentosBD, String personaEncargadaBD, String descripcionFisicaBD,
+                               String ubicacionDomBD, String latitudBD, String longitudBD, String metrosPermitidosBD) {
+        firebaseDatabase= FirebaseDatabase.getInstance();
+        myref = firebaseDatabase.getReference("adultosMayores");
+        AdultoMayor adultoMayor = new AdultoMayor(nombreCompletoBD, correoBD, direccionDomBD,
+                                           telefonoMovBD, fechaNacBD, sexoBD, enfermedadesBD, medicamentosBD, personaEncargadaBD,
+                                            descripcionFisicaBD, ubicacionDomBD, latitudBD, longitudBD, metrosPermitidosBD);
+        myref.child(telefonoMovAM.getText().toString()).setValue(adultoMayor);
+        Toast.makeText(this, "Adulto mayor registrado exitosamente!", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void limpiarCasillas(){
+        nombreCompletoAM.setText("");
+        correoAM.setText("");
+        direccionDomAM.setText("");
+        telefonoMovAM.setText("");
+        fechaPicker.setText("");
+        enfermedadesAM.setText("");
+        medicamentosAM.setText("");
+        personaEncargadaAM.setText("");
+        descripcionFisicaAM.setText("");
+        ubicacionDomAM.setText("");
+        latitudAM.setText("");
+        longitudAM.setText("");
+        medicamentosAM.setText("");
+
+    };
+
+    private void goToPrincipalPanel() {
 
     }
 

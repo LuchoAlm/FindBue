@@ -14,6 +14,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,11 +26,11 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class PanelPrincipalUsuario extends AppCompatActivity {
-    Button consultarUbicacion, consultarRuta, btnAdminUsuario;
-    ImageButton agregarAM, agregarEncargado, eliminarAM, eliminarEncargado, editar;
+    Button consultarUbicacion, administrarAM, editarEncargado, editarMiPerfil;
+    ImageButton addadultoMayor, addEncargado;
     Switch seleccionRol;
     TextView textEncargado;
-    LinearLayout encargados;
+    LinearLayout linearEncargados, linearLayoutbtn;
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("usuarios");
     private FirebaseAuth mAuth;
 
@@ -42,11 +44,26 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_panel_principal_usuario);
 
         seleccionRol = (Switch) findViewById(R.id.switch2);
-        textEncargado = (TextView) findViewById(R.id.textViewEncargados);
-        encargados = (LinearLayout) findViewById(R.id.linearEncargados);
-        agregarAM = (ImageButton) findViewById(R.id.btnAddAdulto);
-        agregarEncargado = (ImageButton) findViewById(R.id.btnAddEncargado);
-        btnAdminUsuario = (Button) findViewById(R.id.button6);
+        //Encargados
+        textEncargado = (TextView) findViewById(R.id.textView11);
+        linearEncargados = (LinearLayout) findViewById(R.id.linearLayout2);
+        linearLayoutbtn = (LinearLayout) findViewById(R.id.linearLayout3);
+        addEncargado = (ImageButton) findViewById(R.id.imageButton2);
+        editarEncargado = (Button) findViewById(R.id.button14);
+        editarMiPerfil = (Button) findViewById(R.id.button16);
+
+
+        //Adultos Mayores
+        addadultoMayor = (ImageButton) findViewById(R.id.imageButton);
+        administrarAM = (Button) findViewById(R.id.button6);
+        consultarUbicacion = (Button) findViewById(R.id.button15);
+
+        editarMiPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                obtenerDatosBD(mDatabase);
+            }
+        });
 
         seleccionRol.setOnClickListener(new View.OnClickListener() {
 
@@ -56,8 +73,9 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                 if (view.getId() == R.id.switch2) {
                     if (seleccionRol.isChecked()) { //ROL ENCARGADOS
                         textEncargado.setVisibility(View.GONE);
-                        encargados.setVisibility(View.GONE);
-                        btnAdminUsuario.setOnClickListener(new View.OnClickListener() {
+                        linearEncargados.setVisibility(View.GONE);
+                        linearLayoutbtn.setVisibility(View.GONE);
+                        editarEncargado.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 obtenerDatosBD(mDatabase);
@@ -65,20 +83,14 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         });
                     } if(!seleccionRol.isChecked()) { //ROL FAMILIAR
                         textEncargado.setVisibility(View.VISIBLE);
-                        encargados.setVisibility(View.VISIBLE);
-                        btnAdminUsuario.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Intent intent = new Intent(PanelPrincipalUsuario.this, AdministrarComoFamiliar.class);
-                                startActivity(intent);
-                            }
-                        });
+                        linearEncargados.setVisibility(View.VISIBLE);
+                        linearLayoutbtn.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
 
-        agregarAM.setOnClickListener(new View.OnClickListener() {
+        addadultoMayor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PanelPrincipalUsuario.this, RegistrarDatosAdultoMayor.class);
@@ -86,7 +98,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
             }
         });
 
-        agregarEncargado.setOnClickListener(new View.OnClickListener() {
+        addEncargado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PanelPrincipalUsuario.this, AgregarEncargado.class);

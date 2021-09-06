@@ -24,7 +24,7 @@ public class RegistrarUsuario extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference ref;
+    DatabaseReference myref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +52,6 @@ public class RegistrarUsuario extends AppCompatActivity {
                 String email = mail.getText().toString();
                 String pass = password.getText().toString();
                 if( email.isEmpty() == false && pass.isEmpty() == false){
-                    Toast.makeText(RegistrarUsuario.this, "Estoy en el if", Toast.LENGTH_LONG).show();
-
                     firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -91,9 +89,9 @@ public class RegistrarUsuario extends AppCompatActivity {
 
     private void insertarDatos(String mail, String password, String name, String location, String movil) {
         firebaseDatabase= FirebaseDatabase.getInstance();
-        ref = firebaseDatabase.getReference("usuarios");
+        myref = firebaseDatabase.getReference("usuarios");
         Usuario user = new Usuario(mail, password, name, location, movil);
-        ref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
-        Toast.makeText(this, "Registrado en la BD", Toast.LENGTH_SHORT).show();
+        myref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+        Toast.makeText(this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,9 +1,11 @@
 package com.example.findbue;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,9 +15,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,9 +30,11 @@ import java.util.Map;
 public class AdministrarComoEncargado extends AppCompatActivity {
     EditText correoUsuario, direccionUsuario, telefonoMovUsuario;
     TextView nombreUsuario;
-    Button actualizarUsuario, btn1, btn2;
-    Usuario usuario = new Usuario();
+    Button actualizarUsuario, eliminarEncargado;
 
+    FirebaseAuth firebaseAuth;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference myref;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -44,9 +51,15 @@ public class AdministrarComoEncargado extends AppCompatActivity {
         telefonoMovUsuario = findViewById(R.id.textView30);
         nombreUsuario = findViewById(R.id.textView23);
         actualizarUsuario = (Button) findViewById(R.id.button7);
-        btn1 = (Button) findViewById(R.id.button11);
-        btn1 = (Button) findViewById(R.id.button12);
+        eliminarEncargado = (Button) findViewById(R.id.button4);
         mostrarDatosUsuario();
+
+        eliminarEncargado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                eliminarEncargadoDB();
+            }
+        });
 
         actualizarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +67,39 @@ public class AdministrarComoEncargado extends AppCompatActivity {
                 actualizarDatos();
             }
         });
+    }
+
+    public void eliminarEncargadoDB() {
+        FirebaseDatabase.getInstance().getReference().child("usuarios")
+                .child("tCcumxQYSIQ1eTpZ8YOASMbyyHy2").removeValue();
+        Toast.makeText(AdministrarComoEncargado.this, "Usuario borrado exitosamente", Toast.LENGTH_SHORT).show();
+
+       /* AlertDialog.Builder builder = new AlertDialog.Builder(AdministrarComoEncargado.this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Eliminar usuario del sistema")
+                .setMessage("¿Está seguro?")
+                .setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                System.out.println("Estoy aquí ") ;
+                /*FirebaseDatabase.getInstance().getReference().child("usuarios")
+                        .child("tCcumxQYSIQ1eTpZ8YOASMbyyHy2").removeValue();*/
+
+      /*  })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(AdministrarComoEncargado.this, "Cancelado", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
+    }
+
+
+    private void limpiarCasillas() {
+        direccionUsuario.setText("");
+        telefonoMovUsuario.setText("");
+        correoUsuario.setText("");
     }
 
     private void actualizarDatos() {
