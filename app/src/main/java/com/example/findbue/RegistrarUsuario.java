@@ -1,5 +1,6 @@
 package com.example.findbue;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,12 +11,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrarUsuario extends AppCompatActivity {
-    public Button registrarse, cancelar;
-    public EditText correo, password, nombreCompleto, direccionDom, telefonoMov;
+    public Button btnRegistrar, btnCancelar;
+    public EditText mail, password, name, location, movil;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference myref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,39 +35,37 @@ public class RegistrarUsuario extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
         setContentView(R.layout.activity_registrar_usuarios);
 
-        registrarse = (Button) findViewById(R.id.buttonRegistrarme);
-        cancelar = (Button) findViewById(R.id.buttonCancelarRegistro);
-        correo = (EditText) findViewById(R.id.editTextTextEmailAddress);
+        firebaseAuth = FirebaseAuth.getInstance();
+
+
+        btnRegistrar = (Button) findViewById(R.id.buttonIngresar);
+        btnCancelar = (Button) findViewById(R.id.buttonCancelarRegistro);
+        mail = (EditText) findViewById(R.id.editTextTextEmailAddress);
         password = (EditText) findViewById(R.id.editTextTextPassword);
-        nombreCompleto = (EditText) findViewById(R.id.editTextTextPersonName);
-        direccionDom = (EditText) findViewById(R.id.editTextDireccion);
-        telefonoMov = (EditText) findViewById(R.id.editTextPhone2);
+        name = (EditText) findViewById(R.id.editTextTextPersonName);
+        location = (EditText) findViewById(R.id.editTextDireccion);
+        movil = (EditText) findViewById(R.id.editTextPhone2);
 
-
-        registrarse.setOnClickListener(new View.OnClickListener() {
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!validateCorreo() || !validatePassword() || !validateName() || !validateDireccionDom() || !validateTelefonoMov()) {
-                    validate();
-                    return;
-                } else {
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference myref = database.getReference("usuarios");
-                    Usuario user = new Usuario(
-                            correo.getText().toString(),
-                            password.getText().toString(),
-                            nombreCompleto.getText().toString(),
-                            direccionDom.getText().toString(),
-                            telefonoMov.getText().toString());
-                    myref.push().setValue(user);
-                    Intent intent = new Intent(RegistrarUsuario.this, PanelPrincipalUsuario.class);
-                    Toast.makeText(RegistrarUsuario.this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
-                    startActivity(intent);
+                String email = mail.getText().toString();
+                String pass = password.getText().toString();
+                if( email.isEmpty() == false && pass.isEmpty() == false){
+                    firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                              //  insertarDatos(mail.getText().toString(),password.getText().toString(), name.getText().toString(), location.getText().toString(), movil.getText().toString());
+                                goToPrincipalPanel();
+                            }
+                        }
+                    });
                 }
             }
         });
 
-        cancelar.setOnClickListener(new View.OnClickListener() {
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RegistrarUsuario.this, MainActivity.class);
@@ -69,101 +76,22 @@ public class RegistrarUsuario extends AppCompatActivity {
 
     }
 
-    public void validate() {
-        validateCorreo();
-        validatePassword();
-        validateName();
-        validateDireccionDom();
-        validateTelefonoMov();
+    private void goToPrincipalPanel() {
+        Intent i = new Intent(this, PanelPrincipalUsuario.class);
+        i.putExtra("mail", mail.getText().toString());
+        i.putExtra("password", password.getText().toString());
+        i.putExtra("name", name.getText().toString());
+        i.putExtra("location", location.getText().toString());
+        i.putExtra("movil", movil.getText().toString());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
     }
 
-    public Boolean validateCorreo() {
-
-        String val = correo.getText().toString();
-        String patronCorreo = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
-        if(val.isEmpty()) {
-            correo.setError("Campo obligatorio");
-            return false;
-        } else if(!val.matches(patronCorreo)) {
-            correo.setError("Correo no válido");
-            return false;
-        } else {
-            correo.setError(null);
-            return true;
-        }
-    }
-
-    public Boolean validatePassword() {
-
-        String val = password.getText().toString();
-        String patronPassword = "^" +
-                "(?=.*[0-9])" +
-                "(?=.*[a-z])" +
-                "(?=.*[A-Z])" +
-                "(?=.*[a-zA-Z])" +
-                "(?=.*[@$%^&+=])" +
-                "(?=.\\s+$)" +
-                ".{4,}" +
-                "$";
-
-        if(val.isEmpty()) {
-            password.setError("Campo obligatorio");
-            return false;
-        } else if(!val.matches(patronPassword)) {
-            password.setError("Contraseña no válida");
-            return false;
-        } else {
-            password.setError(null);
-            return true;
-        }
-
-    }
-
-    public Boolean validateName() {
-
-        String val = nombreCompleto.getText().toString();
-
-        if(val.isEmpty()) {
-            nombreCompleto.setError("Campo obligatorio");
-            return false;
-        } else {
-            nombreCompleto.setError(null);
-            return true;
-        }
-
-    }
-
-    public Boolean validateDireccionDom() {
-
-        String val = direccionDom.getText().toString();
-
-        if(val.isEmpty()) {
-            direccionDom.setError("Campo obligatorio");
-            return false;
-        } else {
-            direccionDom.setError(null);
-            return true;
-        }
-
-    }
-
-    public Boolean validateTelefonoMov() {
-
-        String val = telefonoMov.getText().toString();
-        String patronTelefono = "09[0-9]{8}";
-
-        if(val.isEmpty()) {
-            telefonoMov.setError("Campo obligatorio");
-            return false;
-        } else if(!val.matches(patronTelefono)) {
-            telefonoMov.setError("Teléfono no válido");
-            return false;
-        } else {
-            telefonoMov.setError(null);
-            return true;
-        }
-
-    }
-
+    /*private void insertarDatos(String mail, String password, String name, String location, String movil) {
+        firebaseDatabase= FirebaseDatabase.getInstance();
+        myref = firebaseDatabase.getReference("usuarios");
+        Usuario user = new Usuario(mail, password, name, location, movil);
+        myref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+        Toast.makeText(this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
+    }*/
 }

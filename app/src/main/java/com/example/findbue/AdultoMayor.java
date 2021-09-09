@@ -1,13 +1,19 @@
 package com.example.findbue;
 
-public class AdultoMayor_DatosPersonales {
-    String nombresCompletosAM, correoAM, direccionDomAM, telefonoMovAM, fechaNacAM, sexoAM, enfermedadesAM, medicamentosAM, personaEncargadaAM, descripcionFisicaAM;
+public class AdultoMayor {
+    String nombreCompletoAM, correoAM, direccionDomAM, telefonoMovAM,
+            fechaNacAM, sexoAM, enfermedadesAM, medicamentosAM, personaEncargadaAM,
+            descripcionFisicaAM,ubicacionDomAM, latitudAM, longitudAM, metrosPermitidosAM;
 
-    public AdultoMayor_DatosPersonales() {
+    public AdultoMayor() {
     }
 
-    public AdultoMayor_DatosPersonales(String nombresCompletosAM, String correoAM, String direccionDomAM, String telefonoMovAM, String fechaNacAM, String sexoAM, String enfermedadesAM, String medicamentosAM, String personaEncargadaAM, String descripcionFisicaAM) {
-        this.nombresCompletosAM = nombresCompletosAM;
+    public AdultoMayor(String nombreCompletoAM, String correoAM, String direccionDomAM,
+                       String telefonoMovAM, String fechaNacAM, String sexoAM,
+                       String enfermedadesAM, String medicamentosAM, String personaEncargadaAM,
+                       String descripcionFisicaAM, String ubicacionDomAM, String latitudAM,
+                       String longitudAM, String metrosPermitidosAM) {
+        this.nombreCompletoAM = nombreCompletoAM;
         this.correoAM = correoAM;
         this.direccionDomAM = direccionDomAM;
         this.telefonoMovAM = telefonoMovAM;
@@ -17,14 +23,18 @@ public class AdultoMayor_DatosPersonales {
         this.medicamentosAM = medicamentosAM;
         this.personaEncargadaAM = personaEncargadaAM;
         this.descripcionFisicaAM = descripcionFisicaAM;
+        this.ubicacionDomAM = ubicacionDomAM;
+        this.latitudAM = latitudAM;
+        this.longitudAM = longitudAM;
+        this.metrosPermitidosAM = metrosPermitidosAM;
     }
 
-    public String getNombresCompletosAM() {
-        return nombresCompletosAM;
+    public String getNombreCompletoAM() {
+        return nombreCompletoAM;
     }
 
-    public void setNombresCompletosAM(String nombresCompletosAM) {
-        this.nombresCompletosAM = nombresCompletosAM;
+    public void setNombreCompletoAM(String nombreCompletoAM) {
+        this.nombreCompletoAM = nombreCompletoAM;
     }
 
     public String getCorreoAM() {
@@ -97,5 +107,37 @@ public class AdultoMayor_DatosPersonales {
 
     public void setDescripcionFisicaAM(String descripcionFisicaAM) {
         this.descripcionFisicaAM = descripcionFisicaAM;
+    }
+
+    public String getUbicacionDomAM() {
+        return ubicacionDomAM;
+    }
+
+    public void setUbicacionDomAM(String ubicacionDomAM) {
+        this.ubicacionDomAM = ubicacionDomAM;
+    }
+
+    public String getLatitudAM() {
+        return latitudAM;
+    }
+
+    public void setLatitudAM(String latitudAM) {
+        this.latitudAM = latitudAM;
+    }
+
+    public String getLongitudAM() {
+        return longitudAM;
+    }
+
+    public void setLongitudAM(String longitudAM) {
+        this.longitudAM = longitudAM;
+    }
+
+    public String getMetrosPermitidosAM() {
+        return metrosPermitidosAM;
+    }
+
+    public void setMetrosPermitidosAM(String metrosPermitidosAM) {
+        this.metrosPermitidosAM = metrosPermitidosAM;
     }
 }

@@ -4,128 +4,184 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrarUsuario">
+    android:background="@drawable/ic_background"
+    tools:context=".RegistrarUsuario" >
 
-    <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="11dp"
+        android:background="@drawable/bg_background_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="32dp"
+            android:background="#00FFFFFF"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_add_photo" />
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:translationX="135dp"
-                app:srcCompat="@drawable/ic_launcher_foreground" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtRegisterEmailBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="32dp"
+            android:hint="@string/plh_correo"
+            app:boxStrokeColor="@color/teal_200"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/teal_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+            app:startIconDrawable="@drawable/custom_icon_email_focused">
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lbl_CorreoElectronico"
-                android:translationY="16dp" />
-
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextTextEmailAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/lbl_CorreoElectronico"
-                android:inputType="textEmailAddress"
-                android:minHeight="48dp"
-                android:translationY="16dp" />
+                android:layout_width="331dp"
+                android:layout_height="55dp"
+                android:textColor="@color/gray_text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Contraseña"
-                android:translationY="16dp" />
 
-            <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtRegisterPasswordBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:hint="@string/plh_password"
+            app:boxStrokeColor="@color/teal_200"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/teal_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegisterEmailBox"
+            app:startIconDrawable="@drawable/custom_lock_icon_focused">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextTextPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Contraseña"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:translationY="16dp" />
+                android:layout_width="331dp"
+                android:layout_height="55dp"
+                android:textColor="@color/gray_text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/lbl_NombresCompletos"
-                android:text="@string/lbl_NombresCompletos"
-                android:translationY="16dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtRegisterNameBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:hint="Ingresa tu nombre completo"
+            app:boxStrokeColor="@color/teal_200"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/teal_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegisterPasswordBox"
+            app:startIconDrawable="@drawable/outline_account_box_24">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextTextPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/lbl_NombresCompletos"
-                android:inputType="textPersonName"
-                android:minHeight="48dp"
-                android:translationY="16dp" />
+                android:layout_width="331dp"
+                android:layout_height="55dp"
+                android:textColor="@color/gray_text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lbl_DireccionDomicilio"
-                android:translationY="16dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLocationRegisterBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:hint="@string/lbl_DireccionDomicilio"
+            app:boxStrokeColor="@color/teal_200"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/teal_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegisterNameBox"
+            app:startIconDrawable="@drawable/outline_location_on_24">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextDireccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/lbl_DireccionDomicilio"
-                android:inputType="textPersonName"
-                android:translationY="16dp" />
+                android:layout_width="331dp"
+                android:layout_height="55dp"
+                android:textColor="@color/gray_text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Teléfono móvil"
-                android:translationY="16dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtPhoneRegisterBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:hint="@string/lbl_Celular"
+            app:boxStrokeColor="@color/teal_200"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/teal_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtLocationRegisterBox"
+            app:startIconDrawable="@drawable/fui_ic_phone_white_24dp">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextPhone2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Teléfono Móvil"
-                android:inputType="phone"
-                android:minHeight="48dp"
-                android:translationY="16dp" />
+                android:layout_width="331dp"
+                android:layout_height="55dp"
+                android:textColor="@color/gray_text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/buttonRegistrarme"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Registrarme"
-                android:translationY="16dp" />
 
-            <Button
-                android:id="@+id/buttonCancelarRegistro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_Cancelar"
-                android:translationY="8dp" />
+        <android.widget.Button
+            android:id="@+id/buttonIngresar"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/custom_button_cta"
+            android:text="@string/btn_Registrar"
+            android:textColor="#f5f5f5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPhoneRegisterBox"
+            app:layout_constraintVertical_bias="0.0" />
 
-        </LinearLayout>
-    </ScrollView>
+        <android.widget.Button
+            android:id="@+id/buttonCancelarRegistro"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/custom_button_outline"
+            android:text="@string/btn_Cancelar"
+            android:textColor="@color/gray_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPhoneRegisterBox" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
