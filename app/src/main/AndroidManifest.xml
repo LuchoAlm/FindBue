@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.findbue">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,6 +14,15 @@
         android:theme="@style/Theme.FindBue"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".RetrieveActivity"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity
             android:name=".RegistrarDatosAdultoMayor"
             android:exported="true" />
         <activity
@@ -21,23 +32,9 @@
             android:name=".AdministrarComoEncargado"
             android:exported="true" />
         <activity
-            android:name=".AdministrarComoFamiliar"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-            <!-- Aqui las 5 lineas del intent-filter para ejecutar a main -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".RegistrarUsuario"

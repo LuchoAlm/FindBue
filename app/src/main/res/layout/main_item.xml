@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ic_background"
+    android:elevation="6dp"
+    app:cardCornerRadius="6dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D2FFFFFF"
+        android:padding="15dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="1dp" />
+
+        <TextView
+            android:id="@+id/nombreUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="2dp"
+            android:layout_toEndOf="@id/img2"
+            android:text="Nombre del Usuario"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/correoUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nombreUser"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="2dp"
+            android:layout_toEndOf="@id/img2"
+            android:text="Correo del Usuario"
+            android:textColor="@color/gray_text"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/telefonoUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/correoUser"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/img2"
+            android:text="Teléfono del Usuario"
+            android:textColor="@color/gray_text"
+            android:textSize="18sp" />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

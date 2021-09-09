@@ -64,7 +64,7 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
         longitudAM = (EditText) findViewById(R.id.editTextTextPersonName21);
         metrosPermitidosAM = (EditText) findViewById(R.id.editTextNumber);
 
-        
+
        registarAM.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
@@ -114,30 +114,25 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
                                String telefonoMovBD, String fechaNacBD, String sexoBD, String enfermedadesBD,
                                String medicamentosBD, String personaEncargadaBD, String descripcionFisicaBD,
                                String ubicacionDomBD, String latitudBD, String longitudBD, String metrosPermitidosBD) {
-        String uid = telefonoMovAM.getText().toString();
-        firebaseDatabase= FirebaseDatabase.getInstance();
-        myref = firebaseDatabase.getReference("adultosMayores");
+        //String uid = telefonoMovAM.getText().toString();
+        //firebaseDatabase= FirebaseDatabase.getInstance();
+        //myref = firebaseDatabase.getReference("adultosMayores");
         AdultoMayor adultoMayor = new AdultoMayor(nombreCompletoBD, correoBD, direccionDomBD,
                 telefonoMovBD, fechaNacBD, sexoBD, enfermedadesBD, medicamentosBD, personaEncargadaBD,
                 descripcionFisicaBD, ubicacionDomBD, latitudBD, longitudBD, metrosPermitidosBD);
-        myref.child(uid).setValue(adultoMayor);
+        mDatabase.push().setValue(adultoMayor);
         Toast.makeText(this, "Adulto mayor registrado exitosamente!", Toast.LENGTH_SHORT).show();
+        String key = mDatabase.push().getKey();
+        //System.out.println("MI CLAVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: " + key);
         //limpiarCasillas();
-        goToPrincipalPanel(uid);
+        goToPrincipalPanel(mDatabase.push().getKey());
+        System.out.println("MI CLAVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: " + mDatabase.getKey().toString());
+
+
     }
 
 
     private void goToPrincipalPanel(String id) {
-        System.out.println("UID REGISTRAR DATOS " + id);
-        enfermedadesAM = (EditText) findViewById(R.id.editTextTextMultiLine);
-        medicamentosAM = (EditText) findViewById(R.id.editTextTextMultiLine2);
-        personaEncargadaAM = (EditText) findViewById(R.id.editTextTextPersonName18);
-        descripcionFisicaAM = (EditText) findViewById(R.id.editTextTextMultiLine3);
-        ubicacionDomAM = (EditText) findViewById(R.id.editTextTextPersonName19);
-        latitudAM = (EditText) findViewById(R.id.editTextTextPersonName20);
-        longitudAM = (EditText) findViewById(R.id.editTextTextPersonName21);
-        metrosPermitidosAM = (EditText) findViewById(R.id.editTextNumber);
-
 
         Intent i = new Intent(this, PanelPrincipalUsuario.class);
         i.putExtra("id", id);

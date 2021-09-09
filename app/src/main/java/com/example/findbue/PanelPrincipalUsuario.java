@@ -59,7 +59,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         administrarAM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                obtenerDatosBD_AM(mDatabase2);
             }
         });
 
@@ -147,4 +147,35 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         };
         mPostReference.addValueEventListener(valueEventListener);
     }
+
+    private void obtenerDatosBD_AM(DatabaseReference mPostReference) {
+
+        String uid = mDatabase2.getKey();
+        System.out.println("MI CLAVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: " + uid);
+
+       ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String nombreAMFromDB = snapshot.child(uid).child("nombreCompletoAM").getValue(String.class);
+                String correoAMFromDB = snapshot.child(uid).child("correoAM").getValue(String.class);
+                String direccionAMFromDB = snapshot.child(uid).child("direccionDomAM").getValue(String.class);
+                String telefonoAMFromDB = snapshot.child(uid).child("telefonoMovAM").getValue(String.class);
+
+                Intent intent = new Intent(getApplicationContext(), EditarAdultoMayor.class);
+                intent.putExtra("nombreCompleto", nombreAMFromDB);
+                intent.putExtra("direccionDom", correoAMFromDB);
+                intent.putExtra("telefonoMov", direccionAMFromDB);
+                intent.putExtra("correo", telefonoAMFromDB);
+                startActivity(intent);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        mPostReference.addValueEventListener(valueEventListener);
+    }
+
 }

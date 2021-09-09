@@ -56,7 +56,7 @@ public class RegistrarUsuario extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                insertarDatos(mail.getText().toString(),password.getText().toString(), name.getText().toString(), location.getText().toString(), movil.getText().toString());
+                              //  insertarDatos(mail.getText().toString(),password.getText().toString(), name.getText().toString(), location.getText().toString(), movil.getText().toString());
                                 goToPrincipalPanel();
                             }
                         }
@@ -87,11 +87,11 @@ public class RegistrarUsuario extends AppCompatActivity {
         startActivity(i);
     }
 
-    private void insertarDatos(String mail, String password, String name, String location, String movil) {
+    /*private void insertarDatos(String mail, String password, String name, String location, String movil) {
         firebaseDatabase= FirebaseDatabase.getInstance();
         myref = firebaseDatabase.getReference("usuarios");
         Usuario user = new Usuario(mail, password, name, location, movil);
         myref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
         Toast.makeText(this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
-    }
+    }*/
 }
