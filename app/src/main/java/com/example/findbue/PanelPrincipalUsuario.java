@@ -90,13 +90,13 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                obtenerDatosBD(mDatabase);
+                                //obtenerDatosBD(mDatabase);
                             }
                         });
                         editarEncargado.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                obtenerDatosBD(mDatabase);
+                                //obtenerDatosBD(mDatabase);
                             }
                         });
                         administrarAM.setOnClickListener(new View.OnClickListener() {
@@ -131,13 +131,13 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                     String direccionFromDB = snapshot.child(uid).child("direccionDom").getValue(String.class);
                     String telefonoFromDB = snapshot.child(uid).child("telefonoMov").getValue(String.class);
 
-                    Intent intent = new Intent(getApplicationContext(), AdministrarComoEncargado.class);
+                   /* Intent intent = new Intent(getApplicationContext(), AdministrarComoEncargado.class);
                     intent.putExtra("nombreCompleto", nombreFromDB);
                     intent.putExtra("direccionDom", direccionFromDB);
                     intent.putExtra("telefonoMov", telefonoFromDB);
                     intent.putExtra("correo", correoFromDB);
                     startActivity(intent);
-
+*/
             }
 
             @Override

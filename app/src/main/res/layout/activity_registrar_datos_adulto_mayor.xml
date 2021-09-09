@@ -7,28 +7,13 @@
     android:background="@drawable/ic_background"
     tools:context=".RegistrarDatosAdultoMayor">
 
-    <TextView
-        android:id="@+id/textView39"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="FORMUARIO DE REGISTRO DEL ADULTO MAYOR"
-        android:textColor="@color/gray_text"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="11dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="11dp"
         android:layout_marginEnd="11dp"
-        android:layout_marginBottom="47dp"
+        android:layout_marginBottom="11dp"
         android:background="@drawable/bg_background_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,23 +22,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <ImageButton
-            android:id="@+id/imageButton7"
-            android:layout_width="95dp"
-            android:layout_height="80dp"
-            android:background="#00FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.023"
-            app:srcCompat="@mipmap/anciano_user" />
-
         <ScrollView
             android:id="@+id/scrollView2"
-            android:layout_width="390dp"
-            android:layout_height="513dp"
-            android:layout_marginTop="80dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="11dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,24 +37,50 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:translationX="10dp">
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:text="FORMUARIO DE REGISTRO DEL ADULTO MAYOR"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="#00FFFFFF"
+                    app:srcCompat="@drawable/ic_add_photo" />
 
                 <TextView
                     android:id="@+id/textView40"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Nombre Completo"
                     android:textColor="@color/gray_text"
-                    android:textSize="18sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/editTextTextPersonName16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:ems="10"
                     android:hint="Ingrese el nombre completo"
                     android:inputType="textPersonName"
+                    android:minHeight="40dp"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
@@ -87,17 +88,24 @@
                     android:id="@+id/textView41"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Correo Electrónico"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/editTextTextEmailAddress3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:ems="10"
                     android:hint="Ingrese el correo electrónico"
                     android:inputType="textEmailAddress"
+                    android:minHeight="40dp"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
@@ -105,17 +113,24 @@
                     android:id="@+id/textView42"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Dirección de domicilio"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/editTextTextPersonName17"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:ems="10"
                     android:hint="Ingrese la dirección de domicilio"
                     android:inputType="textPersonName"
+                    android:minHeight="40dp"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
@@ -123,17 +138,24 @@
                     android:id="@+id/textView43"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Teléfono móvil"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/editTextPhone3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:ems="10"
                     android:hint="Ingrese el número de teléfono móvil"
                     android:inputType="phone"
+                    android:minHeight="40dp"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
@@ -141,16 +163,23 @@
                     android:id="@+id/textView44"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Fecha de Nacimiento"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/button9"
                     style="?android:spinnerStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:hint="Seleccione la fecha de nacimiento"
+                    android:minHeight="40dp"
                     android:onClick="abrirDatePicker"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
@@ -159,31 +188,45 @@
                     android:id="@+id/textView45"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Sexo"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
+                    android:minHeight="40dp" />
 
                 <TextView
                     android:id="@+id/textView46"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Enfermedades"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/editTextTextMultiLine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="Agregue una o más enfermedades"
                     android:inputType="textMultiLine"
+                    android:minHeight="40dp"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
@@ -191,18 +234,25 @@
                     android:id="@+id/textView47"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Medicamentos"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/editTextTextMultiLine2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="Agregue uno o más medicamentos"
                     android:inputType="textMultiLine"
+                    android:minHeight="40dp"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
@@ -210,17 +260,24 @@
                     android:id="@+id/textView48"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Teléfono móvil de la Persona Encargada"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/editTextTextPersonName18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:ems="10"
                     android:hint="Ingrese el teléfono móvil de la persona encargada"
                     android:inputType="phone"
+                    android:minHeight="40dp"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
@@ -228,18 +285,25 @@
                     android:id="@+id/textView49"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Descripción física del adulto mayor"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/editTextTextMultiLine3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="Describa físicamente al adulto mayor"
                     android:inputType="textMultiLine"
+                    android:minHeight="40dp"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
@@ -247,17 +311,24 @@
                     android:id="@+id/textView50"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Ubicación de domicilio"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/editTextTextPersonName19"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:ems="10"
                     android:hint="Agregue la ubicación de domicilio"
                     android:inputType="textPersonName"
+                    android:minHeight="40dp"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
@@ -265,17 +336,24 @@
                     android:id="@+id/textView51"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Latitud"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/editTextTextPersonName20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:ems="10"
                     android:hint="Ingrese la latitud"
                     android:inputType="textPersonName"
+                    android:minHeight="40dp"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
@@ -283,17 +361,24 @@
                     android:id="@+id/textView52"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Longitud"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/editTextTextPersonName21"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:ems="10"
                     android:hint="Ingrese la longitud"
                     android:inputType="textPersonName"
+                    android:minHeight="40dp"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
@@ -301,17 +386,24 @@
                     android:id="@+id/textView53"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Cantidad de metros permitidos"
                     android:textColor="@color/gray_text"
-                    android:textSize="18dp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/editTextNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/rounded"
                     android:ems="10"
                     android:hint="Ingrese la cantidad de metros permitidos"
                     android:inputType="number"
+                    android:minHeight="40dp"
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
@@ -319,6 +411,8 @@
                     android:id="@+id/button10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Registrar"
                     android:textSize="16sp" />
 

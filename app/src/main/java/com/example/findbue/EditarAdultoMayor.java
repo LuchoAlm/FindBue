@@ -27,7 +27,7 @@ public class EditarAdultoMayor extends AppCompatActivity {
 
         actualizarAM = (Button) findViewById(R.id.button2);
         eliminarAM = (Button) findViewById(R.id.button3);
-        nombreCompletoAM = (TextView) findViewById(R.id.textView22) ;
+       // nombreCompletoAM = (TextView) findViewById(R.id.textView22) ;
         correoAM = (EditText) findViewById(R.id.editTextTextEmailAddress2);
         direccionDomAM = (EditText) findViewById(R.id.editTextTextPersonName2);
         telefonoMovAM = (EditText) findViewById(R.id.editTextPhone);
@@ -39,7 +39,7 @@ public class EditarAdultoMayor extends AppCompatActivity {
         metrosPermitidosAM = (EditText) findViewById(R.id.editTextNumber2);
 
 
-        mostrarDatosUsuario();
+       // mostrarDatosUsuario();
 
        actualizarAM.setOnClickListener(new View.OnClickListener() {
             @Override
