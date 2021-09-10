@@ -1,6 +1,5 @@
 package com.example.findbue;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,18 +11,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 public class PanelPrincipalUsuario extends AppCompatActivity {
     Button consultarUbicacion, administrarAM, editarEncargado, editarMiPerfil;
@@ -59,7 +49,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         administrarAM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                obtenerDatosBD_AM(mDatabase2);
+
             }
         });
 
@@ -78,7 +68,8 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                obtenerDatosBD(mDatabase);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityUsuario.class);
+                                startActivity(intent);
                             }
                         });
                     } if(!seleccionRol.isChecked()) { //ROL FAMILIAR
@@ -90,13 +81,15 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                //obtenerDatosBD(mDatabase);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityUsuario.class);
+                                startActivity(intent);
                             }
                         });
                         editarEncargado.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                //obtenerDatosBD(mDatabase);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityUsuario.class);
+                                startActivity(intent);
                             }
                         });
                         administrarAM.setOnClickListener(new View.OnClickListener() {
@@ -119,63 +112,4 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
             }
         });
     }
-
-    private void obtenerDatosBD(DatabaseReference mPostReference) {
-        String uid = getIntent().getExtras().getString("uid");
-
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String nombreFromDB = snapshot.child(uid).child("nombreCompleto").getValue(String.class);
-                    String correoFromDB = snapshot.child(uid).child("correo").getValue(String.class);
-                    String direccionFromDB = snapshot.child(uid).child("direccionDom").getValue(String.class);
-                    String telefonoFromDB = snapshot.child(uid).child("telefonoMov").getValue(String.class);
-
-                   /* Intent intent = new Intent(getApplicationContext(), AdministrarComoEncargado.class);
-                    intent.putExtra("nombreCompleto", nombreFromDB);
-                    intent.putExtra("direccionDom", direccionFromDB);
-                    intent.putExtra("telefonoMov", telefonoFromDB);
-                    intent.putExtra("correo", correoFromDB);
-                    startActivity(intent);
-*/
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        };
-        mPostReference.addValueEventListener(valueEventListener);
-    }
-
-    private void obtenerDatosBD_AM(DatabaseReference mPostReference) {
-
-        String uid = mDatabase2.getKey();
-        System.out.println("MI CLAVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: " + uid);
-
-       ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String nombreAMFromDB = snapshot.child(uid).child("nombreCompletoAM").getValue(String.class);
-                String correoAMFromDB = snapshot.child(uid).child("correoAM").getValue(String.class);
-                String direccionAMFromDB = snapshot.child(uid).child("direccionDomAM").getValue(String.class);
-                String telefonoAMFromDB = snapshot.child(uid).child("telefonoMovAM").getValue(String.class);
-
-                Intent intent = new Intent(getApplicationContext(), EditarAdultoMayor.class);
-                intent.putExtra("nombreCompleto", nombreAMFromDB);
-                intent.putExtra("direccionDom", correoAMFromDB);
-                intent.putExtra("telefonoMov", direccionAMFromDB);
-                intent.putExtra("correo", telefonoAMFromDB);
-                startActivity(intent);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        };
-        mPostReference.addValueEventListener(valueEventListener);
-    }
-
 }

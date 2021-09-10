@@ -12,15 +12,20 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RegistrarUsuario extends AppCompatActivity {
     public Button btnRegistrar, btnCancelar;
-    public EditText mail, password, name, location, movil;
+    public EditText correo, password, nombreCompleto, direccionDom, telefonoMov;
 
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
@@ -40,30 +45,35 @@ public class RegistrarUsuario extends AppCompatActivity {
 
         btnRegistrar = (Button) findViewById(R.id.buttonIngresar);
         btnCancelar = (Button) findViewById(R.id.buttonCancelarRegistro);
-        mail = (EditText) findViewById(R.id.editTextTextEmailAddress);
+        correo = (EditText) findViewById(R.id.editTextTextEmailAddress);
         password = (EditText) findViewById(R.id.editTextTextPassword);
-        name = (EditText) findViewById(R.id.editTextTextPersonName);
-        location = (EditText) findViewById(R.id.editTextDireccion);
-        movil = (EditText) findViewById(R.id.editTextPhone2);
+        nombreCompleto = (EditText) findViewById(R.id.editTextTextPersonName);
+        direccionDom = (EditText) findViewById(R.id.editTextDireccion);
+        telefonoMov = (EditText) findViewById(R.id.editTextPhone2);
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = mail.getText().toString();
+                insertarDatos();
+            }
+        });
+       /* btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = correo.getText().toString();
                 String pass = password.getText().toString();
                 if( email.isEmpty() == false && pass.isEmpty() == false){
                     firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                              //  insertarDatos(mail.getText().toString(),password.getText().toString(), name.getText().toString(), location.getText().toString(), movil.getText().toString());
-                                goToPrincipalPanel();
+                              insertarDatos();
                             }
                         }
                     });
                 }
             }
-        });
+        });*/
 
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,22 +86,30 @@ public class RegistrarUsuario extends AppCompatActivity {
 
     }
 
-    private void goToPrincipalPanel() {
-        Intent i = new Intent(this, PanelPrincipalUsuario.class);
-        i.putExtra("mail", mail.getText().toString());
-        i.putExtra("password", password.getText().toString());
-        i.putExtra("name", name.getText().toString());
-        i.putExtra("location", location.getText().toString());
-        i.putExtra("movil", movil.getText().toString());
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);
-    }
+    private void insertarDatos() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("correo", correo.getText().toString());
+        map.put("password", password.getText().toString());
+        map.put("nombreCompleto", nombreCompleto.getText().toString());
+        map.put("direccionDom", direccionDom.getText().toString());
+        map.put("telefonoMov", telefonoMov.getText().toString());
 
-    /*private void insertarDatos(String mail, String password, String name, String location, String movil) {
-        firebaseDatabase= FirebaseDatabase.getInstance();
-        myref = firebaseDatabase.getReference("usuarios");
-        Usuario user = new Usuario(mail, password, name, location, movil);
-        myref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
-        Toast.makeText(this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
-    }*/
+        FirebaseDatabase.getInstance().getReference().child("usuarios")
+                .push().setValue(map)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(RegistrarUsuario.this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(RegistrarUsuario.this, PanelPrincipalUsuario.class);
+                        startActivity(intent);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(RegistrarUsuario.this, "Error de registro de usuario", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+    }
 }

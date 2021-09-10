@@ -84,10 +84,10 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
                String longitudBD = longitudAM.getText().toString();
                String metrosPermitidosBD = metrosPermitidosAM.getText().toString();
 
-               insertarDatos(nombreCompletoBD, correoBD, direccionDomBD, telefonoMovBD,
+              /* insertarDatos(nombreCompletoBD, correoBD, direccionDomBD, telefonoMovBD,
                        fechaNacBD, sexoBD, enfermedadesBD, medicamentosBD, personaEncargadaBD,
                        descripcionFisicaBD, ubicacionDomBD, latitudBD, longitudBD, metrosPermitidosBD);
-               limpiarCasillas();
+               limpiarCasillas();*/
                //goToPrincipalPanel();
            }
        });
@@ -110,7 +110,7 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
 
     }
 
-    private void insertarDatos(String nombreCompletoBD, String correoBD, String direccionDomBD,
+    /*private void insertarDatos(String nombreCompletoBD, String correoBD, String direccionDomBD,
                                String telefonoMovBD, String fechaNacBD, String sexoBD, String enfermedadesBD,
                                String medicamentosBD, String personaEncargadaBD, String descripcionFisicaBD,
                                String ubicacionDomBD, String latitudBD, String longitudBD, String metrosPermitidosBD) {
@@ -127,9 +127,7 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
         //limpiarCasillas();
         goToPrincipalPanel(mDatabase.push().getKey());
         System.out.println("MI CLAVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: " + mDatabase.getKey().toString());
-
-
-    }
+    }*/
 
 
     private void goToPrincipalPanel(String id) {

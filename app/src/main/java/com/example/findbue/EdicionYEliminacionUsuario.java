@@ -1,9 +1,6 @@
 package com.example.findbue;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +27,7 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainAdapter extends FirebaseRecyclerAdapter<Usuario, MainAdapter.myViewHolder> {//Usuario1
+public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario, EdicionYEliminacionUsuario.myViewHolder> {//Usuario1
 
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
@@ -38,7 +35,7 @@ public class MainAdapter extends FirebaseRecyclerAdapter<Usuario, MainAdapter.my
      *
      * @param options
      */
-    public MainAdapter(@NonNull FirebaseRecyclerOptions<Usuario> options) {//Usuario1
+    public EdicionYEliminacionUsuario(@NonNull FirebaseRecyclerOptions<Usuario> options) {//Usuario1
         super(options);
     }
 
@@ -47,6 +44,7 @@ public class MainAdapter extends FirebaseRecyclerAdapter<Usuario, MainAdapter.my
         holder.nombre.setText(model.getNombreCompleto());
         holder.correo.setText(model.getCorreo());
         holder.telefono.setText(model.getTelefonoMov());
+
 
         Glide.with(holder.img.getContext())
                 .load(model.getImg())

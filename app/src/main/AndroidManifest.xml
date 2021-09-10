@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.findbue">
+    package="com.example.findbue" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,50 +12,50 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindBue"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
         <activity
-            android:name=".RetrieveActivity"
+            android:name=".RetrieveActivityAdultoM"
             android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity
+            android:name=".RetrieveActivityUsuario"
+            android:exported="true" >
         </activity>
         <activity
             android:name=".RegistrarDatosAdultoMayor"
             android:exported="true" >
 
         </activity>
-
         <activity
             android:name=".EditarAdultoMayor"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-
+            android:exported="true" >
         </activity>
         <activity
             android:name=".RegistrarUsuario"
-            android:exported="true">
+            android:exported="true" >
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar familiar -->
 
         </activity>
         <activity
             android:name=".EditarPerfilPersona"
-            android:exported="true">
+            android:exported="true" >
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar EditarPerfilPersona -->
 
         </activity>
         <activity
             android:name=".PanelPrincipalUsuario"
-            android:exported="true">
+            android:exported="true" >
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar a Panel Principal -->
 
