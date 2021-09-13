@@ -51,13 +51,12 @@ public class EdicionYEliminacionAdultoM extends FirebaseRecyclerAdapter<AdultoMa
                     .circleCrop()
                     .error(R.drawable.common_google_signin_btn_icon_dark_normal)
                     .into(holder.img);
-
             holder.btnEditar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    final DialogPlus dialogPlus = DialogPlus.newDialog(holder.img.getContext())
+                    final DialogPlus dialogPlus = DialogPlus.newDialog(holder.nombre.getContext())
                             .setContentHolder(new ViewHolder(R.layout.activity_editar_adulto_mayor))
-                            .setExpanded(true, 1200)
+                            .setExpanded(true, 1720)
                             .create();
 
                     View view1 = dialogPlus.getHolderView();

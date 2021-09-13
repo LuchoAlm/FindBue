@@ -28,8 +28,6 @@ public class RegistrarUsuario extends AppCompatActivity {
     public EditText correo, password, nombreCompleto, direccionDom, telefonoMov;
 
     FirebaseAuth firebaseAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference myref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

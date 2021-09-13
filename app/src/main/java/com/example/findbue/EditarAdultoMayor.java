@@ -26,7 +26,6 @@ public class EditarAdultoMayor extends AppCompatActivity {
         setContentView(R.layout.activity_editar_adulto_mayor);
 
         actualizarAM = (Button) findViewById(R.id.button2);
-        eliminarAM = (Button) findViewById(R.id.button3);
        // nombreCompletoAM = (TextView) findViewById(R.id.textView22) ;
         correoAM = (EditText) findViewById(R.id.editTextTextEmailAddress2);
         direccionDomAM = (EditText) findViewById(R.id.editTextTextPersonName2);
