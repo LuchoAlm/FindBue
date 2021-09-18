@@ -40,7 +40,7 @@ public class EdicionYEliminacionAdultoM extends FirebaseRecyclerAdapter<AdultoMa
     }
 
         @Override
-        protected void onBindViewHolder(@NonNull myViewHolder holder, final int position, @NonNull AdultoMayor model) {//Usuario1
+        protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull AdultoMayor model) {//Usuario1
             holder.nombre.setText(model.getNombreCompletoAM());
             holder.correo.setText(model.getCorreoAM());
             holder.telefono.setText(model.getTelefonoMovAM());
@@ -75,6 +75,7 @@ public class EdicionYEliminacionAdultoM extends FirebaseRecyclerAdapter<AdultoMa
                     metrosPermitidosAM = view1.findViewById(R.id.editTextNumber2);
 
                     Button btnActualizar = view1.findViewById(R.id.button2);
+                    Button btnCancelar = view1.findViewById(R.id.button3);
 
                     nombreCompletoAM.setText(model.getNombreCompletoAM());
                     correoAM.setText(model.getCorreoAM());
@@ -105,7 +106,7 @@ public class EdicionYEliminacionAdultoM extends FirebaseRecyclerAdapter<AdultoMa
                             map.put("metrosPermitidosAM", metrosPermitidosAM.getText().toString());
 
                             FirebaseDatabase.getInstance().getReference().child("adultosMayores")
-                                    .child(getRef(position).getKey()).updateChildren(map)
+                                    .child(getRef(holder.getAdapterPosition()).getKey()).updateChildren(map)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
@@ -122,6 +123,14 @@ public class EdicionYEliminacionAdultoM extends FirebaseRecyclerAdapter<AdultoMa
                                     });
                         }
                     });
+
+                    btnCancelar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(holder.nombre.getContext(), "Cancelando ...", Toast.LENGTH_SHORT).show();
+                            dialogPlus.dismiss();
+                        }
+                    });
                 }
             });
 
@@ -136,7 +145,7 @@ public class EdicionYEliminacionAdultoM extends FirebaseRecyclerAdapter<AdultoMa
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             FirebaseDatabase.getInstance().getReference().child("adultosMayores")
-                                    .child(getRef(position).getKey()).removeValue();
+                                    .child(getRef(holder.getAdapterPosition()).getKey()).removeValue();
                             Toast.makeText(holder.nombre.getContext(), "Adulto mayor eliminado exitosamente!", Toast.LENGTH_SHORT).show();
                         }
                     });

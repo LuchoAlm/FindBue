@@ -24,9 +24,9 @@
             android:id="@+id/textView31"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:gravity="center"
             android:text="Ingrese los nuevos datos "
-            android:layout_marginStart="16dp"
             android:textColor="@color/gray_text"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -136,14 +136,32 @@
             android:textSize="16sp"
             android:translationY="115dp" />
 
-        <Button
-            android:id="@+id/button11"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Actualizar"
-            android:translationY="150dp" />
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:translationY="140dp">
+
+            <Button
+                android:id="@+id/button4"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/custom_button_outline"
+                android:text="Cancelar"
+                android:textColor="@color/gray_text" />
+
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/custom_button_cta"
+                android:text="Actualizar"
+                android:textColor="#f5f5f5" />
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -417,14 +417,28 @@
                     android:textColor="@color/ancian0_user_background"
                     android:textSize="16sp" />
 
-                <Button
-                    android:id="@+id/button10"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="Registrar"
-                    android:textSize="16sp" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button5"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="@string/btn_Cancelar" />
+
+                    <Button
+                        android:id="@+id/button10"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="Registrar"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>

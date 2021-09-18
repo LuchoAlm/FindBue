@@ -172,7 +172,7 @@
             android:id="@+id/button6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Administrar Adulto Mayor"
+            android:text="Adultos Mayores"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -243,7 +243,7 @@
                 android:layout_width="184dp"
                 android:layout_height="49dp"
                 android:layout_marginTop="8dp"
-                android:text="Editar Encargado"
+                android:text="Encargados"
                 android:textSize="12sp" />
         </LinearLayout>
 

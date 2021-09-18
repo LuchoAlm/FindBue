@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,7 +26,8 @@ import java.util.Map;
 
 public class RegistrarUsuario extends AppCompatActivity {
     public Button btnRegistrar, btnCancelar;
-    public EditText correo, password, nombreCompleto, direccionDom, telefonoMov;
+    ImageButton img;
+    EditText correo, password, nombreCompleto, direccionDom, telefonoMov;
 
     FirebaseAuth firebaseAuth;
 
@@ -76,6 +78,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(RegistrarUsuario.this, "Cancelando ...", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegistrarUsuario.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -108,6 +111,5 @@ public class RegistrarUsuario extends AppCompatActivity {
                         Toast.makeText(RegistrarUsuario.this, "Error de registro de usuario", Toast.LENGTH_SHORT).show();
                     }
                 });
-
     }
 }

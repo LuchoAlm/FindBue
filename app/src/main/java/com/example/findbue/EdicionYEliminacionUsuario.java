@@ -40,7 +40,7 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull myViewHolder holder, final int position, @NonNull Usuario model) {//Usuario1
+    protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull Usuario model) {//Usuario1
         holder.nombre.setText(model.getNombreCompleto());
         holder.correo.setText(model.getCorreo());
         holder.telefono.setText(model.getTelefonoMov());
@@ -69,6 +69,7 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                 direccionDom = view1.findViewById(R.id.editTextTextPersonName8);
 
                 Button btnActualizar = view1.findViewById(R.id.button11);
+                Button btnCancelar = view1.findViewById(R.id.button4);
 
                 nombreCompleto.setText(model.getNombreCompleto());
                 correo.setText(model.getCorreo());
@@ -87,7 +88,7 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                         map.put("direccionDom", direccionDom.getText().toString());
 
                         FirebaseDatabase.getInstance().getReference().child("usuarios")
-                                .child(getRef(position).getKey()).updateChildren(map)
+                                .child(getRef(holder.getAdapterPosition()).getKey()).updateChildren(map)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
@@ -104,6 +105,14 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                                 });
                     }
                 });
+
+                btnCancelar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(holder.nombre.getContext(), "Cancelando ...", Toast.LENGTH_SHORT).show();
+                        dialogPlus.dismiss();
+                    }
+                });
             }
         });
 
@@ -118,7 +127,7 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         FirebaseDatabase.getInstance().getReference().child("usuarios")
-                                .child(getRef(position).getKey()).removeValue();
+                                .child(getRef(holder.getAdapterPosition()).getKey()).removeValue();
                         Toast.makeText(holder.nombre.getContext(), "Usuario eliminado exitosamente!", Toast.LENGTH_SHORT).show();
                     }
                 });

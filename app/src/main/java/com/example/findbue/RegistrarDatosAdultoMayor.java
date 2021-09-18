@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegistrarDatosAdultoMayor extends AppCompatActivity {
-    Button registarAM, fechaPicker;
+    Button registarAM, fechaPicker, btnCancelar;
     ImageButton img;
     EditText nombreCompletoAM, correoAM, direccionDomAM, telefonoMovAM,
              enfermedadesAM, medicamentosAM, personaEncargadaAM,
@@ -70,6 +70,7 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
         latitudAM = (EditText) findViewById(R.id.editTextTextPersonName20);
         longitudAM = (EditText) findViewById(R.id.editTextTextPersonName21);
         metrosPermitidosAM = (EditText) findViewById(R.id.editTextNumber);
+        btnCancelar = (Button) findViewById(R.id.button5);
 
         registarAM.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -99,6 +100,15 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
                //goToPrincipalPanel();
            }
        });
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(RegistrarDatosAdultoMayor.this, "Cancelando ...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(RegistrarDatosAdultoMayor.this, PanelPrincipalUsuario.class);
+                startActivity(intent);
+            }
+        });
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sexo, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
