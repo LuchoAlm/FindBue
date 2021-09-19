@@ -105,6 +105,11 @@ public class EdicionYEliminacionAdultoM extends FirebaseRecyclerAdapter<AdultoMa
                             map.put("longitudAM", longitudAM.getText().toString());
                             map.put("metrosPermitidosAM", metrosPermitidosAM.getText().toString());
 
+                            if(!validarNombreAM() | !validarCorreo() | !validarDireccionAM() | !validarTelefonoAM() |
+                            !validarMetrosPerm() | !validarUbicacionDom() | !validarLongitud() | !validarLatitud()){
+                                return;
+                            }
+
                             FirebaseDatabase.getInstance().getReference().child("adultosMayores")
                                     .child(getRef(holder.getAdapterPosition()).getKey()).updateChildren(map)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -122,6 +127,117 @@ public class EdicionYEliminacionAdultoM extends FirebaseRecyclerAdapter<AdultoMa
                                         }
                                     });
                         }
+
+                        public Boolean validarNombreAM(){
+                            String nombreAM = nombreCompletoAM.getText().toString();
+                            if(nombreAM.isEmpty()){
+                                nombreCompletoAM.setError("Campo obligatorio");
+                                nombreCompletoAM.requestFocus();
+                                return false;
+                            }else{
+                                nombreCompletoAM.setError(null);
+                                return true;
+                            }
+                        }
+
+                        public Boolean validarCorreo(){
+                            String mailAM = correoAM.getText().toString();
+                            String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                            if(mailAM.isEmpty()){
+                                correoAM.setError("Campo obligatorio");
+                                correoAM.requestFocus();
+                                return false;
+                            }else if(!mailAM.matches(mailpattern)){
+                                correoAM.setError("Correo incorrecto");
+                                correoAM.requestFocus();
+                                return false;
+                            }else{
+                                correoAM.setError(null);
+                                return true;
+                            }
+                        }
+
+                        public Boolean validarDireccionAM(){
+                            String direccionAM = direccionDomAM.getText().toString();
+                            if(direccionAM.isEmpty()){
+                                direccionDomAM.setError("Campo obligatorio");
+                                direccionDomAM.requestFocus();
+                                return false;
+                            }else{
+                                direccionDomAM.setError(null);
+                                return true;
+                            }
+                        }
+
+                        public Boolean validarTelefonoAM(){
+                            String telf = telefonoMovAM.getText().toString();
+                            String telfPattern = "^\\d{10}$";
+                            if(telf.isEmpty()){
+                                telefonoMovAM.setError("Campo obligatorio");
+                                telefonoMovAM.requestFocus();
+                                return false;
+                            }else if(!telf.matches(telfPattern)){
+                                telefonoMovAM.setError("Número no válido");
+                                telefonoMovAM.requestFocus();
+                                return false;
+                            }else{
+                                telefonoMovAM.setError(null);
+                                return true;
+                            }
+                        }
+                        public Boolean validarUbicacionDom(){
+                            String ubicacion = ubicacionDomAM.getText().toString();
+                            if(ubicacion.isEmpty()){
+                                ubicacionDomAM.setError("Campo obligatorio");
+                                ubicacionDomAM.requestFocus();
+                                return false;
+                            }else{
+                                ubicacionDomAM.setError(null);
+                                return true;
+                            }
+                        }
+
+                        public Boolean validarLongitud(){
+                            String longitud = longitudAM.getText().toString();
+                            if(longitud.isEmpty()){
+                                longitudAM.setError("Campo obligatorio");
+                                longitudAM.requestFocus();
+                                return false;
+                            }else{
+                                longitudAM.setError(null);
+                                return true;
+                            }
+                        }
+
+                        public Boolean validarLatitud(){
+                            String latitud = latitudAM.getText().toString();
+                            if(latitud.isEmpty()){
+                                latitudAM.setError("Campo obligatorio");
+                                latitudAM.requestFocus();
+                                return false;
+                            }else{
+                                latitudAM.setError(null);
+                                return true;
+                            }
+                        }
+
+                        public Boolean validarMetrosPerm(){
+                            String metros = metrosPermitidosAM.getText().toString();
+                            String metrosPattern = "^\\d{3}$";
+                            if(metros.isEmpty()){
+                                metrosPermitidosAM.setError("Campo obligatorio");
+                                metrosPermitidosAM.requestFocus();
+                                return false;
+                            }else if(!metros.matches(metrosPattern)){
+                                metrosPermitidosAM.setError("Número no válido");
+                                metrosPermitidosAM.requestFocus();
+                                return false;
+                            }else{
+                                metrosPermitidosAM.setError(null);
+                                return true;
+                            }
+                        }
+
                     });
 
                     btnCancelar.setOnClickListener(new View.OnClickListener() {
@@ -186,4 +302,7 @@ public class EdicionYEliminacionAdultoM extends FirebaseRecyclerAdapter<AdultoMa
 
         }
     }
+
+
+
 }

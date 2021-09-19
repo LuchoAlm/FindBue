@@ -78,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String mail = email.getText().toString();
                 String pass = password.getText().toString();
+
+                if(!validarEmail() | !validarPassword()){
+                    return;
+                }
+
                 //Comprueba si el usuario existe con ese correo y la contraseña
                 mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -168,6 +173,36 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public void validar(){
+        validarEmail();
+        validarPassword();
+    }
+
+
+    public Boolean validarEmail(){
+        String emailVal = email.getText().toString();
+        if(emailVal.isEmpty()){
+            email.setError("Campo obligatorio");
+            email.requestFocus();
+            return false;
+        }else{
+            email.setError(null);
+            return true;
+        }
+    }
+
+    public Boolean validarPassword(){
+        String contra = password.getText().toString();
+        if(contra.isEmpty()){
+            password.setError("Campo obligatorio");
+            password.requestFocus();
+            return false;
+        }else{
+            password.setError(null);
+            return true;
+        }
     }
 
 }
