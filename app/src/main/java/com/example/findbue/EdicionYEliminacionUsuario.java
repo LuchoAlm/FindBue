@@ -87,6 +87,11 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                         map.put("telefonoMov", telefonoMov.getText().toString());
                         map.put("direccionDom", direccionDom.getText().toString());
 
+                        //validaciones
+                        if(nombreCompleto.getText().toString().isEmpty()){
+
+                        }
+
                         FirebaseDatabase.getInstance().getReference().child("usuarios")
                                 .child(getRef(holder.getAdapterPosition()).getKey()).updateChildren(map)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {

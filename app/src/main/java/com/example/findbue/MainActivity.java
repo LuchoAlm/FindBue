@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         registrarme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(MainActivity.this, RegistrarUsuario.class);
                 startActivity(intent);
                 Toast.makeText(MainActivity.this, "Vamos a registrarnos!", Toast.LENGTH_SHORT).show();
@@ -78,6 +79,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String mail = email.getText().toString();
                 String pass = password.getText().toString();
+
+                if(mail.isEmpty() && pass.isEmpty()){
+                    email.setError("Campo obligatorio");
+                    email.requestFocus();
+                    password.setError("Campo obligatorio");
+                    password.requestFocus();
+                    return;
+                }else if(mail.isEmpty()) {
+                    email.setError("Campo obligatorio");
+                    email.requestFocus();
+                    return;
+                }else if(pass.isEmpty()){
+                    password.setError("Campo obligatorio");
+                    password.requestFocus();
+                    return;
+                }
                 //Comprueba si el usuario existe con ese correo y la contraseña
                 mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override

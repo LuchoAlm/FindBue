@@ -31,6 +31,7 @@
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_login_refactor.xml" value="0.1716485507246377" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_main_prueba.xml" value="0.23854166666666668" />
+        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_maps.xml" value="0.25416666666666665" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_panel_principal_usuario.xml" value="0.264" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_perfil_usuario.xml" value="0.264" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_reg_ubi_adulto_mayor.xml" value="0.25416666666666665" />
@@ -39,7 +40,8 @@
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_registrar_familiar.xml" value="0.264" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_registrar_usuarios.xml" value="0.264" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_retrieve.xml" value="0.2" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_retrieve_adulto_m.xml" value="0.18177083333333333" />
+        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_retrieve_adulto_m.xml" value="0.2" />
+        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_retrieve_editar_mi_perfil.xml" value="0.25416666666666665" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_usuariosdelsistema.xml" value="0.264" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/main_item.xml" value="0.264" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/main_item_user.xml" value="0.264" />
