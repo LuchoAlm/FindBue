@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -46,9 +47,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        double distancia;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-0.16446, -78.48419);
+        //Registro de AM ... traigo Lat y Long
+        LatLng sydney = new LatLng(-0.16446, -78.48419); //jalar la latitud y la longitud del firebase //FIJA
+
+        //GetCurrentLocation()
+        LatLng sydney2 = new LatLng(-0.165079, -78.479162); //jalar la latitud y la longitud del firebase //MOVIL
+
+        if(!sydney.equals(sydney2)){
+            distancia = Math.sqrt(Math.pow((sydney2.latitude - sydney.latitude),2) + Math.pow((sydney2.longitude - sydney.longitude),2))*10000;
+            System.out.println("Distancia: " + distancia);
+            if(distancia > 60){
+                Toast.makeText(MapsActivity.this, "Adulto mayor fuera del rango permitido", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(MapsActivity.this, "Adulto a salvo", Toast.LENGTH_SHORT).show();
+            }
+        }
         drawCircle(sydney);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
@@ -61,7 +77,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Specifying the center of the circle
         circleOptions.center(point);
         // Radius of the circle
-        circleOptions.radius(60);
+        circleOptions.radius(80); //jalar la cantidad de metros //Registro de AM
         // Border color of the circle
         circleOptions.strokeColor(Color.GRAY);
         // Fill color of the circle

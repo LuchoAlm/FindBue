@@ -28,6 +28,20 @@ public class RegistrarUsuario extends AppCompatActivity {
     public Button btnRegistrar, btnCancelar;
     ImageButton img;
     EditText correo, password, nombreCompleto, direccionDom, telefonoMov;
+    //String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+\" +\n" +
+            "                \"(?:\\.[a-z0-9!#$%&'+\\/=?^_`{|}~-]+)@(?:[a-z0-9](?:\" +\n" +
+            "                \"[a-z0-9-][a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-][a-z0-9])?$";
+    String contraPattern = "^" +
+            //"(?=.*[0-9])" +       //al menos un número
+            //"(?=.*[a-z])" +       //al menos 1 minúscula
+            //"(?=.*[A-Z])" +       //al menos 1 mayúscula
+            "(?=.*[a-zA-Z])" +      //cualquier letra
+            "(?=.*[@#$%^&+=])" +
+            "(?=\\S+$)" +
+            ".{4,}" +
+            "$";
+    String telfPattern = "^\\d{10}$";
 
     FirebaseAuth firebaseAuth;
 
@@ -95,6 +109,11 @@ public class RegistrarUsuario extends AppCompatActivity {
         map.put("direccionDom", direccionDom.getText().toString());
         map.put("telefonoMov", telefonoMov.getText().toString());
 
+        if(!validarEmail() | !validarContrasenia() | !validarNombre() | !validarDireccion() |
+                !validarTelf()){
+            return;
+        }
+
         FirebaseDatabase.getInstance().getReference().child("usuarios")
                 .push().setValue(map)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -112,4 +131,80 @@ public class RegistrarUsuario extends AppCompatActivity {
                     }
                 });
     }
+
+    private boolean validarEmail() {
+        String mail = correo.getText().toString();
+
+        if(mail.isEmpty()){
+            correo.setError("Campo obligatorio");
+            correo.requestFocus();
+            return false;
+        }else if(!mail.matches(mailpattern)){
+            correo.setError("Correo incorrecto");
+            correo.requestFocus();
+            return false;
+        }else{
+            correo.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarContrasenia() {
+        String contra = password.getText().toString();
+        if(contra.isEmpty()){
+            password.setError("Campo obligatorio");
+            password.requestFocus();
+            return false;
+        }else if(!contra.matches(contraPattern)){
+            password.setError("Contraseña muy débil, debe contener al menos" +
+                    "un número, una mayúscula, una minúscula, y un caracter especial");
+            return false;
+        }else{
+            password.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarNombre() {
+        String nombre = nombreCompleto.getText().toString();
+        if(nombre.isEmpty()){
+            nombreCompleto.setError("Campo obligatorio");
+            nombreCompleto.requestFocus();
+            return false;
+        }else{
+            nombreCompleto.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarDireccion() {
+        String direccion = direccionDom.getText().toString();
+        if(direccion.isEmpty()){
+            direccionDom.setError("Campo obligatorio");
+            direccionDom.requestFocus();
+            return false;
+        }else{
+            direccionDom.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarTelf() {
+        String telf = telefonoMov.getText().toString();
+
+        if(telf.isEmpty()){
+            telefonoMov.setError("Campo obligatorio");
+            telefonoMov.requestFocus();
+            return false;
+        }else if(!telf.matches(telfPattern)){
+            telefonoMov.setError("Número no válido");
+            telefonoMov.requestFocus();
+            return false;
+        }else{
+            telefonoMov.setError(null);
+            return true;
+        }
+    }
+
+
 }

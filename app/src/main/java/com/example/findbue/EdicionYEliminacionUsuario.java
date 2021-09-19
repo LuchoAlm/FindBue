@@ -28,7 +28,12 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario, EdicionYEliminacionUsuario.myViewHolder> {//Usuario1
-
+    //String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+\" +\n" +
+            "                \"(?:\\.[a-z0-9!#$%&'+\\/=?^_`{|}~-]+)@(?:[a-z0-9](?:\" +\n" +
+            "                \"[a-z0-9-][a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-][a-z0-9])?$";
+    String telfPattern = "^\\d{10}$";
+    String metrosPattern = "^[0-9]{1,3}$";
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
@@ -88,8 +93,8 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                         map.put("direccionDom", direccionDom.getText().toString());
 
                         //validaciones
-                        if(nombreCompleto.getText().toString().isEmpty()){
-
+                        if(!validarEmail() | !validarNombre() | !validarDireccion() | !validarTelf()){
+                            return;
                         }
 
                         FirebaseDatabase.getInstance().getReference().child("usuarios")
@@ -108,6 +113,64 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                                         dialogPlus.dismiss();
                                     }
                                 });
+                    }
+
+                    private boolean validarEmail() {
+                        String mailAM = correo.getText().toString();
+
+                        if(mailAM.isEmpty()){
+                            correo.setError("Campo obligatorio");
+                            correo.requestFocus();
+                            return false;
+                        }else if(!mailAM.matches(mailpattern)){
+                            correo.setError("Correo incorrecto");
+                            correo.requestFocus();
+                            return false;
+                        }else{
+                            correo.setError(null);
+                            return true;
+                        }
+                    }
+
+                    private boolean validarNombre() {
+                        String nombreAM = nombreCompleto.getText().toString();
+                        if(nombreAM.isEmpty()){
+                            nombreCompleto.setError("Campo obligatorio");
+                            nombreCompleto.requestFocus();
+                            return false;
+                        }else{
+                            nombreCompleto.setError(null);
+                            return true;
+                        }
+                    }
+
+                    private boolean validarDireccion() {
+                        String direccionAM = direccionDom.getText().toString();
+                        if(direccionAM.isEmpty()){
+                            direccionDom.setError("Campo obligatorio");
+                            direccionDom.requestFocus();
+                            return false;
+                        }else{
+                            direccionDom.setError(null);
+                            return true;
+                        }
+                    }
+
+                    private boolean validarTelf() {
+                        String telf = telefonoMov.getText().toString();
+
+                        if(telf.isEmpty()){
+                            telefonoMov.setError("Campo obligatorio");
+                            telefonoMov.requestFocus();
+                            return false;
+                        }else if(!telf.matches(telfPattern)){
+                            telefonoMov.setError("Número no válido");
+                            telefonoMov.requestFocus();
+                            return false;
+                        }else{
+                            telefonoMov.setError(null);
+                            return true;
+                        }
                     }
                 });
 
@@ -147,6 +210,8 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
             }
         });
     }
+
+
 
     @NonNull
     @Override

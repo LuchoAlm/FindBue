@@ -167,8 +167,6 @@
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/custom_button_cta"
-                android:backgroundTint="@color/btn_cta"
                 android:text="Actualizar"
                 android:textColor="#f5f5f5" />
         </LinearLayout>
