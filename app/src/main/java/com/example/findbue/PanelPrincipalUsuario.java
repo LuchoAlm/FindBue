@@ -31,7 +31,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
     LinearLayout encargados;
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("usuarios");
     private FirebaseAuth mAuth;
-    //AdministrarComoFamiliar usuarioSistema = new AdministrarComoFamiliar();
+    AdministrarComoFamiliar usuarioSistema = new AdministrarComoFamiliar();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         btnAdminUsuario.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                obtenerDatosBD(mDatabase);
+                                //obtenerDatosBD(mDatabase);
                             }
                         });
                     } if(!seleccionRol.isChecked()) { //ROL FAMILIAR

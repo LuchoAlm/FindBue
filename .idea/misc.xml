@@ -3,37 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/drawable/anciana_user_background.xml" value="0.16296296296296298" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/drawable/person_add.xml" value="0.1" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/drawable/person_remove.xml" value="0.1" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_administrarUsuario.xml" value="0.22780797101449277" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_administrar_encargado.xml" value="0.264" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_administrar_familiar.xml" value="0.264" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_administrar_usuario.xml" value="0.25" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_administrar_usuario_sistema.xml" value="0.2477355072463768" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_administrar_usuario_sistema_como_encargado.xml" value="0.25" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_administrar_usuario_sistema_como_familiar.xml" value="0.264" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_administrar_usuariosSistema.xml" value="0.25416666666666665" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_agregar_encargado.xml" value="0.4756335282651072" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_editar_adulto_mayor.xml" value="0.25416666666666665" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_editar_datos_usuario.xml" value="0.25416666666666665" />
+        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_agregar_encargado.xml" value="0.264" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_editar_perfil_persona.xml" value="0.25416666666666665" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_editar_perfil_usuario.xml" value="0.25416666666666665" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_eliminar_encargado.xml" value="0.264" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_interfazdeprueba.xml" value="0.2391304347826087" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_login_refactor.xml" value="0.1716485507246377" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_main_prueba.xml" value="0.23854166666666668" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_panel_principal_usuario.xml" value="0.4" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_perfil_usuario.xml" value="0.264" />
+        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_panel_principal_usuario.xml" value="0.264" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_reg_ubi_adulto_mayor.xml" value="0.25416666666666665" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_registrar_adulto_mayor.xml" value="0.4" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_registrar_datos_adulto_mayor.xml" value="0.25416666666666665" />
+        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_registrar_adulto_mayor.xml" value="0.25416666666666665" />
         <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_registrar_familiar.xml" value="0.264" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_registrar_usuarios.xml" value="0.264" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/mipmap-anydpi-v26/anciana_user.xml" value="0.22870370370370371" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/mipmap-anydpi-v26/anciana_user_round.xml" value="0.14635416666666667" />
-        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/mipmap-anydpi-v26/ic_usuarios.xml" value="0.16111111111111112" />
+        <entry key="..\:/7mosemestre/SW/Proyecto/FindBue/app/src/main/res/layout/activity_registrar_usuarios.xml" value="0.176" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_administrar_encargado.xml" value="0.22" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_administrar_familiar.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_agregar_encargado.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_editar_adulto_mayor.xml" value="0.22" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_editar_perfil_usuario.xml" value="0.1796875" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_eliminar_encargado.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_login_refactor.xml" value="0.22" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_panel_principal_usuario.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_reg_ubi_adulto_mayor.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_registrar_adulto_mayor.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_registrar_datos_adulto_mayor.xml" value="0.1796875" />
+        <entry key="..\:/Users/Alexis/StudioProjects/FindBue/app/src/main/res/layout/activity_registrar_usuarios.xml" value="0.1796875" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/layout/activity_panel_principal_usuario.xml" value="0.25" />
         <entry key="..\:/Users/Minotaur/AndroidStudioProjects/FindBue/app/src/main/res/layout/activity_reg_ubi_adulto_mayor.xml" value="0.33" />

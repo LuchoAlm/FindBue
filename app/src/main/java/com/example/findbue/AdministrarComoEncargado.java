@@ -44,6 +44,7 @@ public class AdministrarComoEncargado extends AppCompatActivity {
         telefonoMovUsuario = findViewById(R.id.textView30);
         nombreUsuario = findViewById(R.id.textView23);
         actualizarUsuario = (Button) findViewById(R.id.button7);
+        //editar = (Button) findViewById(R.id.btnEditar);
         mostrarDatosUsuario();
 
         actualizarUsuario.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +53,13 @@ public class AdministrarComoEncargado extends AppCompatActivity {
                 actualizarDatos();
             }
         });
+
+        /*editar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+            }
+        });*/
     }
 
     private void actualizarDatos() {

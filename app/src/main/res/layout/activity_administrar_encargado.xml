@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_background"
-    tools:context=".AdministrarComoEncargado" >
+    tools:context=".AdministrarComoEncargado">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -168,6 +168,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView27"
                 app:layout_constraintVertical_bias="0.25" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btnEditar"
+            android:layout_width="94dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="-26dp"
+            android:text="Editar"
+            app:layout_constraintBottom_toTopOf="@id/imageView8"
+            app:layout_constraintEnd_toEndOf="@id/imageView8" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
