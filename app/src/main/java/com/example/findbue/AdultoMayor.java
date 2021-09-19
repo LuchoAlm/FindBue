@@ -1,12 +1,50 @@
 package com.example.findbue;
 
 public class AdultoMayor {
-    public String getNombresCompletosAM() {
-        return nombresCompletosAM;
+    String nombreCompletoAM, correoAM, direccionDomAM, telefonoMovAM,
+            fechaNacAM, sexoAM, enfermedadesAM, medicamentosAM, personaEncargadaAM,
+            descripcionFisicaAM,ubicacionDomAM, latitudAM, longitudAM, metrosPermitidosAM, img;
+
+    public AdultoMayor() {
     }
 
-    public void setNombresCompletosAM(String nombresCompletosAM) {
-        this.nombresCompletosAM = nombresCompletosAM;
+    public AdultoMayor(String img, String nombreCompletoAM, String correoAM, String direccionDomAM,
+                       String telefonoMovAM, String fechaNacAM, String sexoAM,
+                       String enfermedadesAM, String medicamentosAM, String personaEncargadaAM,
+                       String descripcionFisicaAM, String ubicacionDomAM, String latitudAM,
+                       String longitudAM, String metrosPermitidosAM) {
+        this.img = img;
+        this.nombreCompletoAM = nombreCompletoAM;
+        this.correoAM = correoAM;
+        this.direccionDomAM = direccionDomAM;
+        this.telefonoMovAM = telefonoMovAM;
+        this.fechaNacAM = fechaNacAM;
+        this.sexoAM = sexoAM;
+        this.enfermedadesAM = enfermedadesAM;
+        this.medicamentosAM = medicamentosAM;
+        this.personaEncargadaAM = personaEncargadaAM;
+        this.descripcionFisicaAM = descripcionFisicaAM;
+        this.ubicacionDomAM = ubicacionDomAM;
+        this.latitudAM = latitudAM;
+        this.longitudAM = longitudAM;
+        this.metrosPermitidosAM = metrosPermitidosAM;
+
+    }
+
+    public String getImg() {
+        return "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png";
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getNombreCompletoAM() {
+        return nombreCompletoAM;
+    }
+
+    public void setNombreCompletoAM(String nombreCompletoAM) {
+        this.nombreCompletoAM = nombreCompletoAM;
     }
 
     public String getCorreoAM() {
@@ -105,64 +143,11 @@ public class AdultoMayor {
         this.longitudAM = longitudAM;
     }
 
-    private String  nombresCompletosAM;
-    private String correoAM;
-    private String direccionDomAM;
-    private String telefonoMovAM;
-    private String fechaNacAM;
-    private String sexoAM;
-    private String enfermedadesAM;
-    private String medicamentosAM;
-    private String personaEncargadaAM;
-    private String descripcionFisicaAM;
-    private String ubicacionDomAM;
-    private String latitudAM;
-    private String longitudAM;
-
     public String getMetrosPermitidosAM() {
         return metrosPermitidosAM;
     }
 
     public void setMetrosPermitidosAM(String metrosPermitidosAM) {
         this.metrosPermitidosAM = metrosPermitidosAM;
-    }
-
-    private String metrosPermitidosAM;
-
-    public AdultoMayor(String nombresCompletosAM,
-                       String correoAM,
-                       String direccionDomAM,
-                       String telefonoMovAM,
-                       String fechaNacAM,
-                       String sexoAM,
-                       String enfermedadesAM,
-                       String medicamentosAM,
-                       String personaEncargadaAM,
-                       String descripcionFisicaAM,
-                       String ubicacionDomAM,
-                       String latitudAM,
-                       String longitudAM,
-                       String metrosPermitidosAM) {
-        this.nombresCompletosAM=nombresCompletosAM;
-        this.correoAM=correoAM;
-        this.direccionDomAM=direccionDomAM;
-        this.telefonoMovAM=telefonoMovAM;
-        this.fechaNacAM=fechaNacAM;
-        this.sexoAM=sexoAM;
-        this.enfermedadesAM=enfermedadesAM;
-        this.medicamentosAM=medicamentosAM;
-        this.personaEncargadaAM=personaEncargadaAM;
-        this.descripcionFisicaAM=descripcionFisicaAM;
-        this.ubicacionDomAM=ubicacionDomAM;
-        this.latitudAM=latitudAM;
-        this.longitudAM=longitudAM;
-        this.metrosPermitidosAM=metrosPermitidosAM;
-    }
-
-    public AdultoMayor() {
-    }
-
-    public void conectarDB(){
-        //Logica de la base de datos
     }
 }

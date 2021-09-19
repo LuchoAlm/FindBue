@@ -8,28 +8,50 @@
     tools:context=".RegistrarUsuario" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="389dp"
-        android:layout_height="637dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="11dp"
+        android:background="@drawable/bg_background_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView9"
+        <TextView
+            android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_background_register" />
-
-        <ImageView
-            android:id="@+id/imageView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="24dp"
+            android:text="DATOS DE REGISTRO DE USUARIO"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:background="#00FFFFFF"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/custom_button_cta" />
+            app:srcCompat="@drawable/ic_add_photo" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="1dp" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtRegisterEmailBox"
@@ -37,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="32dp"
             android:hint="@string/plh_correo"
             app:boxStrokeColor="@color/teal_200"
             app:endIconMode="clear_text"
@@ -45,7 +67,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.526"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView10"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton2"
             app:startIconDrawable="@drawable/custom_icon_email_focused">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -87,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:hint="@string/plh_password"
+            android:hint="Ingresa tu nombre completo"
             app:boxStrokeColor="@color/teal_200"
             app:endIconMode="clear_text"
             app:hintTextColor="@color/teal_200"

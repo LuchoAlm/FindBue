@@ -6,17 +6,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Usuario {
-    String correo, password, nombreCompleto, direccionDom, telefonoMov;
+    //String imagen = "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png";
+    String correo, password, nombreCompleto, direccionDom, telefonoMov, img;
 
     public Usuario() {
     }
 
-    public Usuario(String correo, String password, String nombreCompleto, String direccionDom, String telefonoMov) {
+    public Usuario(String correo, String password, String nombreCompleto, String direccionDom, String telefonoMov, String img) {
         this.nombreCompleto = nombreCompleto;
         this.direccionDom = direccionDom;
         this.telefonoMov = telefonoMov;
         this.correo = correo;
         this.password = password;
+        this.img = img;
+    }
+
+    public  String getImg(){
+        return "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png";
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getCorreo() {
