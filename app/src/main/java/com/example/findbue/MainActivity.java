@@ -115,30 +115,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private boolean validarEmail() {
-        String emailVal = email.getText().toString();
-        if(emailVal.isEmpty()){
-            email.setError("Campo obligatorio");
-            email.requestFocus();
-            return false;
-        }else{
-            email.setError(null);
-            return true;
-        }
-    }
-
-    private boolean validarPassword() {
-        String contra = password.getText().toString();
-        if(contra.isEmpty()){
-            password.setError("Campo obligatorio");
-            password.requestFocus();
-            return false;
-        }else{
-            password.setError(null);
-            return true;
-        }
-    }
-
 
     //Metodo para enviar la UID de la sesión actual
     //Cuando el usuario ya ha iniciado sesión
