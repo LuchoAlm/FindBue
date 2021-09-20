@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -127,5 +128,21 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        consultarUbicacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PanelPrincipalUsuario.this, EditBusqueda.class);
+                startActivity(i);
+            }
+        });
+
+        double lati = getIntent().getExtras().getDouble("latitud");
+        double logi = getIntent().getExtras().getDouble("longitud");
+
+
+        if (lati != 0.0 && logi != 0.0){
+                System.out.println("Valores: "+lati+"  "+logi);
+        }
     }
 }

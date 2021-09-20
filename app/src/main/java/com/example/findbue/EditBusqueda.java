@@ -3,9 +3,11 @@ package com.example.findbue;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -39,6 +41,7 @@ public class EditBusqueda extends AppCompatActivity implements OnMapReadyCallbac
     private ActivityEditBusquedaBinding binding;
     public LatLng actual= new LatLng(0, 0);
     public LatLng nuevaLocation;
+    public String layout;
 
     private Marker markePrueba, markerDrag;
 
@@ -70,6 +73,11 @@ public class EditBusqueda extends AppCompatActivity implements OnMapReadyCallbac
             //Requerimos permisos
             ActivityCompat.requestPermissions(EditBusqueda.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
         }
+
+        Bundle parametros = this.getIntent().getExtras();
+        if (parametros!=null){
+            layout = getIntent().getStringExtra("layout");
+            }
 
 
     }
@@ -227,7 +235,32 @@ public class EditBusqueda extends AppCompatActivity implements OnMapReadyCallbac
             mMap.clear();
             mMap.addMarker(new MarkerOptions().position(nuevaLocation).title("Funciona").draggable(true));
             drawCircle(nuevaLocation);
-            Toast.makeText(this, "Terminamos", Toast.LENGTH_SHORT).show();
+
+            if(layout.equals("RegistrarAdultoMayor")){
+
+                Intent i = new Intent(EditBusqueda.this ,RegistrarDatosAdultoMayor.class);
+                double  latitud = nuevaLocation.latitude;
+                double  longitud = nuevaLocation.longitude;
+
+                i.putExtra("latitud",latitud);
+                i.putExtra("longitud",longitud);
+
+                startActivity(i);
+
+            }else if (layout.equals("RegistrarUsuario")){
+                Intent i = new Intent(EditBusqueda.this ,RegistrarUsuario.class);
+                double  latitud = nuevaLocation.latitude;
+                double  longitud = nuevaLocation.longitude;
+
+                i.putExtra("latitud",latitud);
+                i.putExtra("longitud",longitud);
+                startActivity(i);
+            }else if (layout.equals("PanelPrincipal")){
+                Intent i = new Intent(EditBusqueda.this, PanelPrincipalUsuario.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+            }
+
         }
     }
 }
