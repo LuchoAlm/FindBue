@@ -133,6 +133,33 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
 
             }
         });
+        ubicacionDomAM.setClickable(true);
+
+        ubicacionDomAM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(RegistrarDatosAdultoMayor.this, EditBusqueda.class);
+                i.putExtra("layout", "RegistrarAdultoMayor");
+                startActivity(i);
+            }
+        });
+
+
+        Bundle parametros = this.getIntent().getExtras();
+        if (parametros!=null){
+            double latAM = getIntent().getExtras().getDouble("latitud");
+            double logAM = getIntent().getExtras().getDouble("longitud");
+
+            if (latAM !=0 && logAM!=0){
+
+                latitudAM.setText(""+latAM);
+                longitudAM.setText(""+logAM);
+            }
+        }
+
+
+
+
 
     }
 
@@ -182,6 +209,8 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
                         Toast.makeText(RegistrarDatosAdultoMayor.this, "Error de registro de usuario", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+
 
     }
 

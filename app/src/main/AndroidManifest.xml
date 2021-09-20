@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.findbue" >
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the "MyLocation" functionality.
-    -->
-    <uses-permission
-        android:name="android.permission.ACCESS_FINE_LOCATION"
-        tools:ignore="CoarseFineLocation" />
+    package="com.example.findbue">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -20,15 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindBue"
-        tools:ignore="GoogleAppIndexingWarning" >
-        <activity
-            android:name=".Activity_Prueba"
-            android:exported="true" />
-
-        <service
-            android:name=".TrackingService"
-            android:enabled="true"
-            android:exported="false" />
+        android:usesCleartextTraffic="true">
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -42,9 +29,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity2"
+            android:name=".EditBusqueda"
             android:exported="true"
-            android:label="@string/title_activity_maps2" />
+            android:label="@string/title_activity_edit_busqueda">
+
+        </activity>
         <activity
             android:name=".MapsActivity"
             android:exported="true"
@@ -63,7 +52,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -72,21 +61,21 @@
         </activity>
         <activity
             android:name=".RegistrarUsuario"
-            android:exported="true" >
+            android:exported="true">
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar familiar -->
 
         </activity>
         <activity
             android:name=".EditarPerfilPersona"
-            android:exported="true" >
+            android:exported="true">
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar EditarPerfilPersona -->
 
         </activity>
         <activity
             android:name=".PanelPrincipalUsuario"
-            android:exported="true" >
+            android:exported="true">
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar a Panel Principal -->
 

@@ -11,15 +11,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class PanelPrincipalUsuario extends AppCompatActivity {
-    Button consultarUbicacion, administrarAM, editarEncargado, editarMiPerfil, logout;
+    Button consultarUbicacion, administrarAM, editarEncargado, editarMiPerfil;
     ImageButton addadultoMayor, addEncargado;
     Switch seleccionRol;
     TextView textEncargado;
@@ -43,21 +41,12 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         linearEncargados = (LinearLayout) findViewById(R.id.linearLayout2);
         editarEncargado = (Button) findViewById(R.id.button14);
         editarMiPerfil = (Button) findViewById(R.id.button16);
-        logout = (Button) findViewById(R.id.buttonLogOut);
 
         //Adultos Mayores
         addadultoMayor = (ImageButton) findViewById(R.id.imageButton);
         administrarAM = (Button) findViewById(R.id.button6);
         consultarUbicacion = (Button) findViewById(R.id.button15);
 
-        logout.setOnClickListener(view -> {
-            FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-        });
-
-        String tel = getIntent().getExtras().getString("telefonoMov");
-        System.out.println("TELEFONO: " + tel);
 
         administrarAM.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +55,6 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         seleccionRol.setOnClickListener(new View.OnClickListener() {
 
@@ -83,7 +71,6 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-
                                 Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityUsuario.class);
                                 startActivity(intent);
                             }
@@ -91,7 +78,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         consultarUbicacion.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(PanelPrincipalUsuario.this, MapsActivity2.class);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, MapsActivity.class);
                                 startActivity(intent);
                             }
                         });
@@ -101,6 +88,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         administrarAM.setVisibility(View.VISIBLE);
                         editarEncargado.setVisibility(View.VISIBLE);
                         addadultoMayor.setVisibility(View.VISIBLE);
+
                         editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -125,7 +113,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         consultarUbicacion.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(PanelPrincipalUsuario.this, MapsActivity2.class);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, MapsActivity.class);
                                 startActivity(intent);
                             }
                         });
@@ -141,5 +129,21 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        consultarUbicacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PanelPrincipalUsuario.this, EditBusqueda.class);
+                startActivity(i);
+            }
+        });
+
+        double lati = getIntent().getExtras().getDouble("latitud");
+        double logi = getIntent().getExtras().getDouble("longitud");
+
+
+        if (lati != 0.0 && logi != 0.0){
+                System.out.println("Valores: "+lati+"  "+logi);
+        }
     }
 }

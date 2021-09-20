@@ -98,6 +98,24 @@ public class RegistrarUsuario extends AppCompatActivity {
             }
         });
 
+        direccionDom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(RegistrarUsuario.this, EditBusqueda.class);
+                i.putExtra("layout","RegistrarUsuario");
+                startActivity(i);
+            }
+        });
+
+        Bundle parametros = this.getIntent().getExtras();
+        if (parametros!=null){
+            double latAM = getIntent().getExtras().getDouble("latitud");
+            double logAM = getIntent().getExtras().getDouble("longitud");
+            if (latAM !=0 && logAM!=0){
+                direccionDom.setText(String.format("%.2f", latAM) + String.format("%.2f", logAM));
+            }
+        }
+
 
     }
 

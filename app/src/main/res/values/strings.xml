@@ -46,10 +46,6 @@
     <!-- Registrar información de familiar-->
     <string name="lbl_TlfMovil">Teléfono movil</string>
 
-    <string name="tracking_enabled_notif">Tracking is currently enabled. Tap to cancel.</string>
-    <string name="test_email">test@test.com</string>
-    <string name="test_password">testpassword</string>
-    <string name="firebase_path">location</string>
 
     <!-- Agregar un encargado-->
     <string name="lbl_CorreoEncargado">Correo electrónico del encargado</string>
@@ -61,6 +57,6 @@
         <item>Femenino</item>
     </string-array>
     <string name="title_activity_maps">MapsActivity</string>
-    <string name="title_activity_maps2">MapsActivity2</string>
+    <string name="title_activity_edit_busqueda">EditBusqueda</string>
 
 </resources>
