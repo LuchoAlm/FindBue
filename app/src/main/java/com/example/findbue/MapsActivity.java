@@ -1,10 +1,12 @@
 package com.example.findbue;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -91,6 +93,45 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         checkLocationSetting(builder);
     }
 
+    private void agregarMarcador(double lat, double lng) {
+
+        LatLng coordenadas = new LatLng(lat, lng);
+        CameraUpdate miUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 19);
+        if (marker != null) marker.remove();
+        marker = mMap.addMarker(new MarkerOptions()
+                .position(coordenadas)
+                .title("Tu posición")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_baseline_location)));
+        mMap.animateCamera(miUbicacion);
+
+    }
+
+    private void obtenerUltimaUbicacion() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    Activity#requestPermissions
+
+                // muestra una ventana o Dialog en donde el usuario debe
+                // dar permisos para el uso del GPS de su dispositivo.
+                // El método dialogoSolicitarPermisoGPS() lo crearemos más adelante.
+                dialogoSolicitarPermisoGPS();
+
+            }
+        }
+
+    }
+
+    protected LocationRequest createLocationRequest() {
+        LocationRequest mLocationRequest = LocationRequest.create();
+        mLocationRequest.setInterval(30000);
+        mLocationRequest.setFastestInterval(10000);
+        mLocationRequest.setSmallestDisplacement(30);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        return mLocationRequest;
+    }
+
     private void checkLocationSetting(LocationSettingsRequest.Builder builder) {
         builder.setAlwaysShow(true);
 
@@ -131,45 +172,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
-    private void agregarMarcador(double lat, double lng) {
-
-        LatLng coordenadas = new LatLng(lat, lng);
-        CameraUpdate miUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 19);
-        if (marker != null) marker.remove();
-        marker = mMap.addMarker(new MarkerOptions()
-                .position(coordenadas)
-                .title("Tu posición")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_baseline_location)));
-        mMap.animateCamera(miUbicacion);
-
-    }
-
-    private void obtenerUltimaUbicacion() {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    Activity#requestPermissions
-
-                // muestra una ventana o Dialog en donde el usuario debe
-                // dar permisos para el uso del GPS de su dispositivo.
-                // El método dialogoSolicitarPermisoGPS() lo crearemos más adelante.
-                dialogoSolicitarPermisoGPS();
-
-            }
-        }
-
-    }
-
-    protected LocationRequest createLocationRequest() {
-        LocationRequest mLocationRequest = LocationRequest.create();
-        mLocationRequest.setInterval(30000);
-        mLocationRequest.setFastestInterval(10000);
-        mLocationRequest.setSmallestDisplacement(30);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        return mLocationRequest;
-    }
-
     public void iniciarActualizacionesUbicacion() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -186,6 +188,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CHECK_SETTINGS){
+            if(requestCode == RESULT_OK){
+                iniciarActualizacionesUbicacion();
+            }else {
+                checkLocationSetting(builder);
+            }
+        }
+    }
 
     private void dialogoSolicitarPermisoGPS(){
         if (ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -193,7 +206,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             ActivityCompat.requestPermissions(MapsActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 123);
         }
     }
-
 
 
     /**
