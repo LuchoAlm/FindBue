@@ -34,6 +34,8 @@ public class MapsActivity2 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_maps2);
+
 //Check whether GPS tracking is enabled//
 
         LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
