@@ -80,14 +80,14 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityEditarMiPerfil.class);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityUsuario.class);
                                 startActivity(intent);
                             }
                         });
                         consultarUbicacion.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(PanelPrincipalUsuario.this, MapsActivity.class);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, MapsActivity2.class);
                                 startActivity(intent);
                             }
                         });
@@ -100,7 +100,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityEditarMiPerfil.class);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityUsuario.class);
                                 startActivity(intent);
                             }
                         });
