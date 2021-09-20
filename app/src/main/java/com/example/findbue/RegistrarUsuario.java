@@ -29,7 +29,7 @@ public class RegistrarUsuario extends AppCompatActivity {
     ImageButton img;
     EditText correo, password, nombreCompleto, direccionDom, telefonoMov;
     //String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    String mailpattern = "^(([^<>()\\\\[\\\\]\\\\\\\\.,;:\\\\s@”]+(\\\\.[^<>()\\\\[\\\\]\\\\\\\\.,;:\\\\s@”]+)*)|(“.+”))@((\\\\[[0–9]{1,3}\\\\.[0–9]{1,3}\\\\.[0–9]{1,3}\\\\.[0–9]{1,3}])|(([a-zA-Z\\\\-0–9]+\\\\.)+[a-zA-Z]{2,}))$";
+    String mailpattern = "^(([^<>()\\[\\]\\\\.,;:\\s@”]+(\\.[^<>()\\[\\]\\\\.,;:\\s@”]+)*)|(“.+”))@((\\[[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}])|(([a-zA-Z\\-0–9]+\\.)+[a-zA-Z]{2,}))$";
     String contraPattern = "^" +
             //"(?=.*[0-9])" +       //al menos un número
             //"(?=.*[a-z])" +       //al menos 1 minúscula

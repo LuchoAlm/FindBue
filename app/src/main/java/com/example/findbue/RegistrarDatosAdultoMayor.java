@@ -41,7 +41,7 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("adultosMayores");
 
     //String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    String mailpattern = "^(([^<>()\\\\[\\\\]\\\\\\\\.,;:\\\\s@”]+(\\\\.[^<>()\\\\[\\\\]\\\\\\\\.,;:\\\\s@”]+)*)|(“.+”))@((\\\\[[0–9]{1,3}\\\\.[0–9]{1,3}\\\\.[0–9]{1,3}\\\\.[0–9]{1,3}])|(([a-zA-Z\\\\-0–9]+\\\\.)+[a-zA-Z]{2,}))$";
+    String mailpattern = "^(([^<>()\\[\\]\\\\.,;:\\s@”]+(\\.[^<>()\\[\\]\\\\.,;:\\s@”]+)*)|(“.+”))@((\\[[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}\\.[0–9]{1,3}])|(([a-zA-Z\\-0–9]+\\.)+[a-zA-Z]{2,}))$";
     String telfPattern = "^\\d{10}$";
     String metrosPattern = "^[0-9]{1,3}$";
 
