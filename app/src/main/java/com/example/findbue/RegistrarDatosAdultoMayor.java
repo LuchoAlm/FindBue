@@ -14,9 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,14 +28,25 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistrarDatosAdultoMayor extends AppCompatActivity {
-    Button registarAM, fechaPicker;
+    Button registarAM, fechaPicker, btnCancelar;
+    ImageButton img;
     EditText nombreCompletoAM, correoAM, direccionDomAM, telefonoMovAM,
              enfermedadesAM, medicamentosAM, personaEncargadaAM,
-             descripcionFisicaAM,ubicacionDomAM, latitudAM, longitudAM, metrosPermitidosAM;
+             descripcionFisicaAM,ubicacionDomAM, latitudAM, longitudAM, metrosPermitidosAM,imag;
     Spinner seleccionarSexo;
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("adultosMayores");
+
+    //String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+\" +\n" +
+            "                \"(?:\\.[a-z0-9!#$%&'+\\/=?^_`{|}~-]+)@(?:[a-z0-9](?:\" +\n" +
+            "                \"[a-z0-9-][a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-][a-z0-9])?$";
+    String telfPattern = "^\\d{10}$";
+    String metrosPattern = "^[0-9]{1,3}$";
+
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference myref;
@@ -48,6 +62,7 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
         setContentView(R.layout.activity_registrar_datos_adulto_mayor);
         SeleccionarFecha();
 
+        //img = (ImageButton) findViewById(R.id.imageButton3);
         registarAM = (Button) findViewById(R.id.button10);
         fechaPicker = (Button) findViewById(R.id.button9);
         nombreCompletoAM = (EditText) findViewById(R.id.editTextTextPersonName16);
@@ -63,12 +78,14 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
         latitudAM = (EditText) findViewById(R.id.editTextTextPersonName20);
         longitudAM = (EditText) findViewById(R.id.editTextTextPersonName21);
         metrosPermitidosAM = (EditText) findViewById(R.id.editTextNumber);
+        btnCancelar = (Button) findViewById(R.id.button5);
 
-
-       registarAM.setOnClickListener(new View.OnClickListener() {
+        registarAM.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                //Validaciones
+               //String imagem = img.get
+               String imagen = "https://img.freepik.com/foto-gratis/viejo-mirando-camara_23-2148239005.jpg?size=626&ext=jpg";
                String nombreCompletoBD = nombreCompletoAM.getText().toString();
                String correoBD = correoAM.getText().toString();
                String direccionDomBD = direccionDomAM.getText().toString();
@@ -84,13 +101,22 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
                String longitudBD = longitudAM.getText().toString();
                String metrosPermitidosBD = metrosPermitidosAM.getText().toString();
 
-               insertarDatos(nombreCompletoBD, correoBD, direccionDomBD, telefonoMovBD,
+               insertarDatos(imagen, nombreCompletoBD, correoBD, direccionDomBD, telefonoMovBD,
                        fechaNacBD, sexoBD, enfermedadesBD, medicamentosBD, personaEncargadaBD,
                        descripcionFisicaBD, ubicacionDomBD, latitudBD, longitudBD, metrosPermitidosBD);
                limpiarCasillas();
                //goToPrincipalPanel();
            }
        });
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(RegistrarDatosAdultoMayor.this, "Cancelando ...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(RegistrarDatosAdultoMayor.this, PanelPrincipalUsuario.class);
+                startActivity(intent);
+            }
+        });
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sexo, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -110,46 +136,193 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
 
     }
 
-    private void insertarDatos(String nombreCompletoBD, String correoBD, String direccionDomBD,
-                               String telefonoMovBD, String fechaNacBD, String sexoBD, String enfermedadesBD,
-                               String medicamentosBD, String personaEncargadaBD, String descripcionFisicaBD,
-                               String ubicacionDomBD, String latitudBD, String longitudBD, String metrosPermitidosBD) {
-        //String uid = telefonoMovAM.getText().toString();
-        //firebaseDatabase= FirebaseDatabase.getInstance();
-        //myref = firebaseDatabase.getReference("adultosMayores");
-        AdultoMayor adultoMayor = new AdultoMayor(nombreCompletoBD, correoBD, direccionDomBD,
-                telefonoMovBD, fechaNacBD, sexoBD, enfermedadesBD, medicamentosBD, personaEncargadaBD,
-                descripcionFisicaBD, ubicacionDomBD, latitudBD, longitudBD, metrosPermitidosBD);
-        mDatabase.push().setValue(adultoMayor);
-        Toast.makeText(this, "Adulto mayor registrado exitosamente!", Toast.LENGTH_SHORT).show();
-        String key = mDatabase.push().getKey();
-        //System.out.println("MI CLAVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: " + key);
-        //limpiarCasillas();
-        goToPrincipalPanel(mDatabase.push().getKey());
-        System.out.println("MI CLAVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: " + mDatabase.getKey().toString());
+    private void insertarDatos(String imagen, String nombreCompletoAM, String correoAM, String direccionDomAM,
+                               String telefonoMovAM, String fechaNacAM, String sexoAM, String enfermedadesAM,
+                               String medicamentosAM, String personaEncargadaAM, String descripcionFisicaAM,
+                               String ubicacionDomAM, String latitudAM, String longitudAM, String metrosPermitidosAM) {
 
+        Map<String, Object> map = new HashMap<>();
+        map.put("imagen", imagen);
+        map.put("nombreCompletoAM", nombreCompletoAM);
+        map.put("correoAM", correoAM);
+        map.put("direccionDomAM", direccionDomAM);
+        map.put("telefonoMovAM", telefonoMovAM);
+        map.put("fechaPicker", fechaNacAM);
+        map.put("sexoAM", sexoAM);
+        map.put("enfermedadesAM", enfermedadesAM);
+        map.put("medicamentosAM", medicamentosAM);
+        map.put("personaEncargadaAM", personaEncargadaAM);
+        map.put("descripcionFisicaAM", descripcionFisicaAM);
+        map.put("ubicacionDomAM", ubicacionDomAM);
+        map.put("latitudAM", latitudAM);
+        map.put("longitudAM", longitudAM);
+        map.put("metrosPermitidosAM", metrosPermitidosAM);
+
+        if(!validarNombreAM() | !validarCorreo() | !validarDireccionAM() | !validarTelefonoAM() |
+                !validarPersonaEnc() | !validarDescripAM() | !validarUbicacionDom() | !validarLongitud() |
+                !validarLatitud() | !validarMetrosPerm()
+        ){
+            return;
+        }
+
+        FirebaseDatabase.getInstance().getReference().child("adultosMayores")
+                .push().setValue(map)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(RegistrarDatosAdultoMayor.this, "Adulto mayor registrado exitosamente!", Toast.LENGTH_SHORT).show();
+                        limpiarCasillas();
+                        Intent intent = new Intent(RegistrarDatosAdultoMayor.this, PanelPrincipalUsuario.class);
+                        startActivity(intent);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(RegistrarDatosAdultoMayor.this, "Error de registro de usuario", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
     }
 
+    private boolean validarNombreAM() {
+        String nombreAM = nombreCompletoAM.getText().toString();
+        if(nombreAM.isEmpty()){
+            nombreCompletoAM.setError("Campo obligatorio");
+            nombreCompletoAM.requestFocus();
+            return false;
+        }else{
+            nombreCompletoAM.setError(null);
+            return true;
+        }
+    }
 
-    private void goToPrincipalPanel(String id) {
+    private boolean validarCorreo() {
+        String mailAM = correoAM.getText().toString();
 
-        Intent i = new Intent(this, PanelPrincipalUsuario.class);
-        i.putExtra("id", id);
-        i.putExtra("nombreCompletoAM", nombreCompletoAM.getText().toString());
-        i.putExtra("correoAM", correoAM.getText().toString());
-        i.putExtra("direccionDomAM", direccionDomAM.getText().toString());
-        i.putExtra("telefonoMovAM", telefonoMovAM.getText().toString());
-        i.putExtra("enfermedadesAM", enfermedadesAM.getText().toString());
-        i.putExtra("medicamentosAM", medicamentosAM.getText().toString());
-        i.putExtra("personaEncargadaAM", personaEncargadaAM.getText().toString());
-        i.putExtra("ubicacionDomAM", ubicacionDomAM.getText().toString());
-        i.putExtra("latitudAM", latitudAM.getText().toString());
-        i.putExtra("longitudAM", longitudAM.getText().toString());
-        i.putExtra("metrosPermitidosAM", metrosPermitidosAM.getText().toString());
+        if(mailAM.isEmpty()){
+            correoAM.setError("Campo obligatorio");
+            correoAM.requestFocus();
+            return false;
+        }else if(!mailAM.matches(mailpattern)){
+            correoAM.setError("Correo incorrecto");
+            correoAM.requestFocus();
+            return false;
+        }else{
+            correoAM.setError(null);
+            return true;
+        }
+    }
 
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);
+    private boolean validarDireccionAM() {
+        String direccionAM = direccionDomAM.getText().toString();
+        if(direccionAM.isEmpty()){
+            direccionDomAM.setError("Campo obligatorio");
+            direccionDomAM.requestFocus();
+            return false;
+        }else{
+            direccionDomAM.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarTelefonoAM() {
+        String telf = telefonoMovAM.getText().toString();
+
+        if(telf.isEmpty()){
+            telefonoMovAM.setError("Campo obligatorio");
+            telefonoMovAM.requestFocus();
+            return false;
+        }else if(!telf.matches(telfPattern)){
+            telefonoMovAM.setError("Número no válido");
+            telefonoMovAM.requestFocus();
+            return false;
+        }else{
+            telefonoMovAM.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarPersonaEnc() {
+        String telf = personaEncargadaAM.getText().toString();
+
+        if(telf.isEmpty()){
+            personaEncargadaAM.setError("Campo obligatorio");
+            personaEncargadaAM.requestFocus();
+            return false;
+        }else if(!telf.matches(telfPattern)){
+            personaEncargadaAM.setError("Número no válido");
+            personaEncargadaAM.requestFocus();
+            return false;
+        }else{
+            personaEncargadaAM.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarDescripAM() {
+        String descripcion = descripcionFisicaAM.getText().toString();
+        if(descripcion.isEmpty()){
+            descripcionFisicaAM.setError("Campo obligatorio");
+            descripcionFisicaAM.requestFocus();
+            return false;
+        }else{
+            descripcionFisicaAM.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarUbicacionDom() {
+        String ubicacion = ubicacionDomAM.getText().toString();
+        if(ubicacion.isEmpty()){
+            ubicacionDomAM.setError("Campo obligatorio");
+            ubicacionDomAM.requestFocus();
+            return false;
+        }else{
+            ubicacionDomAM.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarLongitud() {
+        String longitud = longitudAM.getText().toString();
+        if(longitud.isEmpty()){
+            longitudAM.setError("Campo obligatorio");
+            longitudAM.requestFocus();
+            return false;
+        }else{
+            longitudAM.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarLatitud() {
+        String latitud = latitudAM.getText().toString();
+        if(latitud.isEmpty()){
+            latitudAM.setError("Campo obligatorio");
+            latitudAM.requestFocus();
+            return false;
+        }else{
+            latitudAM.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarMetrosPerm() {
+        String metros = metrosPermitidosAM.getText().toString();
+
+        if(metros.isEmpty()){
+            metrosPermitidosAM.setError("Campo obligatorio");
+            metrosPermitidosAM.requestFocus();
+            return false;
+        }else if(!metros.matches(metrosPattern)){
+            metrosPermitidosAM.setError("Número no válido");
+            metrosPermitidosAM.requestFocus();
+            return false;
+        }else{
+            metrosPermitidosAM.setError(null);
+            return true;
+        }
     }
 
 

@@ -1,9 +1,6 @@
 package com.example.findbue;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,23 +27,29 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainAdapter extends FirebaseRecyclerAdapter<Usuario, MainAdapter.myViewHolder> {//Usuario1
-
+public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario, EdicionYEliminacionUsuario.myViewHolder> {//Usuario1
+    //String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+\" +\n" +
+            "                \"(?:\\.[a-z0-9!#$%&'+\\/=?^_`{|}~-]+)@(?:[a-z0-9](?:\" +\n" +
+            "                \"[a-z0-9-][a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-][a-z0-9])?$";
+    String telfPattern = "^\\d{10}$";
+    String metrosPattern = "^[0-9]{1,3}$";
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
      *
      * @param options
      */
-    public MainAdapter(@NonNull FirebaseRecyclerOptions<Usuario> options) {//Usuario1
+    public EdicionYEliminacionUsuario(@NonNull FirebaseRecyclerOptions<Usuario> options) {//Usuario1
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull myViewHolder holder, final int position, @NonNull Usuario model) {//Usuario1
+    protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull Usuario model) {//Usuario1
         holder.nombre.setText(model.getNombreCompleto());
         holder.correo.setText(model.getCorreo());
         holder.telefono.setText(model.getTelefonoMov());
+
 
         Glide.with(holder.img.getContext())
                 .load(model.getImg())
@@ -71,6 +74,7 @@ public class MainAdapter extends FirebaseRecyclerAdapter<Usuario, MainAdapter.my
                 direccionDom = view1.findViewById(R.id.editTextTextPersonName8);
 
                 Button btnActualizar = view1.findViewById(R.id.button11);
+                Button btnCancelar = view1.findViewById(R.id.button4);
 
                 nombreCompleto.setText(model.getNombreCompleto());
                 correo.setText(model.getCorreo());
@@ -88,8 +92,13 @@ public class MainAdapter extends FirebaseRecyclerAdapter<Usuario, MainAdapter.my
                         map.put("telefonoMov", telefonoMov.getText().toString());
                         map.put("direccionDom", direccionDom.getText().toString());
 
+                        //validaciones
+                        if(!validarEmail() | !validarNombre() | !validarDireccion() | !validarTelf()){
+                            return;
+                        }
+
                         FirebaseDatabase.getInstance().getReference().child("usuarios")
-                                .child(getRef(position).getKey()).updateChildren(map)
+                                .child(getRef(holder.getAdapterPosition()).getKey()).updateChildren(map)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
@@ -104,6 +113,72 @@ public class MainAdapter extends FirebaseRecyclerAdapter<Usuario, MainAdapter.my
                                         dialogPlus.dismiss();
                                     }
                                 });
+                    }
+
+                    private boolean validarEmail() {
+                        String mailAM = correo.getText().toString();
+
+                        if(mailAM.isEmpty()){
+                            correo.setError("Campo obligatorio");
+                            correo.requestFocus();
+                            return false;
+                        }else if(!mailAM.matches(mailpattern)){
+                            correo.setError("Correo incorrecto");
+                            correo.requestFocus();
+                            return false;
+                        }else{
+                            correo.setError(null);
+                            return true;
+                        }
+                    }
+
+                    private boolean validarNombre() {
+                        String nombreAM = nombreCompleto.getText().toString();
+                        if(nombreAM.isEmpty()){
+                            nombreCompleto.setError("Campo obligatorio");
+                            nombreCompleto.requestFocus();
+                            return false;
+                        }else{
+                            nombreCompleto.setError(null);
+                            return true;
+                        }
+                    }
+
+                    private boolean validarDireccion() {
+                        String direccionAM = direccionDom.getText().toString();
+                        if(direccionAM.isEmpty()){
+                            direccionDom.setError("Campo obligatorio");
+                            direccionDom.requestFocus();
+                            return false;
+                        }else{
+                            direccionDom.setError(null);
+                            return true;
+                        }
+                    }
+
+                    private boolean validarTelf() {
+                        String telf = telefonoMov.getText().toString();
+
+                        if(telf.isEmpty()){
+                            telefonoMov.setError("Campo obligatorio");
+                            telefonoMov.requestFocus();
+                            return false;
+                        }else if(!telf.matches(telfPattern)){
+                            telefonoMov.setError("Número no válido");
+                            telefonoMov.requestFocus();
+                            return false;
+                        }else{
+                            telefonoMov.setError(null);
+                            return true;
+                        }
+                    }
+                });
+
+                btnCancelar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(holder.nombre.getContext(), "Cancelando ...", Toast.LENGTH_SHORT).show();
+                        dialogPlus.dismiss();
                     }
                 });
             }
@@ -120,7 +195,7 @@ public class MainAdapter extends FirebaseRecyclerAdapter<Usuario, MainAdapter.my
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         FirebaseDatabase.getInstance().getReference().child("usuarios")
-                                .child(getRef(position).getKey()).removeValue();
+                                .child(getRef(holder.getAdapterPosition()).getKey()).removeValue();
                         Toast.makeText(holder.nombre.getContext(), "Usuario eliminado exitosamente!", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -135,6 +210,8 @@ public class MainAdapter extends FirebaseRecyclerAdapter<Usuario, MainAdapter.my
             }
         });
     }
+
+
 
     @NonNull
     @Override
