@@ -133,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:editable="false"
             android:hint="@string/lbl_DireccionDomicilio"
             app:boxStrokeColor="@color/teal_200"
             app:endIconMode="clear_text"
@@ -142,6 +143,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtRegisterNameBox"
             app:startIconDrawable="@drawable/outline_location_on_24">
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Buscar en el mapa"
+                android:textColor="@color/encargada_user_background"
+                android:textSize="12sp"
+                android:translationY="8dp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextDireccion"

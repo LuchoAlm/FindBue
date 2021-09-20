@@ -12,11 +12,14 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class PanelPrincipalUsuario extends AppCompatActivity {
-    Button consultarUbicacion, administrarAM, editarEncargado, editarMiPerfil;
+    Button consultarUbicacion, administrarAM, editarEncargado, editarMiPerfil, logout;
     ImageButton addadultoMayor, addEncargado;
     Switch seleccionRol;
     TextView textEncargado;
@@ -40,11 +43,18 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         linearEncargados = (LinearLayout) findViewById(R.id.linearLayout2);
         editarEncargado = (Button) findViewById(R.id.button14);
         editarMiPerfil = (Button) findViewById(R.id.button16);
+        logout = (Button) findViewById(R.id.buttonLogOut);
 
         //Adultos Mayores
         addadultoMayor = (ImageButton) findViewById(R.id.imageButton);
         administrarAM = (Button) findViewById(R.id.button6);
         consultarUbicacion = (Button) findViewById(R.id.button15);
+
+        logout.setOnClickListener(view -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        });
 
 
         administrarAM.setOnClickListener(new View.OnClickListener() {
