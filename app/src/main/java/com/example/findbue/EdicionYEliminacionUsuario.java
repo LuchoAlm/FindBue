@@ -87,6 +87,10 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                         map.put("telefonoMov", telefonoMov.getText().toString());
                         map.put("direccionDom", direccionDom.getText().toString());
 
+                        if(!validarNombreAM() | !validarCorreo() | !validarTelefonoAM() | !validarDireccionAM()){
+                            return;
+                        }
+
                         FirebaseDatabase.getInstance().getReference().child("usuarios")
                                 .child(getRef(holder.getAdapterPosition()).getKey()).updateChildren(map)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -103,6 +107,66 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                                         dialogPlus.dismiss();
                                     }
                                 });
+                    }
+
+                    public Boolean validarNombreAM(){
+                        String nombreAM = nombreCompleto.getText().toString();
+                        if(nombreAM.isEmpty()){
+                            nombreCompleto.setError("Campo obligatorio");
+                            nombreCompleto.requestFocus();
+                            return false;
+                        }else{
+                            nombreCompleto.setError(null);
+                            return true;
+                        }
+                    }
+
+                    public Boolean validarCorreo(){
+                        String mailAM = correo.getText().toString();
+                        String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\." +
+                                "[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*" +
+                                "[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$";
+                        if(mailAM.isEmpty()){
+                            correo.setError("Campo obligatorio");
+                            correo.requestFocus();
+                            return false;
+                        }else if(!mailAM.matches(mailpattern)){
+                            correo.setError("Correo incorrecto");
+                            correo.requestFocus();
+                            return false;
+                        }else{
+                            correo.setError(null);
+                            return true;
+                        }
+                    }
+
+                    public Boolean validarTelefonoAM(){
+                        String telf = telefonoMov.getText().toString();
+                        String telfPattern = "^\\d{10}$";
+                        if(telf.isEmpty()){
+                            telefonoMov.setError("Campo obligatorio");
+                            telefonoMov.requestFocus();
+                            return false;
+                        }else if(!telf.matches(telfPattern)){
+                            telefonoMov.setError("Número no válido");
+                            telefonoMov.requestFocus();
+                            return false;
+                        }else{
+                            telefonoMov.setError(null);
+                            return true;
+                        }
+                    }
+
+                    public Boolean validarDireccionAM(){
+                        String direccionAM = direccionDom.getText().toString();
+                        if(direccionAM.isEmpty()){
+                            direccionDom.setError("Campo obligatorio");
+                            direccionDom.requestFocus();
+                            return false;
+                        }else{
+                            direccionDom.setError(null);
+                            return true;
+                        }
                     }
                 });
 

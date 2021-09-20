@@ -120,7 +120,9 @@ public class RegistrarUsuario extends AppCompatActivity {
 
     public Boolean validarEmail(){
         String mail = correo.getText().toString();
-        String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+" +
+                "(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:" +
+                "[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$";
         if(mail.isEmpty()){
             correo.setError("Campo obligatorio");
             correo.requestFocus();

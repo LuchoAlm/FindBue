@@ -1,11 +1,13 @@
 package com.example.findbue;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -15,11 +17,13 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,12 +36,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegistrarDatosAdultoMayor extends AppCompatActivity {
-    Button registarAM, fechaPicker, btnCancelar;
-    ImageButton img;
+    Button registarAM, fechaPicker, btnCancelar, btnSeleccionarImg;
     EditText nombreCompletoAM, correoAM, direccionDomAM, telefonoMovAM,
              enfermedadesAM, medicamentosAM, personaEncargadaAM,
              descripcionFisicaAM,ubicacionDomAM, latitudAM, longitudAM, metrosPermitidosAM,imag;
     Spinner seleccionarSexo;
+    ImageView cover;
+
+    int SELECT_IMAGE_CODE=1;
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("adultosMayores");
 
     FirebaseDatabase firebaseDatabase;
@@ -53,6 +59,9 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_registrar_datos_adulto_mayor);
         SeleccionarFecha();
+
+        cover = findViewById(R.id.imageView);
+        btnSeleccionarImg = findViewById(R.id.button7);
 
         //img = (ImageButton) findViewById(R.id.imageButton3);
         registarAM = (Button) findViewById(R.id.button10);
@@ -71,6 +80,16 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
         longitudAM = (EditText) findViewById(R.id.editTextTextPersonName21);
         metrosPermitidosAM = (EditText) findViewById(R.id.editTextNumber);
         btnCancelar = (Button) findViewById(R.id.button5);
+
+        btnSeleccionarImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Title"),SELECT_IMAGE_CODE);
+            }
+        });
 
         registarAM.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -126,6 +145,16 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==1){
+            Uri uri =data.getData();
+            cover.setImageURI(uri);
+        }
     }
 
     private void insertarDatos(String imagen, String nombreCompletoAM, String correoAM, String direccionDomAM,
@@ -275,7 +304,9 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
 
     public Boolean validarCorreo(){
         String mailAM = correoAM.getText().toString();
-        String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+" +
+                "(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*" +
+                "[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$";
         if(mailAM.isEmpty()){
             correoAM.setError("Campo obligatorio");
             correoAM.requestFocus();
@@ -386,7 +417,7 @@ public class RegistrarDatosAdultoMayor extends AppCompatActivity {
 
     public Boolean validarMetrosPerm(){
         String metros = metrosPermitidosAM.getText().toString();
-        String metrosPattern = "^\\d{3}$";
+        String metrosPattern = "^[0-9]{1,3}$";
         if(metros.isEmpty()){
             metrosPermitidosAM.setError("Campo obligatorio");
             metrosPermitidosAM.requestFocus();

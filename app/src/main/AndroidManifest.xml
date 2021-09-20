@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindBue"
+        android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true" >
         <activity
             android:name=".RetrieveActivityAdultoM"
@@ -62,6 +63,7 @@
             <!-- Aqui las 5 lineas del intent-filter para ejecutar a Panel Principal -->
 
         </activity>
+
 
         <meta-data
             android:name="preloaded_fonts"

@@ -142,7 +142,9 @@ public class EdicionYEliminacionAdultoM extends FirebaseRecyclerAdapter<AdultoMa
 
                         public Boolean validarCorreo(){
                             String mailAM = correoAM.getText().toString();
-                            String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                            String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+" +
+                                    "(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:" +
+                                    "[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$";
                             if(mailAM.isEmpty()){
                                 correoAM.setError("Campo obligatorio");
                                 correoAM.requestFocus();
@@ -223,7 +225,7 @@ public class EdicionYEliminacionAdultoM extends FirebaseRecyclerAdapter<AdultoMa
 
                         public Boolean validarMetrosPerm(){
                             String metros = metrosPermitidosAM.getText().toString();
-                            String metrosPattern = "^\\d{3}$";
+                            String metrosPattern = "^[0-9]{1,3}$";
                             if(metros.isEmpty()){
                                 metrosPermitidosAM.setError("Campo obligatorio");
                                 metrosPermitidosAM.requestFocus();
