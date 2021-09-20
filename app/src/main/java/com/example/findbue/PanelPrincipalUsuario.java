@@ -106,7 +106,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         administrarAM.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(PanelPrincipalUsuario.this, EdicionYEliminacionAdultoM.class);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityAdultoM.class);
                                 startActivity(intent);
                             }
                         });
