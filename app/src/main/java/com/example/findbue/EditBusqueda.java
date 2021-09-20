@@ -31,7 +31,7 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.Locale;
 
-public class EditBusqueda extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
+public class EditBusqueda extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
 
     private GoogleMap mMap;
     private SupportMapFragment mapFragment;
@@ -108,14 +108,14 @@ public class EditBusqueda extends AppCompatActivity implements OnMapReadyCallbac
                             //UBICACIÓN ACTUAL
                             //LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 
-                            LatLng latLng = new LatLng(18.6813049, -99.10134979999998);
+                            LatLng latLng = new LatLng(-0.210634, -78.488464);
                             ubicacionActual(latLng);
 
                             //Creamos las opciones del marcador
                             MarkerOptions options = new MarkerOptions().position(latLng).title("Ubicación Adulto Mayor");
 
                             //Zoom al mapa
-                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
 
                             //Añadimos el marcador en el mapa
                             googleMap.addMarker(options.position(latLng).title("Morelos").draggable(true));
@@ -169,7 +169,7 @@ public class EditBusqueda extends AppCompatActivity implements OnMapReadyCallbac
 
 
         //Agregar marcador
-        LatLng morelos = new LatLng(18.6813049, -99.10134979999998);
+        LatLng morelos = new LatLng(-0.210634, -78.488464);
         markerDrag = googleMap.addMarker(new MarkerOptions()
         .position(morelos).title("Morelos").draggable(true));
 

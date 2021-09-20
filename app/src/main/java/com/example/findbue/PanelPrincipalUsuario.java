@@ -71,7 +71,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityEditarMiPerfil.class);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityUsuario.class);
                                 startActivity(intent);
                             }
                         });
@@ -88,10 +88,11 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         administrarAM.setVisibility(View.VISIBLE);
                         editarEncargado.setVisibility(View.VISIBLE);
                         addadultoMayor.setVisibility(View.VISIBLE);
+
                         editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityEditarMiPerfil.class);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityUsuario.class);
                                 startActivity(intent);
                             }
                         });
