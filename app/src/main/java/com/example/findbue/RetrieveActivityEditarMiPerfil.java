@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
@@ -40,7 +42,15 @@ public class RetrieveActivityEditarMiPerfil extends AppCompatActivity {
         btnActualizar = findViewById(R.id.button11);
         btnCancelar = findViewById(R.id.button4);
 
-        mostrarDatos();
+        //mostrarDatos();
+
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
+        if (signInAccount!=null){
+            nombreCompleto.setText(signInAccount.getDisplayName());
+            correo.setText(signInAccount.getEmail());
+            //telefonoMov.setText(signInAccount);
+            //direccionDom.setText(signInAccount.get);
+        }
 
     }
 
