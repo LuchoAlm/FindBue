@@ -56,6 +56,8 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
             startActivity(intent);
         });
 
+        String tel = getIntent().getExtras().getString("telefonoMov");
+        System.out.println("TELEFONO: " + tel);
 
         administrarAM.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +66,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         seleccionRol.setOnClickListener(new View.OnClickListener() {
 
@@ -80,6 +83,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+
                                 Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityUsuario.class);
                                 startActivity(intent);
                             }
@@ -121,7 +125,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         consultarUbicacion.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(PanelPrincipalUsuario.this, MapsActivity.class);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, MapsActivity2.class);
                                 startActivity(intent);
                             }
                         });

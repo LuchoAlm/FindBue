@@ -102,6 +102,7 @@ public class RegistrarUsuario extends AppCompatActivity {
     }
 
     private void insertarDatos() {
+        Bundle extras = new Bundle();
         Map<String, Object> map = new HashMap<>();
         map.put("correo", correo.getText().toString());
         map.put("password", password.getText().toString());
@@ -119,8 +120,10 @@ public class RegistrarUsuario extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
+                        extras.putString("telefonoMov", telefonoMov.getText().toString());
                         Toast.makeText(RegistrarUsuario.this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(RegistrarUsuario.this, PanelPrincipalUsuario.class);
+                        intent.putExtras(extras);
                         startActivity(intent);
                     }
                 })
