@@ -28,6 +28,20 @@ public class RegistrarUsuario extends AppCompatActivity {
     public Button btnRegistrar, btnCancelar;
     ImageButton img;
     EditText correo, password, nombreCompleto, direccionDom, telefonoMov;
+    //String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+\" +\n" +
+            "                \"(?:\\.[a-z0-9!#$%&'+\\/=?^_`{|}~-]+)@(?:[a-z0-9](?:\" +\n" +
+            "                \"[a-z0-9-][a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-][a-z0-9])?$";
+    String contraPattern = "^" +
+            //"(?=.*[0-9])" +       //al menos un número
+            //"(?=.*[a-z])" +       //al menos 1 minúscula
+            //"(?=.*[A-Z])" +       //al menos 1 mayúscula
+            "(?=.*[a-zA-Z])" +      //cualquier letra
+            "(?=.*[@#$%^&+=])" +
+            "(?=\\S+$)" +
+            ".{4,}" +
+            "$";
+    String telfPattern = "^\\d{10}$";
 
     FirebaseAuth firebaseAuth;
 
@@ -96,7 +110,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         map.put("telefonoMov", telefonoMov.getText().toString());
 
         if(!validarEmail() | !validarContrasenia() | !validarNombre() | !validarDireccion() |
-        !validarTelf()){
+                !validarTelf()){
             return;
         }
 
@@ -118,11 +132,9 @@ public class RegistrarUsuario extends AppCompatActivity {
                 });
     }
 
-    public Boolean validarEmail(){
+    private boolean validarEmail() {
         String mail = correo.getText().toString();
-        String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+" +
-                "(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:" +
-                "[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$";
+
         if(mail.isEmpty()){
             correo.setError("Campo obligatorio");
             correo.requestFocus();
@@ -137,17 +149,8 @@ public class RegistrarUsuario extends AppCompatActivity {
         }
     }
 
-    public Boolean validarContrasenia(){
+    private boolean validarContrasenia() {
         String contra = password.getText().toString();
-        String contraPattern = "^" +
-                //"(?=.*[0-9])" +       //al menos un número
-                //"(?=.*[a-z])" +       //al menos 1 minúscula
-                //"(?=.*[A-Z])" +       //al menos 1 mayúscula
-                "(?=.*[a-zA-Z])" +      //cualquier letra
-                "(?=.*[@#$%^&+=])" +
-                "(?=\\S+$)" +
-                ".{4,}" +
-                "$";
         if(contra.isEmpty()){
             password.setError("Campo obligatorio");
             password.requestFocus();
@@ -162,7 +165,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         }
     }
 
-    public Boolean validarNombre(){
+    private boolean validarNombre() {
         String nombre = nombreCompleto.getText().toString();
         if(nombre.isEmpty()){
             nombreCompleto.setError("Campo obligatorio");
@@ -174,7 +177,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         }
     }
 
-    public Boolean validarDireccion(){
+    private boolean validarDireccion() {
         String direccion = direccionDom.getText().toString();
         if(direccion.isEmpty()){
             direccionDom.setError("Campo obligatorio");
@@ -186,9 +189,9 @@ public class RegistrarUsuario extends AppCompatActivity {
         }
     }
 
-    public Boolean validarTelf(){
+    private boolean validarTelf() {
         String telf = telefonoMov.getText().toString();
-        String telfPattern = "^\\d{10}$";
+
         if(telf.isEmpty()){
             telefonoMov.setError("Campo obligatorio");
             telefonoMov.requestFocus();
@@ -202,4 +205,6 @@ public class RegistrarUsuario extends AppCompatActivity {
             return true;
         }
     }
+
+
 }

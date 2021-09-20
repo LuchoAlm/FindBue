@@ -46,6 +46,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
         administrarAM = (Button) findViewById(R.id.button6);
         consultarUbicacion = (Button) findViewById(R.id.button15);
 
+
         administrarAM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +70,14 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityUsuario.class);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityEditarMiPerfil.class);
+                                startActivity(intent);
+                            }
+                        });
+                        consultarUbicacion.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, MapsActivity.class);
                                 startActivity(intent);
                             }
                         });
@@ -82,7 +90,7 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                         editarMiPerfil.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityUsuario.class);
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, RetrieveActivityEditarMiPerfil.class);
                                 startActivity(intent);
                             }
                         });
@@ -97,6 +105,13 @@ public class PanelPrincipalUsuario extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 Intent intent = new Intent(PanelPrincipalUsuario.this, EdicionYEliminacionAdultoM.class);
+                                startActivity(intent);
+                            }
+                        });
+                        consultarUbicacion.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(PanelPrincipalUsuario.this, MapsActivity.class);
                                 startActivity(intent);
                             }
                         });

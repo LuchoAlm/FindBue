@@ -28,7 +28,12 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario, EdicionYEliminacionUsuario.myViewHolder> {//Usuario1
-
+    //String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+\" +\n" +
+            "                \"(?:\\.[a-z0-9!#$%&'+\\/=?^_`{|}~-]+)@(?:[a-z0-9](?:\" +\n" +
+            "                \"[a-z0-9-][a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-][a-z0-9])?$";
+    String telfPattern = "^\\d{10}$";
+    String metrosPattern = "^[0-9]{1,3}$";
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
@@ -87,7 +92,8 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                         map.put("telefonoMov", telefonoMov.getText().toString());
                         map.put("direccionDom", direccionDom.getText().toString());
 
-                        if(!validarNombreAM() | !validarCorreo() | !validarTelefonoAM() | !validarDireccionAM()){
+                        //validaciones
+                        if(!validarEmail() | !validarNombre() | !validarDireccion() | !validarTelf()){
                             return;
                         }
 
@@ -109,23 +115,9 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                                 });
                     }
 
-                    public Boolean validarNombreAM(){
-                        String nombreAM = nombreCompleto.getText().toString();
-                        if(nombreAM.isEmpty()){
-                            nombreCompleto.setError("Campo obligatorio");
-                            nombreCompleto.requestFocus();
-                            return false;
-                        }else{
-                            nombreCompleto.setError(null);
-                            return true;
-                        }
-                    }
-
-                    public Boolean validarCorreo(){
+                    private boolean validarEmail() {
                         String mailAM = correo.getText().toString();
-                        String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\." +
-                                "[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*" +
-                                "[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$";
+
                         if(mailAM.isEmpty()){
                             correo.setError("Campo obligatorio");
                             correo.requestFocus();
@@ -140,9 +132,33 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                         }
                     }
 
-                    public Boolean validarTelefonoAM(){
+                    private boolean validarNombre() {
+                        String nombreAM = nombreCompleto.getText().toString();
+                        if(nombreAM.isEmpty()){
+                            nombreCompleto.setError("Campo obligatorio");
+                            nombreCompleto.requestFocus();
+                            return false;
+                        }else{
+                            nombreCompleto.setError(null);
+                            return true;
+                        }
+                    }
+
+                    private boolean validarDireccion() {
+                        String direccionAM = direccionDom.getText().toString();
+                        if(direccionAM.isEmpty()){
+                            direccionDom.setError("Campo obligatorio");
+                            direccionDom.requestFocus();
+                            return false;
+                        }else{
+                            direccionDom.setError(null);
+                            return true;
+                        }
+                    }
+
+                    private boolean validarTelf() {
                         String telf = telefonoMov.getText().toString();
-                        String telfPattern = "^\\d{10}$";
+
                         if(telf.isEmpty()){
                             telefonoMov.setError("Campo obligatorio");
                             telefonoMov.requestFocus();
@@ -153,18 +169,6 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
                             return false;
                         }else{
                             telefonoMov.setError(null);
-                            return true;
-                        }
-                    }
-
-                    public Boolean validarDireccionAM(){
-                        String direccionAM = direccionDom.getText().toString();
-                        if(direccionAM.isEmpty()){
-                            direccionDom.setError("Campo obligatorio");
-                            direccionDom.requestFocus();
-                            return false;
-                        }else{
-                            direccionDom.setError(null);
                             return true;
                         }
                     }
