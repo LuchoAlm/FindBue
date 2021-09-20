@@ -1,6 +1,7 @@
 package com.example.findbue;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -20,12 +21,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.findbue.databinding.ActivityEditBusquedaBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-public class EditBusqueda extends FragmentActivity implements OnMapReadyCallback {
+import java.util.Locale;
+
+public class EditBusqueda extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
 
     private GoogleMap mMap;
     private SupportMapFragment mapFragment;
@@ -34,6 +38,9 @@ public class EditBusqueda extends FragmentActivity implements OnMapReadyCallback
     private FusedLocationProviderClient client;
     private ActivityEditBusquedaBinding binding;
     public LatLng actual= new LatLng(0, 0);
+    public LatLng nuevaLocation;
+
+    private Marker markePrueba, markerDrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,17 +97,20 @@ public class EditBusqueda extends FragmentActivity implements OnMapReadyCallback
                         @Override
                         public void onMapReady(@NonNull GoogleMap googleMap) {
                             //Inicializamos lat Ing
-                            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                            //UBICACIÓN ACTUAL
+                            //LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+
+                            LatLng latLng = new LatLng(18.6813049, -99.10134979999998);
                             ubicacionActual(latLng);
 
                             //Creamos las opciones del marcador
                             MarkerOptions options = new MarkerOptions().position(latLng).title("Ubicación Adulto Mayor");
 
                             //Zoom al mapa
-                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
 
                             //Añadimos el marcador en el mapa
-                            googleMap.addMarker(options);
+                            googleMap.addMarker(options.position(latLng).title("Morelos").draggable(true));
                             drawCircle(latLng);
                         }
                     });
@@ -124,25 +134,23 @@ public class EditBusqueda extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        googleMap.setOnMarkerDragListener(this);
+
         //Marcado en distancia permitida
 
         LatLng permitido = new LatLng(-0.123803, -78.513266);
         LatLng noPermitido = new LatLng(-0.123439, -78.510565);
 
-        mMap.addMarker(new MarkerOptions().position(permitido).title("Permitido"));
-        mMap.addMarker(new MarkerOptions().position(noPermitido).title("No Permitido"));
+        //mMap.addMarker(new MarkerOptions().position(permitido).title("Permitido"));
+        //mMap.addMarker(new MarkerOptions().position(noPermitido).title("No Permitido"));
 
-        double val1 = Math.sqrt( Math.pow(permitido.latitude-actual.latitude,2)
-                +
-                Math.pow(permitido.longitude-actual.longitude,2));
+        //double val1 = Math.sqrt( Math.pow(permitido.latitude-actual.latitude,2)+Math.pow(permitido.longitude-actual.longitude,2));
 
-        double val2 = Math.sqrt( Math.pow(noPermitido.latitude-actual.latitude,2)
-                +
-                Math.pow(noPermitido.longitude-actual.longitude,2));
+        //double val2 = Math.sqrt( Math.pow(noPermitido.latitude-actual.latitude,2)+Math.pow(noPermitido.longitude-actual.longitude,2));
 
-        Toast.makeText(this, "El resultado es:"+val1, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "El resultado es:"+val1, Toast.LENGTH_LONG).show();
 
-        Toast.makeText(this, "El resultado es:"+val2, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "El resultado es:"+val2, Toast.LENGTH_LONG).show();
 
         System.out.println("\n\n\n----> LUIS El valor es: "+this.actual+"\n\n\n");
 
@@ -150,6 +158,12 @@ public class EditBusqueda extends FragmentActivity implements OnMapReadyCallback
         //LatLng sydney = new LatLng(-34, 151);
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+
+        //Agregar marcador
+        LatLng morelos = new LatLng(18.6813049, -99.10134979999998);
+        markerDrag = googleMap.addMarker(new MarkerOptions()
+        .position(morelos).title("Morelos").draggable(true));
 
 
 
@@ -191,5 +205,29 @@ public class EditBusqueda extends FragmentActivity implements OnMapReadyCallback
     public void ubicacionActual (LatLng latLng){
         this.actual = latLng;
         System.out.println("\n\n\n----> El valor es: "+this.actual+"\n\n\n");
+    }
+
+    @Override
+    public void onMarkerDragStart(@NonNull Marker marker) {
+    }
+
+    @Override
+    public void onMarkerDrag(@NonNull Marker marker) {
+
+        if(marker.equals(markerDrag)){
+            nuevaLocation = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
+            System.out.println(nuevaLocation);
+        }
+
+    }
+
+    @Override
+    public void onMarkerDragEnd(@NonNull Marker marker) {
+        if(marker.equals(markerDrag)){
+            mMap.clear();
+            mMap.addMarker(new MarkerOptions().position(nuevaLocation).title("Funciona").draggable(true));
+            drawCircle(nuevaLocation);
+            Toast.makeText(this, "Terminamos", Toast.LENGTH_SHORT).show();
+        }
     }
 }
