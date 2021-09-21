@@ -279,15 +279,7 @@ public class EdicionYEliminacionAdultoM extends FirebaseRecyclerAdapter<AdultoMa
                     builder.show();
                 }
             });
-
-
-
-
         }
-
-
-
-
 
     @NonNull
     @Override

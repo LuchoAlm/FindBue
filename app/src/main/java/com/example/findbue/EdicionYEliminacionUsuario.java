@@ -61,7 +61,7 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
             public void onClick(View view) {
                 final DialogPlus dialogPlus = DialogPlus.newDialog(holder.img.getContext())
                         .setContentHolder(new ViewHolder(R.layout.activity_usuariosdelsistema))
-                        .setExpanded(true, 1500)
+                        .setExpanded(true, 1800)
                         .create();
 
                 View view1 = dialogPlus.getHolderView();
@@ -208,8 +208,6 @@ public class EdicionYEliminacionUsuario extends FirebaseRecyclerAdapter<Usuario,
             }
         });
     }
-
-
 
     @NonNull
     @Override
