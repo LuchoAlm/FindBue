@@ -24,13 +24,21 @@
             android:id="@+id/textView31"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:gravity="center"
             android:text="Ingrese los nuevos datos "
-            android:layout_marginStart="16dp"
             android:textColor="@color/gray_text"
             android:textSize="20sp"
             android:textStyle="bold"
             android:translationY="20dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:translationY="40dp"
+            app:srcCompat="@drawable/ic_add_photo" />
 
         <TextView
             android:id="@+id/textView32"
@@ -56,7 +64,7 @@
             android:minHeight="40dp"
             android:textColor="@color/gray_text"
             android:textSize="16sp"
-            android:translationY="60dp" />
+            android:translationY="55dp" />
 
         <TextView
             android:id="@+id/textView33"
@@ -67,7 +75,7 @@
             android:textColor="@color/gray_text"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:translationY="80dp" />
+            android:translationY="70dp" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress5"
@@ -82,7 +90,7 @@
             android:minHeight="40dp"
             android:textColor="@color/gray_text"
             android:textSize="16sp"
-            android:translationY="90dp" />
+            android:translationY="75dp" />
 
         <TextView
             android:id="@+id/textView34"
@@ -93,7 +101,7 @@
             android:textColor="@color/gray_text"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:translationY="110dp" />
+            android:translationY="90dp" />
 
         <EditText
             android:id="@+id/editTextPhone5"
@@ -108,7 +116,7 @@
             android:minHeight="40dp"
             android:textColor="@color/gray_text"
             android:textSize="16sp"
-            android:translationY="120dp" />
+            android:translationY="95dp" />
 
         <TextView
             android:id="@+id/textView35"
@@ -119,7 +127,7 @@
             android:textColor="@color/gray_text"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:translationY="140dp" />
+            android:translationY="110dp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName8"
@@ -134,16 +142,34 @@
             android:minHeight="40dp"
             android:textColor="@color/gray_text"
             android:textSize="16sp"
-            android:translationY="150dp" />
+            android:translationY="115dp" />
 
-        <Button
-            android:id="@+id/button11"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Actualizar"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:translationY="180dp" />
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:translationY="140dp">
+
+            <Button
+                android:id="@+id/button4"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/custom_button_outline"
+                android:text="Cancelar"
+                android:textColor="@color/gray_text" />
+
+            <Button
+                android:id="@+id/button11"
+                style="@style/FirebaseUI.Button"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Actualizar"
+                android:textColor="#f5f5f5" />
+        </LinearLayout>
 
     </LinearLayout>
 

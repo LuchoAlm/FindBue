@@ -10,9 +10,9 @@ import android.view.WindowManager;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RetrieveActivity extends AppCompatActivity {
+public class RetrieveActivityUsuario extends AppCompatActivity {
     RecyclerView recyclerView;
-    MainAdapter mainAdapter;
+    EdicionYEliminacionUsuario mainAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class RetrieveActivity extends AppCompatActivity {
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("usuarios"), Usuario.class)
                         .build();
 
-        mainAdapter = new MainAdapter(options);
+        mainAdapter = new EdicionYEliminacionUsuario(options);
         recyclerView.setAdapter(mainAdapter);
     }
 

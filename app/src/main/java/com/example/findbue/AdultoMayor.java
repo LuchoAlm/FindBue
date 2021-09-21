@@ -3,16 +3,17 @@ package com.example.findbue;
 public class AdultoMayor {
     String nombreCompletoAM, correoAM, direccionDomAM, telefonoMovAM,
             fechaNacAM, sexoAM, enfermedadesAM, medicamentosAM, personaEncargadaAM,
-            descripcionFisicaAM,ubicacionDomAM, latitudAM, longitudAM, metrosPermitidosAM;
+            descripcionFisicaAM,ubicacionDomAM, latitudAM, longitudAM, metrosPermitidosAM, img;
 
     public AdultoMayor() {
     }
 
-    public AdultoMayor(String nombreCompletoAM, String correoAM, String direccionDomAM,
+    public AdultoMayor(String img, String nombreCompletoAM, String correoAM, String direccionDomAM,
                        String telefonoMovAM, String fechaNacAM, String sexoAM,
                        String enfermedadesAM, String medicamentosAM, String personaEncargadaAM,
                        String descripcionFisicaAM, String ubicacionDomAM, String latitudAM,
                        String longitudAM, String metrosPermitidosAM) {
+        this.img = img;
         this.nombreCompletoAM = nombreCompletoAM;
         this.correoAM = correoAM;
         this.direccionDomAM = direccionDomAM;
@@ -27,6 +28,15 @@ public class AdultoMayor {
         this.latitudAM = latitudAM;
         this.longitudAM = longitudAM;
         this.metrosPermitidosAM = metrosPermitidosAM;
+
+    }
+
+    public String getImg() {
+        return "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png";
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getNombreCompletoAM() {

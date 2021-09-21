@@ -9,22 +9,41 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RegistrarUsuario extends AppCompatActivity {
     public Button btnRegistrar, btnCancelar;
-    public EditText mail, password, name, location, movil;
+    ImageButton img;
+    EditText correo, password, nombreCompleto, direccionDom, telefonoMov;
+    //String mailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    String mailpattern = "^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+\" +\n" +
+            "                \"(?:\\.[a-z0-9!#$%&'+\\/=?^_`{|}~-]+)@(?:[a-z0-9](?:\" +\n" +
+            "                \"[a-z0-9-][a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-][a-z0-9])?$";
+    String contraPattern = "^" +
+            //"(?=.*[0-9])" +       //al menos un número
+            //"(?=.*[a-z])" +       //al menos 1 minúscula
+            //"(?=.*[A-Z])" +       //al menos 1 mayúscula
+            "(?=.*[a-zA-Z])" +      //cualquier letra
+            "(?=.*[@#$%^&+=])" +
+            "(?=\\S+$)" +
+            ".{4,}" +
+            "$";
+    String telfPattern = "^\\d{10}$";
 
     FirebaseAuth firebaseAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference myref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,58 +59,170 @@ public class RegistrarUsuario extends AppCompatActivity {
 
         btnRegistrar = (Button) findViewById(R.id.buttonIngresar);
         btnCancelar = (Button) findViewById(R.id.buttonCancelarRegistro);
-        mail = (EditText) findViewById(R.id.editTextTextEmailAddress);
+        correo = (EditText) findViewById(R.id.editTextTextEmailAddress);
         password = (EditText) findViewById(R.id.editTextTextPassword);
-        name = (EditText) findViewById(R.id.editTextTextPersonName);
-        location = (EditText) findViewById(R.id.editTextDireccion);
-        movil = (EditText) findViewById(R.id.editTextPhone2);
+        nombreCompleto = (EditText) findViewById(R.id.editTextTextPersonName);
+        direccionDom = (EditText) findViewById(R.id.editTextDireccion);
+        telefonoMov = (EditText) findViewById(R.id.editTextPhone2);
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = mail.getText().toString();
+                insertarDatos();
+            }
+        });
+       /* btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = correo.getText().toString();
                 String pass = password.getText().toString();
                 if( email.isEmpty() == false && pass.isEmpty() == false){
                     firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                              //  insertarDatos(mail.getText().toString(),password.getText().toString(), name.getText().toString(), location.getText().toString(), movil.getText().toString());
-                                goToPrincipalPanel();
+                              insertarDatos();
                             }
                         }
                     });
                 }
             }
-        });
+        });*/
 
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(RegistrarUsuario.this, "Cancelando ...", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegistrarUsuario.this, MainActivity.class);
                 startActivity(intent);
             }
         });
 
+        direccionDom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(RegistrarUsuario.this, EditBusqueda.class);
+                i.putExtra("layout","RegistrarUsuario");
+                startActivity(i);
+            }
+        });
+
+        Bundle parametros = this.getIntent().getExtras();
+        if (parametros!=null){
+            double latAM = getIntent().getExtras().getDouble("latitud");
+            double logAM = getIntent().getExtras().getDouble("longitud");
+            if (latAM !=0 && logAM!=0){
+                direccionDom.setText(String.format("%.2f", latAM) + String.format("%.2f", logAM));
+            }
+        }
+
 
     }
 
-    private void goToPrincipalPanel() {
-        Intent i = new Intent(this, PanelPrincipalUsuario.class);
-        i.putExtra("mail", mail.getText().toString());
-        i.putExtra("password", password.getText().toString());
-        i.putExtra("name", name.getText().toString());
-        i.putExtra("location", location.getText().toString());
-        i.putExtra("movil", movil.getText().toString());
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);
+    private void insertarDatos() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("correo", correo.getText().toString());
+        map.put("password", password.getText().toString());
+        map.put("nombreCompleto", nombreCompleto.getText().toString());
+        map.put("direccionDom", direccionDom.getText().toString());
+        map.put("telefonoMov", telefonoMov.getText().toString());
+
+        if(!validarEmail() | !validarContrasenia() | !validarNombre() | !validarDireccion() |
+                !validarTelf()){
+            return;
+        }
+
+        FirebaseDatabase.getInstance().getReference().child("usuarios")
+                .push().setValue(map)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(RegistrarUsuario.this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(RegistrarUsuario.this, PanelPrincipalUsuario.class);
+                        startActivity(intent);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(RegistrarUsuario.this, "Error de registro de usuario", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
-    /*private void insertarDatos(String mail, String password, String name, String location, String movil) {
-        firebaseDatabase= FirebaseDatabase.getInstance();
-        myref = firebaseDatabase.getReference("usuarios");
-        Usuario user = new Usuario(mail, password, name, location, movil);
-        myref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
-        Toast.makeText(this, "Usuario registrado exitosamente!", Toast.LENGTH_SHORT).show();
-    }*/
+    private boolean validarEmail() {
+        String mail = correo.getText().toString();
+
+        if(mail.isEmpty()){
+            correo.setError("Campo obligatorio");
+            correo.requestFocus();
+            return false;
+        }else if(!mail.matches(mailpattern)){
+            correo.setError("Correo incorrecto");
+            correo.requestFocus();
+            return false;
+        }else{
+            correo.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarContrasenia() {
+        String contra = password.getText().toString();
+        if(contra.isEmpty()){
+            password.setError("Campo obligatorio");
+            password.requestFocus();
+            return false;
+        }else if(!contra.matches(contraPattern)){
+            password.setError("Contraseña muy débil, debe contener al menos" +
+                    "un número, una mayúscula, una minúscula, y un caracter especial");
+            return false;
+        }else{
+            password.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarNombre() {
+        String nombre = nombreCompleto.getText().toString();
+        if(nombre.isEmpty()){
+            nombreCompleto.setError("Campo obligatorio");
+            nombreCompleto.requestFocus();
+            return false;
+        }else{
+            nombreCompleto.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarDireccion() {
+        String direccion = direccionDom.getText().toString();
+        if(direccion.isEmpty()){
+            direccionDom.setError("Campo obligatorio");
+            direccionDom.requestFocus();
+            return false;
+        }else{
+            direccionDom.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validarTelf() {
+        String telf = telefonoMov.getText().toString();
+
+        if(telf.isEmpty()){
+            telefonoMov.setError("Campo obligatorio");
+            telefonoMov.requestFocus();
+            return false;
+        }else if(!telf.matches(telfPattern)){
+            telefonoMov.setError("Número no válido");
+            telefonoMov.requestFocus();
+            return false;
+        }else{
+            telefonoMov.setError(null);
+            return true;
+        }
+    }
+
+
 }
