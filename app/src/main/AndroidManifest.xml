@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.findbue">
+    package="com.example.findbue" >
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -15,7 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindBue"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".PermissionsActivity"
+            android:exported="true" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -28,12 +31,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".EditBusqueda"
-            android:exported="true"
-            android:label="@string/title_activity_edit_busqueda">
-
-        </activity>
         <activity
             android:name=".MapsActivity"
             android:exported="true"
@@ -52,7 +49,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -61,21 +58,14 @@
         </activity>
         <activity
             android:name=".RegistrarUsuario"
-            android:exported="true">
+            android:exported="true" >
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar familiar -->
 
         </activity>
         <activity
-            android:name=".EditarPerfilPersona"
-            android:exported="true">
-
-            <!-- Aqui las 5 lineas del intent-filter para ejecutar EditarPerfilPersona -->
-
-        </activity>
-        <activity
             android:name=".PanelPrincipalUsuario"
-            android:exported="true">
+            android:exported="true" >
 
             <!-- Aqui las 5 lineas del intent-filter para ejecutar a Panel Principal -->
 
