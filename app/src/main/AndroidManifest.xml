@@ -8,20 +8,25 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindBue"
-        android:requestLegacyExternalStorage="true"
-        android:usesCleartextTraffic="true" >
         android:usesCleartextTraffic="true">
 
         <!--
@@ -37,6 +42,10 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".EditBusqueda"
+            android:exported="true"
+            android:label="@string/title_activity_edit_busqueda" />
+        <activity
             android:name=".RetrieveActivityEditarMiPerfil"
             android:exported="true" />
         <activity
@@ -50,7 +59,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -70,7 +79,6 @@
             <!-- Aqui las 5 lineas del intent-filter para ejecutar Registrar familiar -->
 
         </activity>
-
         <activity
             android:name=".PanelPrincipalUsuario"
             android:exported="true">
